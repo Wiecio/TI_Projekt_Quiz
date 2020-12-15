@@ -53,7 +53,7 @@
 		<?php if(!isset($_SESSION['log_in'])) :?>			
 			<div>
 				<button id="loginBtn" 
-					class=" btn btn-lg btn-primary" style="margin-left: 2220px">Login</button>
+					class=" btn btn-lg btn-primary float-right">Login</button>
 				<script type="text/javascript">
 					$(function() {
 						$("#loginBtn").click(function() {
