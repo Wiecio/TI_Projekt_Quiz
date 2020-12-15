@@ -9,7 +9,7 @@ session_start();
 <script type="text/javascript">
 	$(function() {
 		$("#CreateAccount").click(function() {
-			window.location.href = "/register";
+			window.location.href = "/TI_Projekt_Quiz/register";
 		});
 
 	});

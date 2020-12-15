@@ -16,7 +16,7 @@
 
 <!--Pasek Nawigacji -->
 	<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-		<a class="navbar-brand" href="/index.php">Quizzzzzz</a>
+		<a class="navbar-brand" href="/TI_Projekt_Quiz/index.php">Quizzzzzz</a>
 		<button class="navbar-toggler" type="button" data-toggle="collapse"
 			data-target="#navbarText" aria-controls="navbarText"
 			aria-expanded="false" aria-label="Toggle navigation">
@@ -44,7 +44,7 @@
 				<script type="text/javascript">
 					$(function() {
 						$("#logoutBtn").click(function() {
-							window.location.href = "/logout.php";
+							window.location.href = "/TI_Projekt_Quiz/logout.php";
 						});
 					});
 				</script>
@@ -57,7 +57,7 @@
 				<script type="text/javascript">
 					$(function() {
 						$("#loginBtn").click(function() {
-							window.location.href = "/login.php";
+							window.location.href = "/TI_Projekt_Quiz/login.php";
 						});
 					});
 				</script>
@@ -69,7 +69,7 @@
 				<script type="text/javascript">
 					$(function() {
 						$("#registerBtn").click(function() {
-							window.location.href = "/register.php";
+							window.location.href = "/TI_Projekt_Quiz/register.php";
 						});
 					});
 				</script>
