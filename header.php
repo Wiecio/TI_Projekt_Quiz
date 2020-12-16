@@ -51,28 +51,37 @@
 			</div>
 		<?php endif ;?>
 		<?php if(!isset($_SESSION['log_in'])) :?>			
-			<div>
-				<button id="loginBtn" 
-					class=" btn btn-lg btn-primary float-right">Login</button>
-				<script type="text/javascript">
-					$(function() {
-						$("#loginBtn").click(function() {
-							window.location.href = "/TI_Projekt_Quiz/login.php";
-						});
-					});
-				</script>
-			</div>
 			
-			<div class="navbar-nav ml-auto">
-				<button id="registerBtn" 
-					class=" btn btn-lg btn-primary float-right">Register</button>
-				<script type="text/javascript">
-					$(function() {
-						$("#registerBtn").click(function() {
-							window.location.href = "/TI_Projekt_Quiz/register.php";
+			
+			<div class="navbar-nav ml-lg-auto ml-sm-3">
+				<div class="row">
+				
+				<div class="col-lg-auto mt-2 mt-lg-0"">
+					<button id="registerBtn" 
+						class=" btn btn-lg btn-primary btn-block">Register</button>
+					<script type="text/javascript">
+						$(function() {
+							$("#registerBtn").click(function() {
+								window.location.href = "/TI_Projekt_Quiz/register.php";
+							});
 						});
-					});
-				</script>
+					</script>
+				</div>
+				
+				<div class="col-lg-auto mt-2 mt-lg-0">
+					<button id="loginBtn" 
+						class=" btn btn-lg btn-primary btn-block">Login</button>
+					<script type="text/javascript">
+						$(function() {
+							$("#loginBtn").click(function() {
+								window.location.href = "/TI_Projekt_Quiz/login.php";
+							});
+						});
+					</script>
+				</div>
+				
+				</div>
+				
 			</div>
 		<?php endif ;?>
 		</div>
