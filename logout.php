@@ -3,7 +3,7 @@ session_start();
 if(isset($_SESSION['log_in']))
 {
         session_unset(); // usuwa zmienne sesyjne czyli dla wylogowania
-        $_SESSION['logout'] = "<span>Loged out</span>";
+        $_SESSION['logout'] = "You logged out!";
         header('Location: index.php');
 }
 else

@@ -31,13 +31,13 @@
                 if($number_email == 1 && $w['verified'] == true && password_verify($pass,$w['haslo']))
                 {
                     $_SESSION['log_in'] = true;
-                    $_SESSION['log_in_info'] = "You are log in now!";
+                    $_SESSION['log_in_info'] = "You logged in!";
                     header("Location: index.php");
                     exit();
                 }
                 else
                 {
-                    if($w['verified'] == false)
+                    if($w['verified'] == false && $number_email == 1)
                     {
                         $_SESSION['log_in_error'] = "You must verify your account on email!";
                     }

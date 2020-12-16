@@ -1,6 +1,6 @@
 <?php
     session_start();
-
+	require_once "functions_PHP.php";
     if(isset($_SESSION['log_in']))
     {
         header("Location: index.php");
@@ -32,12 +32,12 @@
         if( (strlen($pass1)<8) || (strlen($pass1)>20))
         {
             $data_ok = false;
-            $_SESSION['error_pass'] = "Password must have minimum 8, max 20 characters";
+            $_SESSION['error_pass'] = "Password must have minimum 8, max 20 characters!";
         }
         if($pass1!=$pass2)
         {
             $data_ok = false;
-            $_SESSION['error_pass'] = "Passwords are not the same";
+            $_SESSION['error_pass'] = "Passwords are not the same!";
         }
 			if($email_ok == true)
 			{
@@ -67,7 +67,7 @@
 
 					if($number_email == 1)
 					{
-						$_SESSION['error_email'] = "Account with that email acctualy exsist";
+						$_SESSION['error_email'] = "Account with that email currently exsist!";
 						$data_ok = false;
 						$st_check_email->close();
 						$conn->close();
@@ -85,24 +85,41 @@
 			{
 				try
 				{
+					$vkey = md5(time().$email);
 					$conn = new mysqli($host,$db_user,$db_password,$db_name);
-					if(!$conn->query("SET TRANSACTION ISOLATION LEVEL SERIALIZABLE")) throw new exception($polaczenie->error);
+					if(!$conn->query("SET TRANSACTION ISOLATION LEVEL SERIALIZABLE")) throw new exception($conn->error);
                 	$conn->begin_transaction();
 					if($conn->connect_errno!=0)
 					{
 						throw new Exception(mysqli_connect_errno());
 					}
-					$sql = "INSERT INTO users VALUES(NULL,?,?,?,'',false)";
+					/* take max ID */
+					$sql_id = "SELECT MAX(id_user) AS id_user FROM users";
+					$st_id = $conn->prepare($sql_id);
+					if(!$st_id->execute())
+					{
+						throw new exception("st_id error");
+					}
+					$r_id = $st_id->get_result();
+					$w_id = $r_id->fetch_assoc();
+					$max_id = $w_id['id_user'];
+					$id_correct  = $max_id+1;
+
+					$sql = "INSERT INTO users VALUES(?,?,?,?,?,false)";
 					$st = $conn->prepare($sql);
-					$st->bind_param("sss",$nick,$email,$pass_hash);
+					$st->bind_param("issss",$id_correct,$nick,$email,$pass_hash,$vkey);
 					if(!$st->execute()) 
 					{
 						$st->close();
 						throw new Exception($st_check_email->error);
 					}
+					if(!Send_verify_mail($email,$vkey))
+					{
+						throw new Exception("NotSendEmail");
+					}
 					$conn->commit();
 					$conn->close();
-					$_SESSION['good_register'] = "You are now registered, check your email to verify your account";
+					$_SESSION['good_register'] = "You are registered, check your email to verify your account!";
 				}
 				catch(Exception $e)
 				{
@@ -121,6 +138,7 @@
 <head>
 <meta charset="UTF-8">
 <title>Register Page</title>
+<link rel="stylesheet" href="styles/basic_style.css">
 </head>
 <body>
 
@@ -147,11 +165,8 @@
 					<div class="col-12">
 						<input type="password" name="pass1" placeholder="password" required class="form-control"/><br>
 						<?php if(isset($_SESSION['error_pass'])): ?>
-
-                                <div><?=$_SESSION['error_pass']?></div>
-
+                                <div style="color: red"><?=$_SESSION['error_pass']?></div>
                                 <?php unset($_SESSION['error_pass'])?>
-
                         <?php endif; ?>
 					</div>
 					<label for="confirmPassword" class="col-12 col-form-label">Confirm Password:</label>
@@ -165,17 +180,17 @@
 
 				</form>
 				<?php if(isset($_SESSION['good_register'])): ?>
-						<div><?=$_SESSION['good_register']?></div>
+						<div class="good_register_info"><?=$_SESSION['good_register']?></div>
 						<?php unset($_SESSION['good_register'])?>
 				 <?php endif; ?>
 				 
 				 <?php if(isset($_SESSION['error_conn'])): ?>
-						<div><?=$_SESSION['error_conn']?></div>
+						<div class="bad_register_info"><?=$_SESSION['error_conn']?></div>
 						<?php unset($_SESSION['error_conn'])?>
 				 <?php endif; ?>
 
 				 <?php if(isset($_SESSION['error_email'])): ?>
-                                <div><?=$_SESSION['error_email']?></div>
+                                <div class="bad_register_info"><?=$_SESSION['error_email']?></div>
                                 <?php unset($_SESSION['error_email'])?>
 				 <?php endif; ?>
 			</div>

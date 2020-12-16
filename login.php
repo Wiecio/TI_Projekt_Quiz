@@ -7,6 +7,7 @@ session_start();
 <head>
 <meta charset="UTF-8">
 <title>Login Page</title>
+<link rel="stylesheet" href="styles/basic_style.css">
 </head>
 <body>
 
@@ -29,11 +30,11 @@ session_start();
 						</div> 
 					</div>
 					<?php if(isset($_SESSION['log_in_error'])) :?>
-							<div><?=$_SESSION['log_in_error']?> </div>
+							<div class="color_alert"><?=$_SESSION['log_in_error']?> </div>
 							<?php unset($_SESSION['log_in_error'])?>
 					<?php endif; ?>
 					<?php if(isset($_SESSION['log_in_info'])) :?>
-							<div><?=$_SESSION['log_in_info']?> </div>
+							<div class="color_alert"><?=$_SESSION['log_in_info']?> </div>
 							<?php unset($_SESSION['log_in_info'])?>
 					<?php endif; ?>
 					<div class="form-div row col-6" style="margin-top: 1.5em;">
