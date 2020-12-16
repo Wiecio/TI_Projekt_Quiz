@@ -6,16 +6,7 @@ session_start();
 <html>
 <head>
 <meta charset="UTF-8">
-<script type="text/javascript">
-	$(function() {
-		$("#CreateAccount").click(function() {
-			window.location.href = "/TI_Projekt_Quiz/register";
-		});
-
-	});
-</script>
-
-<title>FreshVotes Login Page</title>
+<title>Login Page</title>
 </head>
 <body>
 

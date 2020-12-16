@@ -56,7 +56,7 @@
 			<div class="navbar-nav ml-lg-auto ml-sm-3">
 				<div class="row">
 				
-				<div class="col-lg-auto mt-2 mt-lg-0"">
+				<div class="col-lg-auto mt-2 mt-lg-0">
 					<button id="registerBtn" 
 						class=" btn btn-lg btn-primary btn-block">Register</button>
 					<script type="text/javascript">
@@ -68,7 +68,7 @@
 					</script>
 				</div>
 				
-				<div class="col-lg-auto mt-2 mt-lg-0">
+				<div class="col-lg-auto mt-2 mt-lg-0 mr-lg-2">
 					<button id="loginBtn" 
 						class=" btn btn-lg btn-primary btn-block">Login</button>
 					<script type="text/javascript">
