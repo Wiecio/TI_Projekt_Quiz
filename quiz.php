@@ -56,13 +56,13 @@ function answerClicked (idCorrect){
 	
 <div class="container" style="margin-top:1.5em;">
 	<div class="row mt-5">
-		<div class="col-12 text-center text-primary">
+		<div class="col-10 text-center mx-auto text-primary">
 			<h2 id="question">To jest przykładowe pytanie, które normalnie byłoby wczytane przez php?</h2>		
 		</div>
 	</div>	
 	
 	<div class="card-group">
-		<div class="row row-cols-2 mt-4 mx-auto">
+		<div class="row row-cols-2 mt-4 mx-auto col-md-8">
 			
 			<a class="btn btn-fix text-left" onClick="answerClicked('cardC')">		
 				<div id='cardA' class="card text-white bg-secondary mb-3 float-center"  >
