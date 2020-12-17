@@ -10,7 +10,7 @@
 	
 <script>
 
-boolean answersActive = true;
+var answersActive = true;
 
 function nextClicked(textA,textB,textC,textD,textQuestion,idCorrect){
   document.getElementById("A").innerHTML = textA;
@@ -32,7 +32,7 @@ function nextClicked(textA,textB,textC,textD,textQuestion,idCorrect){
 }
 
 function answerClicked (idCorrect){
-	if(answersActive == true){
+	if(answersActive){
 		
 		const cardList = document.querySelectorAll('.card');
 		
@@ -43,8 +43,10 @@ function answerClicked (idCorrect){
 
 		document.getElementById(idCorrect).classList.replace('bg-danger','bg-success');
 		document.getElementById('nextButton').removeAttribute('disabled');
+		
+		answersActive = false;
 	}
-	answersActive = false;
+	
 }
 
 </script>	
@@ -53,22 +55,17 @@ function answerClicked (idCorrect){
 
 	
 <div class="container" style="margin-top:1.5em;">
-	<div class="row">
+	<div class="row mt-5">
 		<div class="col-12 text-center text-primary">
-			<h1>Pytanie i z n</h1>		
+			<h2 id="question">To jest przykładowe pytanie, które normalnie byłoby wczytane przez php?</h2>		
 		</div>
-		
-		
-		<div class="col-12 text-center text-secondary">
-			<h3 class="text-dark" id="question">Treść pytania wczytana przez php</h3>		
-		</div>
-		
 	</div>	
+	
 	<div class="card-group">
-		<div class="row row-cols-2 mt-3">
-		
+		<div class="row row-cols-2 mt-4 mx-auto">
+			
 			<a class="btn btn-fix text-left" onClick="answerClicked('cardC')">		
-				<div id='cardA' class="card text-white bg-secondary mb-3" >
+				<div id='cardA' class="card text-white bg-secondary mb-3 float-center"  >
 					<div class="card-body">
 						<h5 class="card-title">A.</h5>
 						<p class="card-text" id="A">Treść odpowiedzi wczytana przez php</p>
@@ -108,11 +105,13 @@ function answerClicked (idCorrect){
 			
 		</div>	
 			
-	</div>
 	
-	<button type="button" id="nextButton" class="btn btn-primary" onClick="nextClicked('Nowe A','Nowe B','Nowe C','Nowe D','Nowe pytanie','cardC')" disabled>
+	</div>
+	<div class="row">
+	<button type="button" id="nextButton" class="btn btn-lg btn-primary float-right" onClick="nextClicked('Nowe A','Nowe B','Nowe C','Nowe D','Nowe pytanie wczytane przez php?','cardC')" disabled>
 	Next
 	</button>
+	</div>
 			
 </div>
 
