@@ -103,16 +103,16 @@ function answerClicked (idCorrect){
 				</div>
 			</a>
 			
+			<button type="button" id="nextButton" class="btn btn-lg btn-primary col-6 mx-auto" onClick="nextClicked('Nowe A','Nowe B','Nowe C','Nowe D','Nowe pytanie wczytane przez php?','cardC')" disabled>
+				Next </button>
+			
 		</div>	
 			
 	
 	</div>
-	<div class="row">
-	<button type="button" id="nextButton" class="btn btn-lg btn-primary float-right" onClick="nextClicked('Nowe A','Nowe B','Nowe C','Nowe D','Nowe pytanie wczytane przez php?','cardC')" disabled>
-	Next
-	</button>
-	</div>
-			
+	
+	
+	
 </div>
 
 	
