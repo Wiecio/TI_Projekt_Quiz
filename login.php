@@ -7,7 +7,6 @@ session_start();
 <head>
 <meta charset="UTF-8">
 <title>Login Page</title>
-<link rel="stylesheet" href="styles/basic_style.css">
 </head>
 <body>
 
@@ -33,11 +32,11 @@ session_start();
 					
 					
 					<?php if(isset($_SESSION['log_in_error'])) :?>
-							<div class="color_alert"><?=$_SESSION['log_in_error']?> </div>
+							<div class="alert alert-danger mt-3"><?=$_SESSION['log_in_error']?> </div>
 							<?php unset($_SESSION['log_in_error'])?>
 					<?php endif; ?>
 					<?php if(isset($_SESSION['log_in_info'])) :?>
-							<div class="color_alert"><?=$_SESSION['log_in_info']?> </div>
+							<div class="alert alert-warning mt-3"><?=$_SESSION['log_in_info']?> </div>
 							<?php unset($_SESSION['log_in_info'])?>
 					<?php endif; ?>
 					

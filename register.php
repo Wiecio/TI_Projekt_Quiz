@@ -67,7 +67,7 @@
 
 					if($number_email == 1)
 					{
-						$_SESSION['error_email'] = "Account with that email currently exsist!";
+						$_SESSION['error_email'] = "Account with that email already exsists!";
 						$data_ok = false;
 						$st_check_email->close();
 						$conn->close();
@@ -77,7 +77,7 @@
 				{
 					$conn->rollback();
 					$conn->close();
-					$_SESSION['error_conn'] = "Sorry we have problems with servers, please check out website in another time :(";
+					$_SESSION['error_conn'] = "Sorry, we have problems with servers, please check out website in another time :(";
 					
 				}
 			}
@@ -125,7 +125,7 @@
 				{
 					$conn->rollback();
 					$conn->close();
-					$_SESSION['error_conn'] = "Sorry we have problems with servers, please check out website in another time :(";
+					$_SESSION['error_conn'] = "Sorry, we have problems with servers, please check out website in another time :(";
 					
 				}
 			}
@@ -138,7 +138,6 @@
 <head>
 <meta charset="UTF-8">
 <title>Register Page</title>
-<link rel="stylesheet" href="styles/basic_style.css">
 </head>
 <body>
 
@@ -165,7 +164,7 @@
 					<div class="col-12">
 						<input type="password" name="pass1" placeholder="password" required class="form-control"/><br>
 						<?php if(isset($_SESSION['error_pass'])): ?>
-                                <div style="color: red"><?=$_SESSION['error_pass']?></div>
+                                <div class="alert alert-danger"><?=$_SESSION['error_pass']?></div>
                                 <?php unset($_SESSION['error_pass'])?>
                         <?php endif; ?>
 					</div>
@@ -180,17 +179,17 @@
 
 				</form>
 				<?php if(isset($_SESSION['good_register'])): ?>
-						<div class="good_register_info"><?=$_SESSION['good_register']?></div>
+						<div class="alert alert-success mt-4"><?=$_SESSION['good_register']?></div>
 						<?php unset($_SESSION['good_register'])?>
 				 <?php endif; ?>
 				 
 				 <?php if(isset($_SESSION['error_conn'])): ?>
-						<div class="bad_register_info"><?=$_SESSION['error_conn']?></div>
+						<div class="alert alert-danger mt-4"><?=$_SESSION['error_conn']?></div>
 						<?php unset($_SESSION['error_conn'])?>
 				 <?php endif; ?>
 
 				 <?php if(isset($_SESSION['error_email'])): ?>
-                                <div class="bad_register_info"><?=$_SESSION['error_email']?></div>
+                                <div class="alert alert-danger mt-4"><?=$_SESSION['error_email']?></div>
                                 <?php unset($_SESSION['error_email'])?>
 				 <?php endif; ?>
 			</div>
