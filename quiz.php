@@ -54,65 +54,65 @@ function answerClicked (idCorrect){
 	
 
 	
-<div class="container" style="margin-top:1.5em;">
-	<div class="row mt-5">
-		<div class="col-10 text-center mx-auto text-primary">
-			<h2 id="question">To jest przykładowe pytanie, które normalnie byłoby wczytane przez php?</h2>		
-		</div>
-	</div>	
+<div class="container mt-5">
 	
-	<div class="card-group">
-		<div class="row row-cols-2 mt-4 mx-auto col-md-8">
-			
-			<a class="btn btn-fix text-left" onClick="answerClicked('cardC')">		
-				<div id='cardA' class="card text-white bg-secondary mb-3 float-center"  >
-					<div class="card-body">
-						<h5 class="card-title">A.</h5>
-						<p class="card-text" id="A">Treść odpowiedzi wczytana przez php</p>
-					</div>
-				</div>
-			</a>
-		
-		
-		
-			<a class="btn btn-fix text-left" onClick="">		
-				<div id='cardB' class="card text-white	bg-secondary mb-3">
-					<div class="card-body">
-						<h5 class="card-title">B.</h5>
-						<p class="card-text" id="B">Treść odpowiedzi wczytana przez php</p>
-					</div>
-				</div>
-			</a>
-		
-		
-			<a class="btn btn-fix text-left" onClick="">		
-				<div  id='cardC' class="card text-white bg-secondary mb-3">
-					<div class="card-body">
-						<h5 class="card-title">C.</h5>
-						<p class="card-text" id="C">Treść odpowiedzi wczytana przez php</p>
-					</div>
-				</div>
-			</a>
-
-			<a class="btn btn-fix text-left" onClick="">		
-				<div id='cardD' class="card text-white bg-secondary mb-3" >
-					<div class="card-body">
-						<h5 class="card-title">D.</h5>
-						<p class="card-text" id="D">Treść odpowiedzi wczytana przez php</p>
-					</div>
-				</div>
-			</a>
-			
-			<button type="button" id="nextButton" class="btn btn-lg btn-primary col-6 mx-auto" onClick="nextClicked('Nowe A','Nowe B','Nowe C','Nowe D','Nowe pytanie wczytane przez php?','cardC')" disabled>
-				Next </button>
-			
+	<div class="card">
+		<div class="row mt-5">
+			<div class="col-10 card-title text-center mx-auto mt-2 text-primary">
+				<h2 id="question">To jest przykładowe pytanie, które normalnie byłoby wczytane przez php?</h2>		
+			</div>
 		</div>	
+		
+		<div class="card-body">
+			<div class="row row-cols-2 mt-3 mx-auto col-md-8">
+				
+				<a class="btn btn-fix text-left" onClick="answerClicked('cardC')">		
+					<div id='cardA' class="card text-white bg-secondary mb-3 float-center"  >
+						<div class="card-body">
+							<h5 class="card-title">A.</h5>
+							<p class="card-text" id="A">Treść odpowiedzi wczytana przez php</p>
+						</div>
+					</div>
+				</a>
 			
-	
+			
+			
+				<a class="btn btn-fix text-left" onClick="">		
+					<div id='cardB' class="card text-white	bg-secondary mb-3">
+						<div class="card-body">
+							<h5 class="card-title">B.</h5>
+							<p class="card-text" id="B">Treść odpowiedzi wczytana przez php</p>
+						</div>
+					</div>
+				</a>
+			
+			
+				<a class="btn btn-fix text-left" onClick="">		
+					<div  id='cardC' class="card text-white bg-secondary mb-3">
+						<div class="card-body">
+							<h5 class="card-title">C.</h5>
+							<p class="card-text" id="C">Treść odpowiedzi wczytana przez php</p>
+						</div>
+					</div>
+				</a>
+
+				<a class="btn btn-fix text-left" onClick="">		
+					<div id='cardD' class="card text-white bg-secondary mb-3" >
+						<div class="card-body">
+							<h5 class="card-title">D.</h5>
+							<p class="card-text" id="D">Treść odpowiedzi wczytana przez php</p>
+						</div>
+					</div>
+				</a>
+				
+				<button type="button" id="nextButton" class="btn btn-lg btn-primary col-6 mx-auto mt-2 mb-3" onClick="nextClicked('Nowe A','Nowe B','Nowe C','Nowe D','Nowe pytanie wczytane przez php?','cardC')" disabled>
+					Next </button>
+				
+			</div>	
+				
+		
+		</div>	
 	</div>
-	
-	
-	
 </div>
 
 	
