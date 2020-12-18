@@ -18,7 +18,7 @@ session_start();
 			<div class="card-body">
 				<form action="login_script.php" method="post">
 					<div class="form-div row ">
-						<label for="email" class="col-12 col-sm-3 col-md-2 col-form-label">Username</label>
+						<label for="email" class="col-12 col-sm-3 col-md-2 col-form-label">Email</label>
 						<div class="col-12 col-sm-9 col-md-10 ">
 							<input type="email" name="email" id="email" name="email" placeholder="example@gmail.com" required class="form-control" />
 						</div> 
@@ -29,6 +29,9 @@ session_start();
 							<input type="password" id="pass" name="pass" placeholder="Password" required class="form-control" />
 						</div> 
 					</div>
+					
+					
+					
 					<?php if(isset($_SESSION['log_in_error'])) :?>
 							<div class="color_alert"><?=$_SESSION['log_in_error']?> </div>
 							<?php unset($_SESSION['log_in_error'])?>
@@ -37,6 +40,11 @@ session_start();
 							<div class="color_alert"><?=$_SESSION['log_in_info']?> </div>
 							<?php unset($_SESSION['log_in_info'])?>
 					<?php endif; ?>
+					
+					
+					
+					
+					
 					<div class="form-div row col-6" style="margin-top: 1.5em;">
 						<button type="submit" class="btn btn-lg btn-primary col-6 align-self-center">Login</button>
 					</div>
