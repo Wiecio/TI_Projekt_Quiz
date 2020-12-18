@@ -33,7 +33,7 @@
 				</div>
 				<div >
 					<li class="nav-item active"><a class="nav-link"
-						href="/quizzes">Quizzes <span class="sr-only">(current)</span>
+						href="newQuiz.php">New Quiz<span class="sr-only">(current)</span>
 					</a></li>
 				</div>
 			</div>
