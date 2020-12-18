@@ -18,13 +18,13 @@ session_start();
 			<div class="card-body">
 				<form action="login_script.php" method="post">
 					<div class="form-div row ">
-						<label for="email" class="col-12 col-sm-3 col-md-2 col-form-label">Username</label>
+						<label for="email" class="col-12 col-sm-3 col-md-2 col-form-label">Email</label>
 						<div class="col-12 col-sm-9 col-md-10 ">
 							<input type="email" name="email" id="email" name="email" placeholder="example@gmail.com" required class="form-control" />
 						</div> 
 					</div>
 					<div class="form-div row">
-						<label for="password" class="col-12 col-sm-3 col-md-2 col-form-label">Password</label>
+						<label for="pass" class="col-12 col-sm-3 col-md-2 col-form-label">Password</label>
 						<div class="col-12 col-sm-9 col-md-10">
 							<input type="password" id="pass" name="pass" placeholder="Password" required class="form-control" />
 						</div> 
