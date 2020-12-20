@@ -25,6 +25,15 @@ session_start();
 		</div>
 		<?php unset($_SESSION['log_in_info'])?>
 	<?php endif; ?>
+	<?php if(isset($_SESSION['good_ADD'])) :?>			
+		<div class="col-12 alert alert-success alert-dismissible fade show mt-0 mb-0" role="alert">
+			<h4 class="text-center"><?=$_SESSION['good_ADD']?></h4>
+			<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+				<span aria-hidden="true">&times;</span>
+			</button>
+		</div>
+		<?php unset($_SESSION['good_ADD'])?>
+	<?php endif; ?>
 	
 	<?php if(isset($_SESSION['logout'])) :?>		
 		<div class="col-12 alert alert-success alert-dismissible fade show mt-0 mb-0" role="alert">
@@ -34,6 +43,15 @@ session_start();
 			</button>
 		</div>
 		<?php unset($_SESSION['logout'])?>
+	<?php endif; ?>
+	<?php if(isset($_SESSION['error_conn'])) :?>		
+		<div class="col-12 alert alert-danger alert-dismissible fade show mt-0 mb-0" role="alert">
+			<h4 class="text-center"><?=$_SESSION['error_conn']?></h4>
+			<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+				<span aria-hidden="true">&times;</span>
+			</button>
+		</div>
+		<?php unset($_SESSION['error_conn'])?>
 	<?php endif; ?>
 	
 	</div>

@@ -78,6 +78,7 @@
 					$conn->rollback();
 					$conn->close();
 					$_SESSION['error_conn'] = "Sorry, we have problems with servers, please check out website in another time :(";
+					exit();
 					
 				}
 			}
@@ -113,6 +114,15 @@
 						$st->close();
 						throw new Exception($st_check_email->error);
 					}
+
+					$sql_quiz_user = "INSERT INTO quiz_user VALUES(?,0)";
+					$st_quiz_user = $conn->prepare($sql_quiz_user);
+					$st_quiz_user->bind_param("i",$id_correct);
+					if(!$st_quiz_user->execute())
+					{
+						$st_quiz_user->close();
+						throw new Exception($st_quiz_user->error);
+					}
 					if(!Send_verify_mail($email,$vkey))
 					{
 						throw new Exception("NotSendEmail");
@@ -126,6 +136,7 @@
 					$conn->rollback();
 					$conn->close();
 					$_SESSION['error_conn'] = "Sorry, we have problems with servers, please check out website in another time :(";
+					exit();
 					
 				}
 			}
