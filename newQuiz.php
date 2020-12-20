@@ -11,7 +11,12 @@ if(isset($_POST['quiz_name']))
 	$_SESSION['quiz_name'] = $_POST['quiz_name'];
 	if(isset($_POST['is_public']))
 	{
-		$_SESSION['is_public'];
+		$_SESSION['is_public'] = true;
+	}
+	else
+	{
+		
+		$_SESSION['is_public'] = false;
 	}
 	if(!Check_name_quiz($_SESSION['quiz_name']))
 	{

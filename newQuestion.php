@@ -279,8 +279,6 @@ if(isset($_POST['Finish']) || isset($_POST['Next']))
 													$_SESSION['answers'][$_SESSION['quest_count']][$i] = $help_tab[$i];
 												}
 												$_SESSION['quest_count']++;
-											
-										
 									}
 				}
 				else
@@ -293,6 +291,7 @@ if(isset($_POST['Finish']) || isset($_POST['Next']))
 				print_r($_SESSION['questions']);
 				echo "<br>";
 				print_r($_SESSION['answers']);
+				$_SESSION['quest_add'] = "Question saved!";
 				if(isset($_POST['Finish']))
 				{
 					header("Location: addQuiz.php");
@@ -302,6 +301,12 @@ if(isset($_POST['Finish']) || isset($_POST['Next']))
 			else
 			{
 				$_SESSION['bad_quest'] = "You can't leave empty filed!";
+				if(isset($_POST['Finish']))
+				{
+					header("Location: addQuiz.php");
+					unset($_SESSION['bad_quest']);
+					exit();
+				}
 			}
 }
 
@@ -336,6 +341,10 @@ if(isset($_POST['Finish']) || isset($_POST['Next']))
 								<?php if(isset($_SESSION['bad_answers_order'])): ?>
 										<div class="alert alert-danger mt-3"><?=$_SESSION['bad_answers_order']?></div>
 										<?php unset($_SESSION['bad_answers_order']);?>
+								<?php endif; ?>
+								<?php if(isset($_SESSION['quest_add'])): ?>
+										<div class="alert alert-success mt-3"><?=$_SESSION['quest_add']?></div>
+										<?php unset($_SESSION['quest_add']);?>
 								<?php endif; ?>
 								<?php if(isset($_SESSION['bad_quest'])): ?>
 										<div class="alert alert-danger mt-3"><?=$_SESSION['bad_quest']?></div>

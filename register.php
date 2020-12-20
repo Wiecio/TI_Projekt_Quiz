@@ -106,27 +106,36 @@
 					$max_id = $w_id['id_user'];
 					$id_correct  = $max_id+1;
 
+					/* insert data of user */
 					$sql = "INSERT INTO users VALUES(?,?,?,?,?,false)";
 					$st = $conn->prepare($sql);
 					$st->bind_param("issss",$id_correct,$nick,$email,$pass_hash,$vkey);
 					if(!$st->execute()) 
 					{
 						$st->close();
-						throw new Exception($st_check_email->error);
+						throw new Exception("st_check_email");
 					}
 
+					/* First data in quiz_user */
 					$sql_quiz_user = "INSERT INTO quiz_user VALUES(?,0)";
 					$st_quiz_user = $conn->prepare($sql_quiz_user);
 					$st_quiz_user->bind_param("i",$id_correct);
 					if(!$st_quiz_user->execute())
 					{
 						$st_quiz_user->close();
-						throw new Exception($st_quiz_user->error);
+						throw new Exception("st_quiz_user");
 					}
+					/* send mail */
 					if(!Send_verify_mail($email,$vkey))
 					{
 						throw new Exception("NotSendEmail");
 					}
+					/* create table namequiz_id_user */
+					$name = "nameQuiz"."_".$id_correct;
+					$sql_table = "CREATE TABLE $name (id_quiz INT NOT NULL PRIMARY KEY, name_quiz VARCHAR(15) NOT NULL, is_public BOOLEAN NOT NULL)";
+					$r = $conn->query($sql_table);
+					if(!$r) throw new Exception($conn->error);
+					
 					$conn->commit();
 					$conn->close();
 					$_SESSION['good_register'] = "You are registered, check your email to verify your account!";

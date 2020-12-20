@@ -15,7 +15,8 @@ try
     {
         throw new Exception(mysqli_connect_errno());
     }
-    $conn->autocommit(false);
+    if(!$conn->query("SET TRANSACTION ISOLATION LEVEL SERIALIZABLE")) throw new exception($conn->error);
+    $conn->begin_transaction();
 
     /* get current id_quiz */
     $sql_quiz_id = "SELECT * FROM quiz_user WHERE id_user = ?";
@@ -27,12 +28,12 @@ try
     }
     $r = $st_quiz_id->get_result();
     $w = $r->fetch_assoc();
-    $id_quiz = $w['id_quiz'];
+    $id_quiz = $w['number_quiz'];
     $corr_id_quiz = $id_quiz +1;
     $st_quiz_id->close();
 
     /* update current id_quiz */
-    $sql_up_id = "UPDATE quiz_user SET id_quiz=? WHERE id_user=?";
+    $sql_up_id = "UPDATE quiz_user SET number_quiz=? WHERE id_user=?";
     $st_up_id = $conn->prepare($sql_up_id);
     $st_up_id->bind_param("ii",$corr_id_quiz,$_SESSION['user_id']);
     if(!$st_up_id->execute())
@@ -41,11 +42,21 @@ try
     }
     $st_up_id->close();
 
+    /* Add name of quiz */
+    $name_tab = "namequiz_".$_SESSION['user_id'];
+    $sql_add = "INSERT INTO $name_tab VALUES(?,?,?)";
+    $st_add = $conn->prepare($sql_add);
+    $st_add->bind_param("isi",$corr_id_quiz,$_SESSION['quiz_name'],$_SESSION['is_public']);
+    if(!$st_add->execute())
+    {
+        throw new Exception("st_add");
+    }
+
     /*Create Table QuizX_Y*/
-    $name_table = $_SESSION['quiz_name'].$corr_id_quiz."_".$_SESSION['user_id'];
-    $sql_table = "CREATE TABLE $name_table (id_question INT NOT NULL PRIMARY KEY, question varchar(255) NOT NULL, answers varchar(255) NOT NULL)";
+    $name_table = "Quiz".$corr_id_quiz."_".$_SESSION['user_id'];
+    $sql_table = "CREATE TABLE $name_table (id_question INT(11) NOT NULL PRIMARY KEY, question varchar(255) NOT NULL, answers varchar(255) NOT NULL)";
     $r = $conn->query($sql_table);
-    if(!$r) throw new Exception($sql_table->error);
+    if(!$r) throw new Exception($conn->error);
 
     /* Add answers and questions */
     $id_question = 1;
@@ -59,7 +70,7 @@ try
         $sql_addq = "INSERT INTO $name_table VALUES(?,?,?)";
         $st_addq = $conn->prepare($sql_addq);
         $st_addq->bind_param("iss",$id_question,$_SESSION['questions'][$i],$answers);
-        if($st_addq->execute())
+        if(!$st_addq->execute())
         {
             throw new Exception("st_addq");
         }
@@ -71,6 +82,7 @@ try
     {
         throw new Exception("commit");
     }
+    $conn->autocommit(true);
     $conn->close();
     $_SESSION['good_ADD'] = "Your quiz was added!";
     unset($_SESSION['quizInProgress']);
