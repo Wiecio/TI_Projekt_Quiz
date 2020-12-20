@@ -32,6 +32,7 @@
                 {
                     $_SESSION['log_in'] = true;
                     $_SESSION['log_in_info'] = "You logged in!";
+                    $_SESSION['user_id'] = $w['id_user'];
                     header("Location: index.php");
                     exit();
                 }
