@@ -1,6 +1,11 @@
 
 <?php
 session_start();
+if(!isset($_SESSION['log_in']) || (!isset($_SESSION['quiz_name'])) || (!isset($_SESSION['quizInProgress'])))
+{
+	header("Location: index.php");
+	exit();
+}
 ?>
 <!DOCTYPE html>
 <html>
@@ -39,6 +44,10 @@ session_start();
 								<?php if(isset($_SESSION['bad_quest'])): ?>
 										<div class="alert alert-danger mt-3"><?=$_SESSION['bad_quest']?></div>
 										<?php unset($_SESSION['bad_quest']);?>
+								<?php endif; ?>
+								<?php if(isset($_SESSION['zero_quest_err'])): ?>
+										<div class="alert alert-danger mt-3"><?=$_SESSION['zero_quest_err']?></div>
+										<?php unset($_SESSION['zero_quest_err']);?>
 								<?php endif; ?>
 								
 							</div>
