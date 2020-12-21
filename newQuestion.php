@@ -18,31 +18,46 @@ if(!isset($_SESSION['log_in']) || (!isset($_SESSION['quiz_name'])) || (!isset($_
 	
 <script>
 
-window.onbeforeunload = exitAlert() {
-  return "Do you want to exit this page?";
-};
+//Alert podczas opuszczania strony
+function docReady(fn) {
+    // see if DOM is already available
+    if (document.readyState === "complete" || document.readyState === "interactive") {
+        // call on next available tick
+        setTimeout(fn, 1);
+    } else {
+        document.addEventListener("DOMContentLoaded", fn);
+    }
+}   
 
-function exitAlert(){
+docReady(function() {
+    // DOM is loaded and ready for manipulation here
 	
+	window.onbeforeunload = function (e) {
+        
+		var message = "Are you sure you want to leave this page? You may lose unsaved changes", e = e || window.event;
+		if (e) {
+			e.returnValue = message;
+		}
+		return message;
+        
+    }
 	
+});
+
+
+function submitClicked(){
+	
+	window.onbeforeunload = null;
+	return true;
 }
-
-	let save = confirm("You have unsaved changes! You will lose your questions if you leave now! Are you sure you want to quit?");
-	if(save){// true if OK is pressed - don't save and leave page
-		 
-	}
-	else{// stay on this page
-		alert("Add questions and click 'finish' when you're done");
-	}
-	
-
+//koniec części potrzebnej do alertu alertu
 </script>
 	
 	<div class="container">
 		<div class="card mt-3 mb-3">
 		
 			<h1><p class="text-primary text-center card-title card-header">Add a new question</p></h1>	
-			<form action="newQuestion_php.php" method="post">
+			<form action="newQuestion_php.php" method="post" onSubmit="return submitClicked()">
 				<div class="form-check">
 					<div class="card-body">
 						<div class="list-group list-group-flush">
@@ -162,7 +177,7 @@ function exitAlert(){
 							<div class="list-group-item">
 								<div class="row mt-4"> 
 									<div class="col-6">
-										<button type="submit" class="btn btn-lg btn-block btn-success float-left" name="Finish">Finish</button>
+										<button type="submit" class="btn btn-lg btn-block btn-success float-left" name="Finish" >Finish</button>
 									</div>
 									<div class="col-6">
 										<button type="submit" class="btn btn-lg btn-block btn-primary float-right" name="Next">Next</button>
