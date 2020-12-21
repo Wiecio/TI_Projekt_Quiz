@@ -75,13 +75,189 @@ if(isset($_SESSION['quizInProgress']))
 		
 		
 
-<div class="container" ><!--style="margin-top:1.5em;"-->
+<div class="container mt-5" ><!--style="margin-top:1.5em;"-->
 	<div class="row">
-		<div class="col-12 text-center" style="margin-top: 10px">
-			<h1>Welcome to Quizzzzzz!</h1>		
-		</div>
-		
-	
+		<div class="col-12 text-center">
+			<div class="card">
+				<h1 class="text-primary">Welcome to Quizzzzzz!</h1>	
+				<h5 class="text-secondary">A great place to study</h5>
+			</div>
+			
+			
+			<div class="card mt-1 mb-5">
+				<div class="row mt-3">
+					<div class="col-10 text-center mx-auto text-success">
+						<h2>Check one of the public quizzes!</h2>		
+					</div>
+				</div>	
+			
+				<div class="card-body">
+					<div class="row row-cols-2 row-cols-sm-2 row-cols-lg-3 row-cols-xl-4 mx-auto col-md-8">
+						
+						<a class="btn btn-fix text-left" onClick="">		
+							<div class="card text-white bg-success mb-3 float-center">
+								<div class="card-body">
+									<h5 class="card-title">Quiz name</h5>
+								</div>
+							</div>
+						</a>
+							
+						<a class="btn btn-fix text-left" onClick="">		
+							<div class="card text-white bg-danger mb-3 float-center">
+								<div class="card-body">
+									<h5 class="card-title">Quiz name</h5>
+								</div>
+							</div>
+						</a>
+					
+						
+						
+						<a class="btn btn-fix text-left" onClick="">		
+							<div class="card text-white bg-primary mb-3 float-center">
+								<div class="card-body">
+									<h5 class="card-title">Quiz name</h5>
+								</div>
+							</div>
+						</a>
+						
+						<a class="btn btn-fix text-left" onClick="">		
+							<div class="card text-white bg-danger mb-3 float-center">
+								<div class="card-body">
+									<h5 class="card-title">Quiz name</h5>
+								</div>
+							</div>
+						</a>
+					
+						
+						
+						<a class="btn btn-fix text-left" onClick="">		
+							<div class="card text-white bg-primary mb-3 float-center">
+								<div class="card-body">
+									<h5 class="card-title">Quiz name</h5>
+								</div>
+							</div>
+						</a>
+					
+						
+							<a class="btn btn-fix text-left" onClick="">		
+							<div class="card text-white bg-success mb-3 float-center">
+								<div class="card-body">
+									<h5 class="card-title">Quiz name</h5>
+								</div>
+							</div>
+						</a>
+						
+					
+						<a class="btn btn-fix text-left" onClick="">		
+							<div class="card text-white bg-primary mb-3 float-center">
+								<div class="card-body">
+									<h5 class="card-title">Quiz name</h5>
+								</div>
+							</div>
+						</a>
+					
+						
+							<a class="btn btn-fix text-left" onClick="">		
+							<div class="card text-white bg-success mb-3 float-center">
+								<div class="card-body">
+									<h5 class="card-title">Quiz name</h5>
+								</div>
+							</div>
+						</a>
+						
+						<a class="btn btn-fix text-left" onClick="">		
+							<div class="card text-white bg-danger mb-3 float-center">
+								<div class="card-body">
+									<h5 class="card-title">Quiz name</h5>
+								</div>
+							</div>
+						</a>
+						
+						<a class="btn btn-fix text-left" onClick="">		
+							<div class="card text-white bg-success mb-3 float-center">
+								<div class="card-body">
+									<h5 class="card-title">Quiz name</h5>
+								</div>
+							</div>
+						</a>
+					
+					
+						
+						
+						<a class="btn btn-fix text-left" onClick="">		
+							<div class="card text-white bg-danger mb-3 float-center">
+								<div class="card-body">
+									<h5 class="card-title">Quiz name</h5>
+								</div>
+							</div>
+						</a>
+					
+						
+						
+						<a class="btn btn-fix text-left" onClick="">		
+							<div class="card text-white bg-primary mb-3 float-center">
+								<div class="card-body">
+									<h5 class="card-title">Quiz name</h5>
+								</div>
+							</div>
+						</a>
+						
+						<a class="btn btn-fix text-left" onClick="">		
+							<div class="card text-white bg-danger mb-3 float-center">
+								<div class="card-body">
+									<h5 class="card-title">Quiz name</h5>
+								</div>
+							</div>
+						</a>
+					
+						
+						
+						<a class="btn btn-fix text-left" onClick="">		
+							<div class="card text-white bg-primary mb-3 float-center">
+								<div class="card-body">
+									<h5 class="card-title">Quiz name</h5>
+								</div>
+							</div>
+						</a>
+					
+						
+							<a class="btn btn-fix text-left" onClick="">		
+							<div class="card text-white bg-success mb-3 float-center">
+								<div class="card-body">
+									<h5 class="card-title">Quiz name</h5>
+								</div>
+							</div>
+						</a>
+						
+					
+						<a class="btn btn-fix text-left" onClick="">		
+							<div class="card text-white bg-primary mb-3 float-center">
+								<div class="card-body">
+									<h5 class="card-title">Quiz name</h5>
+								</div>
+							</div>
+						</a>
+					
+						
+							<a class="btn btn-fix text-left" onClick="">		
+							<div class="card text-white bg-success mb-3 float-center">
+								<div class="card-body">
+									<h5 class="card-title">Quiz name</h5>
+								</div>
+							</div>
+						</a>
+						
+						<a class="btn btn-fix text-left" onClick="">		
+							<div class="card text-white bg-danger mb-3 float-center">
+								<div class="card-body">
+									<h5 class="card-title">Quiz name</h5>
+								</div>
+							</div>
+						</a>							
+					</div>							
+				</div>	
+			</div>			
+		</div>		
 	</div>
 </div>
 	
