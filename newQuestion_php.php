@@ -304,7 +304,7 @@ if(isset($_POST['Finish']) || isset($_POST['Next']))
 					header("Location: newQuestion.php");
 					exit();
 				}
-				if(isset($_POST['Finish']))
+				if(isset($_POST['Finish']) && count($_SESSION['questions']) >0 )
 				{
                     /*echo "jestem23";
                     echo "<br>";
@@ -314,11 +314,17 @@ if(isset($_POST['Finish']) || isset($_POST['Next']))
 					header("Location: addQuiz.php");
 					exit();
 				}
+				else
+				{
+					$_SESSION['zero_quest_err'] = "You can't saved quiz without questions!";
+					header("Location: newQuestion.php");
+					exit();
+				}
 			}
 			else
 			{
 				$_SESSION['bad_quest'] = "You can't leave empty filed!";
-				if(isset($_POST['Finish']))
+				if(isset($_POST['Finish'])  && count($_SESSION['questions']) >0)
 				{
                    /* echo "jestem22";
                     echo "<br>";
@@ -327,6 +333,12 @@ if(isset($_POST['Finish']) || isset($_POST['Next']))
 				    print_r($_SESSION['answers']);*/
 					header("Location: addQuiz.php");
 					unset($_SESSION['bad_quest']);
+					exit();
+				}
+				else
+				{
+					$_SESSION['zero_quest_err'] = "You can't saved quiz without questions!";
+					header("Location: newQuestion.php");
 					exit();
 				}
 			}
