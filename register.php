@@ -59,7 +59,7 @@
 					if(!$st_check_email->execute()) 
 					{
 						$st_check_email->close();
-						throw new Exception($st_check_email->error);
+						throw new Exception("st_check_email");
 					}
 
 					$r = $st_check_email->get_result();
@@ -78,7 +78,6 @@
 					$conn->rollback();
 					$conn->close();
 					$_SESSION['error_conn'] = "Sorry, we have problems with servers, please check out website in another time :(";
-					exit();
 					
 				}
 			}
@@ -145,7 +144,7 @@
 					$conn->rollback();
 					$conn->close();
 					$_SESSION['error_conn'] = "Sorry, we have problems with servers, please check out website in another time :(";
-					exit();
+		
 					
 				}
 			}
