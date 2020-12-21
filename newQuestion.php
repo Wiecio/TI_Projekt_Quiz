@@ -321,6 +321,28 @@ if(isset($_POST['Finish']) || isset($_POST['Next']))
 <body>
 	<?php include 'header.php';?>
 	
+<script>
+
+window.onbeforeunload = exitAlert() {
+  return "Do you want to exit this page?";
+};
+
+function exitAlert(){
+	
+	
+}
+
+	let save = confirm("You have unsaved changes! You will lose your questions if you leave now! Are you sure you want to quit?");
+	if(save){// true if OK is pressed - don't save and leave page
+		 
+	}
+	else{// stay on this page
+		alert("Add questions and click 'finish' when you're done");
+	}
+	
+
+</script>
+	
 	<div class="container">
 		<div class="card mt-3 mb-3">
 		
