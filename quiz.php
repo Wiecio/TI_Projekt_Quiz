@@ -1,6 +1,6 @@
 <?php
 session_start();
-$_SESSION['corrAns'] = 'cardC';
+$_SESSION['corrAns'] = 'cardB';
 ?>
 <!DOCTYPE html>
 <html>
@@ -81,7 +81,7 @@ function answerClicked (idCorrect){
 			
 			
 			
-				<a class="btn btn-fix text-left" onClick="">		
+				<a class="btn btn-fix text-left" onClick="answerClicked('<?= $_SESSION['corrAns']?>')">		
 					<div id='cardB' class="card text-white	bg-secondary mb-3">
 						<div class="card-body">
 							<h5 class="card-title">B.</h5>
@@ -91,7 +91,7 @@ function answerClicked (idCorrect){
 				</a>
 			
 			
-				<a class="btn btn-fix text-left" onClick="">		
+				<a class="btn btn-fix text-left" onClick="answerClicked('<?= $_SESSION['corrAns']?>')">		
 					<div  id='cardC' class="card text-white bg-secondary mb-3">
 						<div class="card-body">
 							<h5 class="card-title">C.</h5>
@@ -100,7 +100,7 @@ function answerClicked (idCorrect){
 					</div>
 				</a>
 
-				<a class="btn btn-fix text-left" onClick="">		
+				<a class="btn btn-fix text-left" onClick="answerClicked('<?= $_SESSION['corrAns']?>')">		
 					<div id='cardD' class="card text-white bg-secondary mb-3" >
 						<div class="card-body">
 							<h5 class="card-title">D.</h5>
@@ -109,7 +109,7 @@ function answerClicked (idCorrect){
 					</div>
 				</a>
 				
-				<button type="button" id="nextButton" class="btn btn-lg btn-primary col-6 mx-auto mt-2 mb-3" onClick="nextClicked('Nowe A','Nowe B','Nowe C','Nowe D','Nowe pytanie wczytane przez php?','cardC')" disabled>
+				<button type="button" id="nextButton" class="btn btn-lg btn-primary col-6 mx-auto mt-2 mb-3" onClick="nextClicked('Nowe A','Nowe B','Nowe C','Nowe D','Nowe pytanie wczytane przez php?','<?= $_SESSION['corrAns']?>')" disabled>
 					Next </button>
 				
 			</div>	
