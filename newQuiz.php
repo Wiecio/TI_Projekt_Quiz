@@ -1,5 +1,33 @@
 <?php 
 session_start();
+if(!isset($_SESSION['log_in']))
+{
+	header("Location: index.php");
+	exit();
+}
+if(isset($_POST['quiz_name']))
+{
+	require_once "functions_PHP.php";
+	$_SESSION['quiz_name'] = $_POST['quiz_name'];
+	if(isset($_POST['is_public']))
+	{
+		$_SESSION['is_public'] = true;
+	}
+	else
+	{
+		
+		$_SESSION['is_public'] = false;
+	}
+	if(!Check_name_quiz($_SESSION['quiz_name']))
+	{
+		$_SESSION['bad_name'] = "Podana nazwa zawiera znaki niedozwolone, nazwa może tylko zawierać litery i spacje";
+	}
+	else
+	{
+		$_SESSION['quizInProgress'] = true;
+		header('Location: newQuestion.php');
+	}
+}
 ?>
 <!DOCTYPE html>
 <html>
@@ -19,9 +47,12 @@ session_start();
 			<div class="mb-3">
 				<input type="text" id="quiz_name" name="quiz_name" placeholder="Quiz Name" required class="form-control" />
 			</div> 
-						
+				<?php if(isset($_SESSION['bad_name'])) : ?>
+						<div class="alert alert-danger mt-3"><?=$_SESSION['bad_name']?></div>
+						<?php unset($_SESSION['bad_name']) ?>
+				<?php endif; ?>		
 			<div class="mb-3 custom-control custom-checkbox">
-				<input type="checkbox" class="custom-control-input" id="is_public">
+				<input type="checkbox" class="custom-control-input" id="is_public" name="is_public">
 				<label class="custom-control-label" for="is_public">This quiz is public</label>
 			</div>
 				

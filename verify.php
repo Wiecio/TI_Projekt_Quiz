@@ -30,7 +30,7 @@ if(isset($_GET['vkey']))
                     $update = $polaczenie->query("UPDATE users SET verified = 1 WHERE vkey='$vkey' LIMIT 1");
                     if($update)
                     {
-                        $info =  "Pomyślnie zweryfikowałeś swoje konto, możesz się teraz zalogować :)";
+                        $info =  "You have successfully verified your account, you can login now :)";
                         $polaczenie->close();
                     }
                     else
@@ -42,7 +42,7 @@ if(isset($_GET['vkey']))
                 else
                 {
                     $polaczenie->close();
-                    $info =  "Konto nie istnieje lub zostało już zweryfikowane";
+                    $info =  "The account does not exist or has already been verified";
                 }
             }
         }
@@ -54,7 +54,7 @@ if(isset($_GET['vkey']))
 }
 else
 {
-    $info = "Coś poszło nie tak :/";
+    $info = "Something goes wrong :/";
 }
 
 

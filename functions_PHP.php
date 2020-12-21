@@ -80,6 +80,15 @@ $mail->Body = '<html lang="pl">
         return true;
     }
 }
+function Check_name_quiz($str)
+{
+    $sprawdz = '/(\\-\\-)|(\\/)|(=)|[,;:.*)(<>%{}\'\"]|(\[)|(\])/';
+    if(preg_match_all($sprawdz,$str))
+    {
+        return false;
+    }
+    return true;
+}
 
 
 

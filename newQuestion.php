@@ -1,5 +1,315 @@
 <?php 
 session_start();
+if(!isset($_SESSION['log_in']) || (!isset($_SESSION['quiz_name'])) || (!isset($_SESSION['quizInProgress'])))
+{
+	header("Location: index.php");
+	exit();
+}
+if(isset($_POST['Finish']) || isset($_POST['Next']))
+{
+			if(isset($_POST['question']) && (!empty($_POST['question'])))
+			{
+				if( (isset($_POST['A']) && !empty($_POST['A'])) && (isset($_POST['B']) && !empty($_POST['B'])) && (!isset($_POST['C']) || empty($_POST['C'])) && (!isset($_POST['D']) || empty($_POST['D'])) )
+				{
+					if(isset($_POST['correctAnswer']))
+					{
+						$correct_Ans = $_POST['correctAnswer'];
+						if($correct_Ans == "C" || $correct_Ans == "D" )
+						{
+							$_SESSION['bad_correct_order'] = "You must add which answer is correct";
+							exit();
+						}
+					}
+					if(!isset($_SESSION['quest_count']))
+					{
+						$_SESSION['questions'] = array();
+						$_SESSION['answers'] = array();
+						$_SESSION['quest_count'] = 0;
+						$question = $_POST['question'];
+						$a = $_POST['A'];
+						$b = $_POST['B'];
+						switch($correct_Ans)
+						{
+							case "A":
+							{
+								$a = $a.":";
+								break;
+							}
+							case "B":
+							{
+								$b = $b.":";
+								break;
+							}
+						}
+						$help_tab[0] = $a;
+						$help_tab[1] = $b;
+						$_SESSION['questions'][$_SESSION['quest_count']] = $question;
+						for($i=0; $i<2; $i++)
+						{
+							$_SESSION['answers'][$_SESSION['quest_count']][$i] = $help_tab[$i];
+						}
+						$_SESSION['quest_count']++;
+
+					}
+					else if($_SESSION['quest_count'] >=1)
+					{
+							if(isset($_POST['correctAnswer']))
+							{
+								$correct_Ans = $_POST['correctAnswer'];
+								if($correct_Ans == "C" || $correct_Ans == "D" )
+								{
+									$_SESSION['bad_correct_order'] = "You must add which answer is correct";
+									exit();
+								}
+							}
+								$question = $_POST['question'];
+								$a = $_POST['A'];
+								$b = $_POST['B'];
+								switch($correct_Ans)
+								{
+									case "A":
+									{
+										$a = $a.":";
+										break;
+									}
+									case "B":
+									{
+										$b = $b.":";
+										break;
+									}
+								}
+								$help_tab[0] = $a;
+								$help_tab[1] = $b;
+								$_SESSION['questions'][$_SESSION['quest_count']] = $question;
+								for($i=0; $i<2; $i++)
+								{
+									$_SESSION['answers'][$_SESSION['quest_count']][$i] = $help_tab[$i];
+								}
+								$_SESSION['quest_count']++;
+							
+					}
+				}
+				else if(  (isset($_POST['A']) && !empty($_POST['A']))  && (isset($_POST['B']) && !empty($_POST['B']))  && (isset($_POST['C']) || !empty($_POST['C']) ) && (!isset($_POST['D']) || empty($_POST['D']))  )
+				{
+					if(isset($_POST['correctAnswer']))
+					{
+						$correct_Ans = $_POST['correctAnswer'];
+						if($correct_Ans == "D")
+						{
+							$_SESSION['bad_correct_order'] = "You must add which answer is correct";
+							exit();
+						}
+					}
+					if(!isset($_SESSION['quest_count']))
+					{
+						$_SESSION['questions'] = array();
+						$_SESSION['answers'] = array();
+						$_SESSION['quest_count'] = 0;
+						$question = $_POST['question'];
+						$a = $_POST['A'];
+						$b = $_POST['B'];
+						$c = $_POST['C'];
+						switch($correct_Ans)
+						{
+							case "A":
+							{
+								$a = $a.":";
+								break;
+							}
+							case "B":
+							{
+								$b = $b.":";
+								break;
+							}
+							case "C":
+							{
+								$c = $c.":";
+								break;
+							}
+						}
+						$help_tab[0] = $a;
+						$help_tab[1] = $b;
+						$help_tab[2] = $c;
+						$_SESSION['questions'][$_SESSION['quest_count']] = $question;
+						for($i=0; $i<3; $i++)
+						{
+							$_SESSION['answers'][$_SESSION['quest_count']][$i] = $help_tab[$i];
+						}
+						$_SESSION['quest_count']++;
+
+					}
+					else if($_SESSION['quest_count'] >=1)
+					{
+								if(isset($_POST['correctAnswer']))
+								{
+									$correct_Ans = $_POST['correctAnswer'];
+									if($correct_Ans == "D")
+									{
+										$_SESSION['bad_correct_order'] = "You must add which answer is correct";
+										exit();
+									}
+								}
+									$question = $_POST['question'];
+									$a = $_POST['A'];
+									$b = $_POST['B'];
+									$c = $_POST['C'];
+									switch($correct_Ans)
+									{
+										case "A":
+										{
+											$a = $a.":";
+											break;
+										}
+										case "B":
+										{
+											$b = $b.":";
+											break;
+										}
+										case "C":
+										{
+											$c = $c.":";
+											break;
+										}
+									}
+									$help_tab[0] = $a;
+									$help_tab[1] = $b;
+									$help_tab[2] = $c;
+									$_SESSION['questions'][$_SESSION['quest_count']] = $question;
+									for($i=0; $i<3; $i++)
+									{
+										$_SESSION['answers'][$_SESSION['quest_count']][$i] = $help_tab[$i];
+									}
+									$_SESSION['quest_count']++;
+								
+							
+					}
+				}
+				else if( (isset($_POST['A']) && !empty($_POST['A'])) && (isset($_POST['B']) && !empty($_POST['B']) ) && (isset($_POST['C']) && !empty($_POST['C']) ) && (isset($_POST['D']) && !empty($_POST['D']) )  ) 
+				{
+									if(isset($_POST['correctAnswer']))
+									{
+										$correct_Ans = $_POST['correctAnswer'];
+									}
+									if(!isset($_SESSION['quest_count']))
+									{
+										$_SESSION['questions'] = array();
+										$_SESSION['answers'] = array();
+										$_SESSION['quest_count'] = 0;
+										$question = $_POST['question'];
+										$a = $_POST['A'];
+										$b = $_POST['B'];
+										$c = $_POST['C'];
+										$d = $_POST['D'];
+										switch($correct_Ans)
+										{
+											case "A":
+											{
+												$a = $a.":";
+												break;
+											}
+											case "B":
+											{
+												$b = $b.":";
+												break;
+											}
+											case "C":
+											{
+												$c = $c.":";
+												break;
+											}
+											case "D":
+											{
+												$d = $d.":";
+												break;
+											}
+										}
+										$help_tab[0] = $a;
+										$help_tab[1] = $b;
+										$help_tab[2] = $c;
+										$help_tab[3] = $d;
+										$_SESSION['questions'][$_SESSION['quest_count']] = $question;
+										for($i=0; $i<4; $i++)
+										{
+											$_SESSION['answers'][$_SESSION['quest_count']][$i] = $help_tab[$i];
+										}
+										$_SESSION['quest_count']++;
+
+									}	
+									else if($_SESSION['quest_count'] >=1)
+									{
+											if(isset($_POST['correctAnswer']))
+											{
+												$correct_Ans = $_POST['correctAnswer'];
+											}
+												$question = $_POST['question'];
+												$a = $_POST['A'];
+												$b = $_POST['B'];
+												$c = $_POST['C'];
+												$d = $_POST['D'];
+												switch($correct_Ans)
+												{
+													case "A":
+													{
+														$a = $a.":";
+														break;
+													}
+													case "B":
+													{
+														$b = $b.":";
+														break;
+													}
+													case "C":
+													{
+														$c = $c.":";
+														break;
+													}
+													case "D":
+													{
+														$d = $d.":";
+														break;
+													}
+												}
+												$help_tab[0] = $a;
+												$help_tab[1] = $b;
+												$help_tab[2] = $c;
+												$help_tab[3] = $d;
+												$_SESSION['questions'][$_SESSION['quest_count']] = $question;
+												for($i=0; $i<4; $i++)
+												{
+													$_SESSION['answers'][$_SESSION['quest_count']][$i] = $help_tab[$i];
+												}
+												$_SESSION['quest_count']++;
+									}
+				}
+				else
+				{
+					$_SESSION['bad_answers_order'] = "You must add answers in order A,B,C,D or You can't leave empty filed or You must add minimum two answers!";
+					/*unset($_SESSION['questions']);
+					unset($_SESSION['answers']);
+					unset($_SESSION['quest_count']);*/
+				}
+				print_r($_SESSION['questions']);
+				echo "<br>";
+				print_r($_SESSION['answers']);
+				$_SESSION['quest_add'] = "Question saved!";
+				if(isset($_POST['Finish']))
+				{
+					header("Location: addQuiz.php");
+					exit();
+				}
+			}
+			else
+			{
+				$_SESSION['bad_quest'] = "You can't leave empty filed!";
+				if(isset($_POST['Finish']))
+				{
+					header("Location: addQuiz.php");
+					unset($_SESSION['bad_quest']);
+					exit();
+				}
+			}
+}
+
 ?>
 
 <!DOCTYPE html>
@@ -25,9 +335,22 @@ session_start();
 								</div>
 								<div class="row">
 									<div class="col-sm-8">
-										<textarea class="form-control" id="question" rows="3"></textarea>
+										<textarea class="form-control" name="question" id="question" rows="3"></textarea>
 									</div>
 								</div>
+								<?php if(isset($_SESSION['bad_answers_order'])): ?>
+										<div class="alert alert-danger mt-3"><?=$_SESSION['bad_answers_order']?></div>
+										<?php unset($_SESSION['bad_answers_order']);?>
+								<?php endif; ?>
+								<?php if(isset($_SESSION['quest_add'])): ?>
+										<div class="alert alert-success mt-3"><?=$_SESSION['quest_add']?></div>
+										<?php unset($_SESSION['quest_add']);?>
+								<?php endif; ?>
+								<?php if(isset($_SESSION['bad_quest'])): ?>
+										<div class="alert alert-danger mt-3"><?=$_SESSION['bad_quest']?></div>
+										<?php unset($_SESSION['bad_quest']);?>
+								<?php endif; ?>
+								
 							</div>
 						
 							<div class="list-group-item">
@@ -109,16 +432,19 @@ session_start();
 										</div>
 									</div>	
 								</div>
-								
+								<?php if(isset($_SESSION['bad_correct_order'])): ?>
+										<div class="alert alert-danger mt-3"><?=$_SESSION['bad_correct_order']?></div>
+										<?php unset($_SESSION['bad_correct_order']);?>
+								<?php endif; ?>
 							</div>	
 								
 							<div class="list-group-item">
 								<div class="row mt-4"> 
 									<div class="col-6">
-										<button type="submit" class="btn btn-lg btn-block btn-success float-left">Finish</button>
+										<button type="submit" class="btn btn-lg btn-block btn-success float-left" name="Finish">Finish</button>
 									</div>
 									<div class="col-6">
-										<button type="submit" class="btn btn-lg btn-block btn-primary float-right">Next</button>
+										<button type="submit" class="btn btn-lg btn-block btn-primary float-right" name="Next">Next</button>
 									</div>								
 								</div>
 							</div>				  
