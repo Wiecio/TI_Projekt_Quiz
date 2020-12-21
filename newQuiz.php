@@ -1,5 +1,21 @@
 <?php 
 session_start();
+if(isset($_SESSION['quizInProgress']))
+{
+	unset($_SESSION['quizInProgress']);
+    unset($_SESSION['answers']);
+    unset($_SESSION['questions']);
+	unset($_SESSION['quest_count']);
+	if(isset($_SESSION['quest_add']))
+    {
+        unset($_SESSION['quest_add']);
+    }
+    if(isset($_SESSION['bad_quest']))
+    {
+        unset($_SESSION['bad_quest']);
+	}
+	unset($_SESSION['quiz_name']);
+}
 if(!isset($_SESSION['log_in']))
 {
 	header("Location: index.php");

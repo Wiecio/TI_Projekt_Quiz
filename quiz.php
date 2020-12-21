@@ -1,3 +1,7 @@
+<?php
+session_start();
+$_SESSION['corrAns'] = 'cardC';
+?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -66,7 +70,7 @@ function answerClicked (idCorrect){
 		<div class="card-body">
 			<div class="row row-cols-2 mt-3 mx-auto col-md-8">
 				
-				<a class="btn btn-fix text-left" onClick="answerClicked('cardC')">		
+				<a class="btn btn-fix text-left" onClick="answerClicked('<?= $_SESSION['corrAns']?>')">		
 					<div id='cardA' class="card text-white bg-secondary mb-3 float-center"  >
 						<div class="card-body">
 							<h5 class="card-title">A.</h5>
