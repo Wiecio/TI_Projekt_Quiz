@@ -59,7 +59,7 @@
 					if(!$st_check_email->execute()) 
 					{
 						$st_check_email->close();
-						throw new Exception($st_check_email->error);
+						throw new Exception("st_check_email");
 					}
 
 					$r = $st_check_email->get_result();
@@ -78,7 +78,7 @@
 					$conn->rollback();
 					$conn->close();
 					$_SESSION['error_conn'] = "Sorry, we have problems with servers, please check out website in another time :(";
-					exit();
+					
 					
 				}
 			}
@@ -126,11 +126,14 @@
 						throw new Exception("st_quiz_user");
 					}
 					/* send mail */
+					/*
 					if(!Send_verify_mail($email,$vkey))
 					{
 						throw new Exception("NotSendEmail");
 					}
+					*/
 					/* create table namequiz_id_user */
+					
 					$name = "nameQuiz"."_".$id_correct;
 					$sql_table = "CREATE TABLE $name (id_quiz INT NOT NULL PRIMARY KEY, name_quiz VARCHAR(15) NOT NULL, is_public BOOLEAN NOT NULL)";
 					$r = $conn->query($sql_table);
@@ -145,7 +148,7 @@
 					$conn->rollback();
 					$conn->close();
 					$_SESSION['error_conn'] = "Sorry, we have problems with servers, please check out website in another time :(";
-					exit();
+					
 					
 				}
 			}
