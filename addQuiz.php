@@ -60,7 +60,7 @@ try
 
     /* Add answers and questions */
     $id_question = 1;
-    for($i=0; $i<$_SESSION['quest_count']-1;$i++)
+    for($i=0; $i<$_SESSION['quest_count'];$i++)
     {
         $answers= "";
         for($j=0;$j<count($_SESSION['answers'][$i]);$j++)
@@ -89,6 +89,15 @@ try
     unset($_SESSION['answers']);
     unset($_SESSION['questions']);
     unset($_SESSION['quest_count']);
+    unset($_SESSION['quiz_name']);
+    if(isset($_SESSION['quest_add']))
+    {
+        unset($_SESSION['quest_add']);
+    }
+    if(isset($_SESSION['bad_quest']))
+    {
+        unset($_SESSION['bad_quest']);
+    }
     header("Location: index.php");
     
 }
