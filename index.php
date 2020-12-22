@@ -1,5 +1,7 @@
 <?php 
 session_start();
+unset($_SESSION['load']);
+unset($_SESSION['I']);
 if(isset($_SESSION['quizInProgress']))
 {
 	unset($_SESSION['quizInProgress']);

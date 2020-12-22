@@ -1,8 +1,8 @@
 <?php
 session_start();
 require_once "db_connect.php";
-//if(!isset($_SESSION['load']))
-//{
+if(!isset($_SESSION['load']))
+{
 	try
 	{
 			$conn  = new mysqli($host,$db_user,$db_password,$db_name);
@@ -16,12 +16,12 @@ require_once "db_connect.php";
 			$i=0;
 			while($w = $r->fetch_assoc())
 			{
-				$tab_q[$i][0] = $w['question'];
-				$tab_q[$i][1] = $w['answers'];
+				$_SESSION['tab_q'][$i][0] = $w['question'];
+				$_SESSION['tab_q'][$i][1] = $w['answers'];
 				$i++;
 			}
-			//$_SESSION['load'] = true;
-			$ans_tab = explode(",",$tab_q[0][1]);
+			$_SESSION['load'] = true;
+			$ans_tab = explode(",",$_SESSION['tab_q'][0][1]);
 			$tab = array(" ","A","B","C","D");
 			for($i=1;$i<count($ans_tab);$i++)
 			{	
@@ -31,6 +31,8 @@ require_once "db_connect.php";
 					$ans_tab[$i] = mb_substr($ans_tab[$i], 0, mb_strlen($ans_tab[$i])-1, 'UTF-8');
 				}
 			}
+			$i=0;
+			$_SESSION['I']=0;
 			reset($ans_tab);
 			
 
@@ -39,11 +41,36 @@ require_once "db_connect.php";
 	{
 			echo "jestem";
 	}
-//}
-//else
-//{
-
-//}
+}
+else
+{
+	$_SESSION['I']++;
+	echo count($_SESSION['tab_q']);
+	echo "<br>";
+	echo $_SESSION['I'];
+	if($_SESSION['I'] >= count($_SESSION['tab_q']))
+	{
+		header("Location: summary.php");
+		exit();
+	}
+	$ans_tab = explode(",",$_SESSION['tab_q'][$_SESSION['I']][1]);
+			$tab = array(" ","A","B","C","D");
+			for($l=1;$l<count($ans_tab);$l++)
+			{	
+				if( mb_substr($ans_tab[$l], mb_strlen($ans_tab[$l])-1, mb_strlen($ans_tab[$l]), 'UTF-8') == ":")
+				{
+					$_SESSION['corrAns'] = 'card'.$tab[$l];
+					$ans_tab[$l] = mb_substr($ans_tab[$l], 0, mb_strlen($ans_tab[$l])-1, 'UTF-8');
+				}
+			}
+	$corr_Ans = mb_substr($_SESSION['corrAns'], mb_strlen($_SESSION['corrAns'])-1, mb_strlen($_SESSION['corrAns']), 'UTF-8');
+	if(isset($_POST[$corr_Ans]))
+	{
+		$_SESSION['score']=1;
+		echo "<br>";
+		echo "Jestem".$_SESSION['score'];
+	}
+}
        
 ?>
 <!DOCTYPE html>
@@ -107,19 +134,18 @@ function answerClicked (idCorrect){
 	<div class="card">
 		<div class="row mt-5">
 			<div class="col-10 card-title text-center mx-auto mt-2 text-primary">
-				<h2 id="question"><?=$tab_q[0][0]?></h2>		
+				<h2 id="question"><?=$_SESSION['tab_q'][$_SESSION['I']][0]?></h2>		
 			</div>
 		</div>	
 		
 		<div class="card-body">
 			<div class="row row-cols-2 mt-3 mx-auto col-md-8">
-				
 			<?php for($j=1; $j<count($ans_tab); $j++) :?>
-						<a class="btn btn-fix text-left" onClick="answerClicked('<?= $_SESSION['corrAns']?>')">		
+						<a class="btn btn-fix text-left" name="<?=$tab[$j]?>" onClick="answerClicked('<?= $_SESSION['corrAns']?>')">		
 							<div id='card<?=$tab[$j]?>' class="card text-white bg-secondary mb-3 float-center"  >
 								<div class="card-body">
 									<h5 class="card-title"><?=$tab[$j]?> </h5>
-									<p class="card-text" id="A"><?=$ans_tab[$j]?></p>
+									<p class="card-text" id="<?=$tab[$j]?>"><?=$ans_tab[$j]?></p>
 								</div>
 							</div>
 						</a>
@@ -133,8 +159,10 @@ function answerClicked (idCorrect){
 				
 			</div>	
 		</div>	
-		<button type="button" id="nextButton" class="btn btn-lg btn-primary col-6 mx-auto mt-2 mb-3" onClick="nextClicked('Nowe A','Nowe B','Nowe C','Nowe D','Nowe pytanie wczytane przez php?','cardC')" disabled>
+		<form method="post">
+		<button type="submit" id="nextButton" class="btn btn-lg btn-primary col-6 mx-auto mt-2 mb-3">
 					Next </button>
+		</form>
 	</div>
 </div>
 
@@ -143,7 +171,8 @@ function answerClicked (idCorrect){
 </html>
 
 
-
+<!--<button type="submit" id="nextButton" class="btn btn-lg btn-primary col-6 mx-auto mt-2 mb-3" onClick="nextClicked('Nowe A','Nowe B','Nowe C','Nowe D','Nowe pytanie wczytane przez php?','cardC')" disabled> 
+					Next </button>-->
 <!--<a class="btn btn-fix text-left" onClick="answerClicked('')">		
 					<div id='cardB' class="card text-white	bg-secondary mb-3">
 						<div class="card-body">
