@@ -107,7 +107,7 @@ function answerClicked (idCorrect){
 	<div class="card">
 		<div class="row mt-5">
 			<div class="col-10 card-title text-center mx-auto mt-2 text-primary">
-				<h2 id="question">9x9?</h2>		
+				<h2 id="question"><?=$tab_q[0][0]?></h2>		
 			</div>
 		</div>	
 		
@@ -132,10 +132,9 @@ function answerClicked (idCorrect){
 				
 				
 			</div>	
-			<button type="button" id="nextButton" class="btn btn-lg btn-primary col-6 mx-auto mt-2 mb-3" onClick="nextClicked('Nowe A','Nowe B','Nowe C','Nowe D','Nowe pytanie wczytane przez php?','cardC')" disabled>
-					Next </button>
-		
 		</div>	
+		<button type="button" id="nextButton" class="btn btn-lg btn-primary col-6 mx-auto mt-2 mb-3" onClick="nextClicked('Nowe A','Nowe B','Nowe C','Nowe D','Nowe pytanie wczytane przez php?','cardC')" disabled>
+					Next </button>
 	</div>
 </div>
 
