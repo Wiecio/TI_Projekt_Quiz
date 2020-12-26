@@ -33,7 +33,7 @@ function answerClicked (idSelected){
 
 	
 <div class="container mt-5">
-	<form>
+	<form action="" method="post">
 		<div class="card">
 			<div class="row mt-5">
 				<div class="col-10 card-title text-center mx-auto mt-2 text-primary">
