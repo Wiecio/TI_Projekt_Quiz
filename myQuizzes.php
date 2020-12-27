@@ -89,18 +89,18 @@ catch(Exception $e)
 							<div class="card text-white bg-secondary">
 								<div class="col-12">
 									<button type="button" data-toggle="modal" data-target="#exampleModal" class="close col-1 mt-1 float-right text-right" aria-label="Close">
-										<span aria-hidden="true">&times;</span>
+										<span class="text-danger" style="font-size:30px" aria-hidden="true">&times;</span>
 									</button>
 								</div>
 								<div class="card-body">
-									
-									<h4 class="text-center"><?=$w['name_quiz']?></h4>
-									<div class="col-12">	
-										<button type="submit" class="col btn btn-fix text-center text-dark" name="viewQuiz<?=$w['id_quiz']?>">
-											Quiz View</button>
+									<div class="col-12 mb-3">
+										<h4 class="text-center"><?=$w['name_quiz']?></h4>
 									</div>
-									<div class="col-12">								
-										<button type="submit" class="col btn btn-fix " name="startQuiz<?=$w['id_quiz']?>">
+									<div class="row mb-1">	
+										<button type="submit" class="col-5 btn btn-fix btn-outline-light mx-auto" name="viewQuiz<?=$w['id_quiz']?>">
+											Quiz View</button>
+																	
+										<button type="submit" class="col-5 btn btn-fix btn-outline-light mx-auto" name="startQuiz<?=$w['id_quiz']?>">
 											Start Quiz</button>	
 									</div>
 					
