@@ -141,14 +141,18 @@ function answerClicked (idCorrect){
 		<div class="card-body">
 			<div class="row row-cols-2 mt-3 mx-auto col-md-8">
 			<?php for($j=1; $j<count($ans_tab); $j++) :?>
-						<a class="btn btn-fix text-left" name="<?=$tab[$j]?>" onClick="answerClicked('<?= $_SESSION['corrAns']?>')">		
-							<div id='card<?=$tab[$j]?>' class="card text-white bg-secondary mb-3 float-center"  >
-								<div class="card-body">
-									<h5 class="card-title"><?=$tab[$j]?> </h5>
-									<p class="card-text" id="<?=$tab[$j]?>"><?=$ans_tab[$j]?></p>
+
+				<input type="radio" name="answer" value="<?=$tab[$j]?>" id="<?=$tab[$j]?>" style="display: none;">
+						<label for="<?=$tab[$j]?>">
+							<a class="btn btn-fix text-left" onClick="answerClicked('<?= $_SESSION['corrAns']?>')">	
+								<div id='card<?=$tab[$j]?>' class="card text-white bg-secondary mb-3 float-center"  >
+									<div class="card-body">
+										<h5 class="card-title"><?=$tab[$j]?></h5>
+										<p class="card-text"><?=$ans_tab[$j]?></p>
+									</div>
 								</div>
-							</div>
-						</a>
+							</a>
+						</label>
 			<?php endfor ;?>
 			<br>
 			
