@@ -8,6 +8,7 @@ if( isset($_SESSION['quiz']) )
 	{
 		$id_quiz = mb_substr($_SESSION['quiz'], 9, mb_strlen($_SESSION['quiz'],'UTF-8'), 'UTF-8');
 		$tab_name = "quiz".$id_quiz."_".$_SESSION['user_id'];
+		$_SESSION['id_quiz'] = $id_quiz;
 	}
 }
 else {
@@ -66,9 +67,9 @@ else
 		//echo "Jestem".$_SESSION['score'];
 	}
 	$_SESSION['I']++;
-	echo count($_SESSION['tab_q']);
+	/*echo count($_SESSION['tab_q']);
 	echo "<br>";
-	echo $_SESSION['I'];
+	echo $_SESSION['I'];*/
 	if($_SESSION['I'] >= count($_SESSION['tab_q']))
 	{
 		header("Location: summary.php");
@@ -128,7 +129,7 @@ function answerClicked (idSelected){
 				<h2 id="question"><?=$_SESSION['tab_q'][$_SESSION['I']][0]?></h2>		
 			</div>
 		</div>	
-		
+		<form method="post">
 		<div class="card-body">
 			<div class="row row-cols-2 mt-3 mx-auto col-md-8">
 			<?php for($j=1; $j<count($ans_tab); $j++) :?>
@@ -154,7 +155,7 @@ function answerClicked (idSelected){
 				
 			</div>	
 		</div>	
-		<form method="post">
+		
 		<button type="submit" id="nextButton" class="btn btn-lg btn-primary col-6 mx-auto mt-2 mb-3" disabled>
 						Next </button>
 		</form>
