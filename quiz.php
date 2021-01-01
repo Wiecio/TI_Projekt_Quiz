@@ -164,8 +164,8 @@ function answerClicked (idCorrect){
 			</div>	
 		</div>	
 		<form method="post">
-		<button type="submit" id="nextButton" class="btn btn-lg btn-primary col-6 mx-auto mt-2 mb-3">
-					Next </button>
+		<button type="submit" id="nextButton" class="btn btn-lg btn-primary col-6 mx-auto mt-2 mb-3" disabled>
+						Next </button>
 		</form>
 	</div>
 </div>
