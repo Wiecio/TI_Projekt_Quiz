@@ -17,6 +17,10 @@ if(isset($_SESSION['quizInProgress']))
         unset($_SESSION['bad_quest']);
 	}
 	unset($_SESSION['quiz_name']);
+	if(isset($_SESSION['quiz']))
+    {
+        unset($_SESSION['quiz']);
+	}
 }
 ?>
 <!DOCTYPE html>

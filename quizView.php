@@ -8,24 +8,34 @@ if(!isset($_SESSION['log_in']))
 if($_SERVER['REQUEST_METHOD'] == 'POST')
 {
 	$_SESSION['quiz'] = key($_POST);
-	try
+	$check = mb_substr($_SESSION['quiz'], 0, 1, 'UTF-8');
+	if($check == "s")
 	{
-		require_once "db_connect.php";
-		$conn  = new mysqli($host,$db_user,$db_password,$db_name);
-		if($conn->connect_errno!=0)
+		header("Location: quiz.php");
+		exit();
+	}
+	else if($check == "q")
+	{
+		try
 		{
-			throw new exception(mysqli_connect_errno());
+			require_once "db_connect.php";
+			$conn  = new mysqli($host,$db_user,$db_password,$db_name);
+			if($conn->connect_errno!=0)
+			{
+				throw new exception(mysqli_connect_errno());
+			}
+			$tab_name = $_SESSION['quiz']."_".$_SESSION['user_id'];
+			$sql = "SELECT * FROM $tab_name";
+			$r = $conn->query($sql);
+			$tab = array(" ","A","B","C","D");
+
 		}
-		$tab_name = $_SESSION['quiz']."_".$_SESSION['user_id'];
-		$sql = "SELECT * FROM $tab_name";
-		$r = $conn->query($sql);
-		$tab = array(" ","A","B","C","D");
+		catch(Exception $e)
+		{
 
+		}
 	}
-	catch(Exception $e)
-	{
-
-	}
+	
 }
 ?>
 <!DOCTYPE html>

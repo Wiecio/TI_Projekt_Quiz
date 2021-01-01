@@ -1,5 +1,6 @@
 <?php 
 session_start();
+//unset($_SESSION['load']);
 ?>
 <!DOCTYPE html>
 <html>
@@ -21,7 +22,7 @@ session_start();
 	
 	<div class="row">
 		<div class="col text-center text-success">
-			<h5>You scored 5/10 correct answers!</h5>	
+			<h5>You scored <?=$_SESSION['score']?>/10 correct answers!</h5>	
 		</div>	
 	</div>
 	<form>
@@ -77,6 +78,6 @@ session_start();
 		</div>
 	</form>
 </div>
-	
+<?php unset($_SESSION['quiz']) ?>
 </body>
 </html>

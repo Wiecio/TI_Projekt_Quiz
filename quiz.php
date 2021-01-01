@@ -1,16 +1,29 @@
 <?php
 session_start();
 require_once "db_connect.php";
+if( isset($_SESSION['quiz']) )
+{
+	$check = mb_substr($_SESSION['quiz'], 0, 1, 'UTF-8');
+	if($check == "s")
+	{
+		$id_quiz = mb_substr($_SESSION['quiz'], 9, mb_strlen($_SESSION['quiz'],'UTF-8'), 'UTF-8');
+		$tab_name = "quiz".$id_quiz."_".$_SESSION['user_id'];
+	}
+}
+else {
+	header("Location: index.php");
+	exit();
+}
 if(!isset($_SESSION['load']))
 {
 	try
 	{
+			$_SESSION['score'] = 0;
 			$conn  = new mysqli($host,$db_user,$db_password,$db_name);
 			if($conn->connect_errno!=0)
 			{
 				throw new Exception(mysqli_connect_errno());
 			}
-			$tab_name = "quiz3"."_"."1";
 			$sql = "SELECT * FROM $tab_name";
 			$r = $conn->query($sql);
 			$i=0;
@@ -28,6 +41,7 @@ if(!isset($_SESSION['load']))
 				if( mb_substr($ans_tab[$i], mb_strlen($ans_tab[$i])-1, mb_strlen($ans_tab[$i]), 'UTF-8') == ":")
 				{
 					$_SESSION['corrAns'] = 'card'.$tab[$i];
+
 					$ans_tab[$i] = mb_substr($ans_tab[$i], 0, mb_strlen($ans_tab[$i])-1, 'UTF-8');
 				}
 			}
@@ -44,6 +58,13 @@ if(!isset($_SESSION['load']))
 }
 else
 {
+	$corr_Ans = mb_substr($_SESSION['corrAns'], mb_strlen($_SESSION['corrAns'])-1, mb_strlen($_SESSION['corrAns']), 'UTF-8');
+	if(isset($_POST[$corr_Ans]))
+	{
+		$_SESSION['score']++;
+		//echo "<br>";
+		//echo "Jestem".$_SESSION['score'];
+	}
 	$_SESSION['I']++;
 	echo count($_SESSION['tab_q']);
 	echo "<br>";
@@ -63,13 +84,8 @@ else
 					$ans_tab[$l] = mb_substr($ans_tab[$l], 0, mb_strlen($ans_tab[$l])-1, 'UTF-8');
 				}
 			}
-	$corr_Ans = mb_substr($_SESSION['corrAns'], mb_strlen($_SESSION['corrAns'])-1, mb_strlen($_SESSION['corrAns']), 'UTF-8');
-	if(isset($_POST[$corr_Ans]))
-	{
-		$_SESSION['score']=1;
-		echo "<br>";
-		echo "Jestem".$_SESSION['score'];
-	}
+	
+
 }
        
 ?>
@@ -117,7 +133,7 @@ function answerClicked (idSelected){
 			<div class="row row-cols-2 mt-3 mx-auto col-md-8">
 			<?php for($j=1; $j<count($ans_tab); $j++) :?>
 
-				<input type="radio" name="answer" value="<?=$tab[$j]?>" id="<?=$tab[$j]?>" style="display: none;">
+				<input type="radio" name="<?=$tab[$j]?>" value="<?=$tab[$j]?>" id="<?=$tab[$j]?>" style="display: none;">
 						<label for="<?=$tab[$j]?>">
 							<a class="btn btn-fix text-left" onClick="answerClicked('<?= $_SESSION['corrAns']?>')">	
 								<div id='card<?=$tab[$j]?>' class="card text-white bg-secondary mb-3 float-center"  >
