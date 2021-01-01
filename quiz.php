@@ -85,43 +85,18 @@ else
 	
 <script>
 
-var answersActive = true;
-
-function nextClicked(textA,textB,textC,textD,textQuestion,idCorrect){
-  document.getElementById("A").innerHTML = textA;
-  document.getElementById("B").innerHTML = textB;
-  document.getElementById("C").innerHTML = textC;
-  document.getElementById("D").innerHTML = textD;
-  document.getElementById("question").innerHTML = textQuestion;
-  
-  const cardList = document.querySelectorAll('.card');
-	
-  cardList.forEach(element => {
-	element.classList.replace('bg-danger','bg-secondary');
-  });
-	
-  document.getElementById(idCorrect).classList.replace('bg-success','bg-secondary');
-  document.getElementById('nextButton').setAttribute('disabled','true');
-  answersActive = true;
-	
-}
-
-function answerClicked (idCorrect){
-	if(answersActive){
-		
-		const cardList = document.querySelectorAll('.card');
-		
-		cardList.forEach(element => {
-			element.classList.replace('bg-secondary','bg-danger');
+function answerClicked (idSelected){
 			
-		});
-
-		document.getElementById(idCorrect).classList.replace('bg-danger','bg-success');
-		document.getElementById('nextButton').removeAttribute('disabled');
-		
-		answersActive = false;
-	}
+	const cardList = document.querySelectorAll('.card');
 	
+	cardList.forEach(element => {
+		element.classList.replace('bg-success','bg-secondary');
+		
+	});
+	
+	document.getElementById(idSelected).classList.replace('bg-secondary','bg-success');
+	document.getElementById('nextButton').removeAttribute('disabled');
+			
 }
 
 </script>	
