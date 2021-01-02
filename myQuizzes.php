@@ -120,61 +120,6 @@ catch(Exception $e)
 			</div>			
 		</form>	
 	</div>
-
-
-
-
-
-
-
-
-
-
-
-	
-	<!--
-<div class="container mt-5" >
-	<div class="row">
-		<div class="col-12 text-center">
-			<div class="card">
-				<h1 class="text-primary">My Quizzes</h1>				
-			</div>						
-			<?php if(isset($_SESSION['change_saved'])) :?>
-						<div class="alert alert-success mt-4"><?=$_SESSION['change_saved']?></div>
-						<?php unset($_SESSION['change_saved'])?>
-			<?php endif;?>
-			<div class="card mt-2 mb-5 ">
-			<form action="quizView.php"	method="POST">								
-				<div class="card-body ">
-					<div class="row row-cols-2 row-cols-sm-2 row-cols-lg-3 row-cols-xl-4 mx-auto col-md-8">	
-					<?php while($w = $r->fetch_assoc()) : ?>
-							
-								<button type="submit" class="btn btn-fix text-left mx-auto" id="quiz<?=$w['id_quiz']?>" name="quiz<?=$w['id_quiz']?>">
-									<div class="card text-white bg-success mb-3 float-center">
-										<div class="card-body">
-											<h5 class="card-title text-center"><?=$w['name_quiz']?></h5>
-										</div>
-										<h6 class="text-center"><?php if($w['is_public'] == true) : ?>public<?php else :?>private<?php endif ;?></h6>
-										
-									</div>
-								</button>
-					<?php endwhile ; ?>
-						
-				</div>	
-			</div>
-			</form>			
-		</div>		
-	</div>
-</div>-->
-<!--<script type="text/javascript">
-	$(function() {
-		$("#quiz1").click(function() {
-			window.location.href = "/TI_Projekt_Quiz/";
-		});
-	});
-</script>-->
-	
-	
 <?php $conn->close()?>
 </body>
 </html>
