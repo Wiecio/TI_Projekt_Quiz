@@ -22,6 +22,13 @@ if(isset($_SESSION['quizInProgress']))
         unset($_SESSION['quiz']);
 	}
 }
+
+
+
+
+
+
+
 ?>
 <!DOCTYPE html>
 <html>

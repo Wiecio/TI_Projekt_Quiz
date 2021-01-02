@@ -53,6 +53,10 @@ catch(Exception $e)
 				<div class="alert alert-success mt-4"><?=$_SESSION['change_saved']?></div>
 				<?php unset($_SESSION['change_saved'])?>
 		<?php endif;?>
+		<?php if(isset($_SESSION['RAND'])) :?>
+				<div class="alert alert-success mt-4">Your code is: <?=$_SESSION['RAND']?></div>
+				<?php unset($_SESSION['RAND'])?>
+		<?php endif;?>
 		
 		<form action="quizView.php"	method="POST">	
 			<!-- Modal -->
@@ -69,7 +73,7 @@ catch(Exception $e)
 					Quiz connot be restored after deleting!
 					</div>
 					<div class="modal-footer">
-					<button type="submit" name="deleteQuiz<?php=$w['id_quiz']?>" class="btn btn-danger">Delete this quiz</button>
+					<button type="submit" name="deleteQuiz" class="btn btn-danger">Delete this quiz</button>
 					<button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
 					
 					</div>
@@ -80,7 +84,7 @@ catch(Exception $e)
 									
 				<div class="card-body ">
 					<div class="row row-cols-2 row-cols-sm-2 row-cols-lg-3 row-cols-xl-4  mx-auto">	
-						<?php while($w = $r->fetch_assoc()) : ?>
+					<?php while($w = $r->fetch_assoc()) : ?>
 								
 							<div class="col mb-4">
 								<div class="card text-white bg-secondary">
@@ -103,6 +107,10 @@ catch(Exception $e)
 						
 									</div>
 									<p class="text-center"><small><?php if($w['is_public'] == true) : ?>public<?php else :?>private<?php endif ;?></small></p>
+									<div class="row mb-1">	
+											<button type="submit" class="col-5 btn btn-fix btn-outline-light mx-auto" name="ACode<?=$w['id_quiz']?>">
+												Create Acces Code</button>
+										</div>
 									
 								</div>
 							</div>

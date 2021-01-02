@@ -20,6 +20,7 @@ if(isset($_SESSION['load']))
 		$sql = "SELECT * FROM $tab_name";
 		$r = $conn->query($sql);
 		$tab = array(" ","A","B","C","D");
+		$j=0;
 	}
 	catch(Exception $e)
 	{
@@ -66,15 +67,20 @@ else
 											<h2 class="list-group-item text-primary mt-3"><?=$w['question']?></h2>
 											<?php 
 												$ans_tab = explode(",",$w['answers']);
+												$j++;
 
 											?>
 											<?php for($i=1;$i<count($ans_tab);$i++) :?>
 											
 													<?php if( mb_substr($ans_tab[$i], mb_strlen($ans_tab[$i])-1, mb_strlen($ans_tab[$i]), 'UTF-8') == ":") :?>
-													<?php $ans_tab[$i] = mb_substr($ans_tab[$i], 0, mb_strlen($ans_tab[$i])-1, 'UTF-8') ?>
+													<?php $ans_tab[$i] = mb_substr($ans_tab[$i], 0, mb_strlen($ans_tab[$i])-1, 'UTF-8'); $was = true; ?>
 														<h3 class='text-success mx-auto'><?=$tab[$i]?>. <?=$ans_tab[$i]?></h3>
 													<?php else :?>
-														<h3 class="text-secondary mx-auto"><?=$tab[$i]?>. <?=$ans_tab[$i]?></h3>
+														<?php if($_SESSION['userAns'][$j] == $tab[$i]) : ?> 
+															<h3 class="text-danger mx-auto"><?=$tab[$i]?>. <?=$ans_tab[$i]?></h3>
+														<?php else :?>
+															<h3 class="text-secondary mx-auto"><?=$tab[$i]?>. <?=$ans_tab[$i]?></h3>
+														<?php endif ;?>
 													<?php endif;?>
 											<?php endfor ;?>
 										<?php endwhile ;?>

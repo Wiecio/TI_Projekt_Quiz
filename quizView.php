@@ -14,6 +14,17 @@ if($_SERVER['REQUEST_METHOD'] == 'POST')
 		header("Location: quiz.php");
 		exit();
 	}
+	else if($check == "d")
+	{
+		header("Location: deleteQuiz.php");
+		exit();
+	}
+	elseif($check =="A")
+	{
+		$_SESSION['code'] = true;
+		header("Location: createCode.php");
+		exit();
+	}
 	else if($check == "q")
 	{
 		try
