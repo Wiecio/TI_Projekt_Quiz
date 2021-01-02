@@ -74,7 +74,7 @@ else
 		//echo "Jestem".$_SESSION['score'];
 	}
 	$_SESSION['userAns'][$_SESSION['I']+1] = key($_POST);
-	echo $_SESSION['userAns'][$_SESSION['I']+1];
+	//echo $_SESSION['userAns'][$_SESSION['I']+1];
 	$_SESSION['I']++;
 	/*echo count($_SESSION['tab_q']);
 	echo "<br>";
@@ -147,7 +147,7 @@ function answerClicked (idSelected){
 
 				<input type="radio" name="<?=$tab[$j]?>" value="<?=$tab[$j]?>" id="<?=$tab[$j]?>" style="display: none;">
 						<label for="<?=$tab[$j]?>">
-							<a class="btn btn-fix text-left" onClick="answerClicked('<?= $_SESSION['corrAns']?>')">	
+							<a class="btn btn-fix text-left" onClick="answerClicked('card<?=$tab[$j]?>')">	
 								<div id='card<?=$tab[$j]?>' class="card text-white bg-secondary mb-3 float-center"  >
 									<div class="card-body">
 										<h5 class="card-title"><?=$tab[$j]?></h5>

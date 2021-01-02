@@ -80,8 +80,7 @@ catch(Exception $e)
 				</div>
 				</div>
 			</div>
-			<div class="card mt-2 mb-5 ">
-									
+			<div class="card mt-2 mb-5 ">	
 				<div class="card-body ">
 					<div class="row row-cols-2 row-cols-sm-2 row-cols-lg-3 row-cols-xl-4  mx-auto">	
 					<?php while($w = $r->fetch_assoc()) : ?>
@@ -89,7 +88,7 @@ catch(Exception $e)
 							<div class="col mb-4">
 								<div class="card text-white bg-secondary">
 									<div class="col-12">
-										<button type="button" data-toggle="modal" data-target="#exampleModal" class="close col-1 mt-1 float-right text-right" aria-label="Close">
+										<button type="button" id="<?=$w['id_quiz']?>" data-toggle="modal" data-target="#exampleModal" class="close col-1 mt-1 float-right text-right" aria-label="Close">
 											<span class="text-danger" style="font-size:30px" aria-hidden="true">&times;</span>
 										</button>
 									</div>
