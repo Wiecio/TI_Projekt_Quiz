@@ -16,14 +16,6 @@
 
         /* check email */
         $email = $_POST['email'];
-        /*$emailB = filter_var($email,FILTER_SANITIZE_EMAIL);
-
-        if( (filter_var($emailB,FILTER_VALIDATE_EMAIL)==false) || ($emailB != $email) )
-        {
-            $data_ok = false;
-            $_SESSION['error_email'] = "Invalid Email";
-            $email_ok = false;
-        }*/
 		$nick = $_POST['nick'];
         /* check password */
         $pass1 = $_POST['pass1'];
@@ -131,7 +123,7 @@
 					}
 					/* create table namequiz_id_user */
 					$name = "nameQuiz"."_".$id_correct;
-					$sql_table = "CREATE TABLE $name (id_quiz INT NOT NULL PRIMARY KEY, name_quiz VARCHAR(15) NOT NULL, is_public BOOLEAN NOT NULL)";
+					$sql_table = "CREATE TABLE $name (id_quiz INT NOT NULL PRIMARY KEY, name_quiz VARCHAR(15) NOT NULL, is_public BOOLEAN NOT NULL, code_q VARCHAR(150) NOT NULL)";
 					$r = $conn->query($sql_table);
 					if(!$r) throw new Exception($conn->error);
 					

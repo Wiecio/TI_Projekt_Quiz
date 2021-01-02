@@ -1,5 +1,7 @@
 <?php 
 session_start();
+unset($_SESSION['load']);
+unset($_SESSION['I']);
 if(isset($_SESSION['quizInProgress']))
 {
 	unset($_SESSION['quizInProgress']);
@@ -15,7 +17,18 @@ if(isset($_SESSION['quizInProgress']))
         unset($_SESSION['bad_quest']);
 	}
 	unset($_SESSION['quiz_name']);
+	if(isset($_SESSION['quiz']))
+    {
+        unset($_SESSION['quiz']);
+	}
 }
+
+
+
+
+
+
+
 ?>
 <!DOCTYPE html>
 <html>
@@ -260,6 +273,7 @@ if(isset($_SESSION['quizInProgress']))
 		</div>		
 	</div>
 </div>
+	
 	
 </body>
 </html>

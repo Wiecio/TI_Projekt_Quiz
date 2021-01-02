@@ -1,6 +1,105 @@
 <?php
 session_start();
-$_SESSION['corrAns'] = 'cardB';
+require_once "db_connect.php";
+/* sprawdzamy czy jest ustawiony 'quiz'*/
+if( isset($_SESSION['quiz']) )
+{
+	$check = mb_substr($_SESSION['quiz'], 0, 1, 'UTF-8'); /* wyciagamy pierwsza literę zmiennej jeśli to 's' to znaczy, że zaczynamy quiz*/
+	if($check == "s")
+	{
+		$id_quiz = mb_substr($_SESSION['quiz'], 9, mb_strlen($_SESSION['quiz'],'UTF-8'), 'UTF-8'); /* wyciągamy id quizu */
+		$tab_name = "quiz".$id_quiz."_".$_SESSION['user_id']; /* towrzymy nazwe tabeli z quizem */
+		$_SESSION['id_quiz'] = $id_quiz; /* do zmiennej sesyjnej wkladamy id_quizu */
+	}
+	else if($check == "q")
+	{
+		$tab_name = $_SESSION['quiz'];
+	}
+}
+else {
+	header("Location: index.php");
+	exit();
+}
+if(!isset($_SESSION['load'])) /* jeśli nie ma load, to znaczy ze jest 1 pytanie */
+{
+	try
+	{
+			$_SESSION['userAns'][0] = " ";
+			$_SESSION['score'] = 0; // score na 0
+			$conn  = new mysqli($host,$db_user,$db_password,$db_name);
+			if($conn->connect_errno!=0)
+			{
+				throw new Exception(mysqli_connect_errno());
+			}
+			$sql = "SELECT * FROM $tab_name"; /* ściągmy wszystko z tabeli gdzie mamy pytania i odp */
+			$r = $conn->query($sql);
+			$i=0;
+			while($w = $r->fetch_assoc())
+			{
+				$_SESSION['tab_q'][$i][0] = $w['question']; /* do tabeli sesyjnej wkladamy pytania i odpowiedzi */
+				$_SESSION['tab_q'][$i][1] = $w['answers'];
+				$i++;
+			}
+			$_SESSION['load'] = true; // ustawiamy load
+			$ans_tab = explode(",",$_SESSION['tab_q'][0][1]); // oddzielamy odpowiedzi dla 1 pytania
+			$tab = array(" ","A","B","C","D"); // look-up table z ABCD
+			for($i=1;$i<count($ans_tab);$i++) // od 1 do ilosc odp w tabeli
+			{	
+				if( mb_substr($ans_tab[$i], mb_strlen($ans_tab[$i])-1, mb_strlen($ans_tab[$i]), 'UTF-8') == ":") // jesli na koncu jest ":" to jest odpowiedź poprawna
+				{
+					$_SESSION['corrAns'] = 'card'.$tab[$i]; // ustaw zmienna sesjną z dobrą odpowiedzią
+
+					$ans_tab[$i] = mb_substr($ans_tab[$i], 0, mb_strlen($ans_tab[$i])-1, 'UTF-8'); // nadpisz odpowiedź bez ":"
+				}
+			}
+			$i=0;
+			$_SESSION['I']=0;
+			reset($ans_tab);
+			
+
+	}
+	catch(Exception $e)
+	{
+			echo "jestem";
+	}
+}
+else
+{
+	// jeśli juz ktoś odpowie na 1 pytanie, to ściągamy dobrą odpowiedź i porównujemy czy przyszła taka w zmiennej POST
+	$corr_Ans = mb_substr($_SESSION['corrAns'], mb_strlen($_SESSION['corrAns'])-1, mb_strlen($_SESSION['corrAns']), 'UTF-8');
+	if(isset($_POST[$corr_Ans]))
+	{
+		$_SESSION['score']++;
+		//echo "<br>";
+		//echo "Jestem".$_SESSION['score'];
+	}
+	$_SESSION['userAns'][$_SESSION['I']+1] = key($_POST);
+	//echo $_SESSION['userAns'][$_SESSION['I']+1];
+	$_SESSION['I']++;
+	/*echo count($_SESSION['tab_q']);
+	echo "<br>";
+	echo $_SESSION['I'];*/
+	// jeśli zmienna "I" będzie >= od ilości pytań  to przejdź do podsumowania
+	if($_SESSION['I'] >= count($_SESSION['tab_q']))
+	{
+		header("Location: summary.php");
+		exit();
+	}
+	// rozdzielamy odpowiedzi dla nastepnego pytania
+	$ans_tab = explode(",",$_SESSION['tab_q'][$_SESSION['I']][1]);
+			$tab = array(" ","A","B","C","D");
+			for($l=1;$l<count($ans_tab);$l++)
+			{	
+				if( mb_substr($ans_tab[$l], mb_strlen($ans_tab[$l])-1, mb_strlen($ans_tab[$l]), 'UTF-8') == ":")
+				{
+					$_SESSION['corrAns'] = 'card'.$tab[$l];
+					$ans_tab[$l] = mb_substr($ans_tab[$l], 0, mb_strlen($ans_tab[$l])-1, 'UTF-8');
+				}
+			}
+	
+
+}
+       
 ?>
 <!DOCTYPE html>
 <html>
@@ -14,43 +113,18 @@ $_SESSION['corrAns'] = 'cardB';
 	
 <script>
 
-var answersActive = true;
-
-function nextClicked(textA,textB,textC,textD,textQuestion,idCorrect){
-  document.getElementById("A").innerHTML = textA;
-  document.getElementById("B").innerHTML = textB;
-  document.getElementById("C").innerHTML = textC;
-  document.getElementById("D").innerHTML = textD;
-  document.getElementById("question").innerHTML = textQuestion;
-  
-  const cardList = document.querySelectorAll('.card');
-	
-  cardList.forEach(element => {
-	element.classList.replace('bg-danger','bg-secondary');
-  });
-	
-  document.getElementById(idCorrect).classList.replace('bg-success','bg-secondary');
-  document.getElementById('nextButton').setAttribute('disabled','true');
-  answersActive = true;
-	
-}
-
-function answerClicked (idCorrect){
-	if(answersActive){
-		
-		const cardList = document.querySelectorAll('.card');
-		
-		cardList.forEach(element => {
-			element.classList.replace('bg-secondary','bg-danger');
+function answerClicked (idSelected){
 			
-		});
-
-		document.getElementById(idCorrect).classList.replace('bg-danger','bg-success');
-		document.getElementById('nextButton').removeAttribute('disabled');
-		
-		answersActive = false;
-	}
+	const cardList = document.querySelectorAll('.card');
 	
+	cardList.forEach(element => {
+		element.classList.replace('bg-success','bg-secondary');
+		
+	});
+	
+	document.getElementById(idSelected).classList.replace('bg-secondary','bg-success');
+	document.getElementById('nextButton').removeAttribute('disabled');
+			
 }
 
 </script>	
@@ -63,59 +137,39 @@ function answerClicked (idCorrect){
 	<div class="card">
 		<div class="row mt-5">
 			<div class="col-10 card-title text-center mx-auto mt-2 text-primary">
-				<h2 id="question">To jest przykładowe pytanie, które normalnie byłoby wczytane przez php?</h2>		
+				<h2 id="question"><?=$_SESSION['tab_q'][$_SESSION['I']][0]?></h2>		
 			</div>
 		</div>	
-		
+		<form method="post">
 		<div class="card-body">
 			<div class="row row-cols-2 mt-3 mx-auto col-md-8">
-				
-				<a class="btn btn-fix text-left" onClick="answerClicked('<?= $_SESSION['corrAns']?>')">		
-					<div id='cardA' class="card text-white bg-secondary mb-3 float-center"  >
-						<div class="card-body">
-							<h5 class="card-title">A.</h5>
-							<p class="card-text" id="A">Treść odpowiedzi wczytana przez php</p>
-						</div>
-					</div>
-				</a>
-			
-			
-			
-				<a class="btn btn-fix text-left" onClick="answerClicked('<?= $_SESSION['corrAns']?>')">		
-					<div id='cardB' class="card text-white	bg-secondary mb-3">
-						<div class="card-body">
-							<h5 class="card-title">B.</h5>
-							<p class="card-text" id="B">Treść odpowiedzi wczytana przez php</p>
-						</div>
-					</div>
-				</a>
-			
-			
-				<a class="btn btn-fix text-left" onClick="answerClicked('<?= $_SESSION['corrAns']?>')">		
-					<div  id='cardC' class="card text-white bg-secondary mb-3">
-						<div class="card-body">
-							<h5 class="card-title">C.</h5>
-							<p class="card-text" id="C">Treść odpowiedzi wczytana przez php</p>
-						</div>
-					</div>
-				</a>
+			<?php for($j=1; $j<count($ans_tab); $j++) :?>
 
-				<a class="btn btn-fix text-left" onClick="answerClicked('<?= $_SESSION['corrAns']?>')">		
-					<div id='cardD' class="card text-white bg-secondary mb-3" >
-						<div class="card-body">
-							<h5 class="card-title">D.</h5>
-							<p class="card-text" id="D">Treść odpowiedzi wczytana przez php</p>
-						</div>
-					</div>
-				</a>
+				<input type="radio" name="<?=$tab[$j]?>" value="<?=$tab[$j]?>" id="<?=$tab[$j]?>" style="display: none;">
+						<label for="<?=$tab[$j]?>">
+							<a class="btn btn-fix text-left" onClick="answerClicked('card<?=$tab[$j]?>')">	
+								<div id='card<?=$tab[$j]?>' class="card text-white bg-secondary mb-3 float-center"  >
+									<div class="card-body">
+										<h5 class="card-title"><?=$tab[$j]?></h5>
+										<p class="card-text"><?=$ans_tab[$j]?></p>
+									</div>
+								</div>
+							</a>
+						</label>
+			<?php endfor ;?>
+			<br>
+			
+			
 				
-				<button type="button" id="nextButton" class="btn btn-lg btn-primary col-6 mx-auto mt-2 mb-3" onClick="nextClicked('Nowe A','Nowe B','Nowe C','Nowe D','Nowe pytanie wczytane przez php?','<?= $_SESSION['corrAns']?>')" disabled>
-					Next </button>
+				
+				
 				
 			</div>	
-				
-		
 		</div>	
+		
+		<button type="submit" id="nextButton" class="btn btn-lg btn-primary col-6 mx-auto mt-2 mb-3" disabled>
+						Next </button>
+		</form>
 	</div>
 </div>
 
