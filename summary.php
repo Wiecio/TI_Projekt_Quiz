@@ -73,7 +73,7 @@ else
 											<?php for($i=1;$i<count($ans_tab);$i++) :?>
 											
 													<?php if( mb_substr($ans_tab[$i], mb_strlen($ans_tab[$i])-1, mb_strlen($ans_tab[$i]), 'UTF-8') == ":") :?>
-													<?php $ans_tab[$i] = mb_substr($ans_tab[$i], 0, mb_strlen($ans_tab[$i])-1, 'UTF-8'); $was = true; ?>
+													<?php $ans_tab[$i] = mb_substr($ans_tab[$i], 0, mb_strlen($ans_tab[$i])-1, 'UTF-8'); ?>
 														<h3 class='text-success mx-auto'><?=$tab[$i]?>. <?=$ans_tab[$i]?></h3>
 													<?php else :?>
 														<?php if($_SESSION['userAns'][$j] == $tab[$i]) : ?> 
