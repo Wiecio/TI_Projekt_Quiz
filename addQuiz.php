@@ -44,7 +44,7 @@ try
 
     /* Add name of quiz */
     $name_tab = "namequiz_".$_SESSION['user_id'];
-    $sql_add = "INSERT INTO $name_tab VALUES(?,?,?)";
+    $sql_add = "INSERT INTO $name_tab VALUES(?,?,?,'')";
     $st_add = $conn->prepare($sql_add);
     $st_add->bind_param("isi",$corr_id_quiz,$_SESSION['quiz_name'],$_SESSION['is_public']);
     if(!$st_add->execute())

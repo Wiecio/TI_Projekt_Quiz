@@ -28,7 +28,7 @@
 			<div class="navbar-nav mr-auto">
 				<div>
 					<li class="nav-item active"><a class="nav-link"
-						href="myQuizzes.php">My Quizzes <span class="sr-only">(current)</span>
+						href="myQuizzes.php">My Quizzes<span class="sr-only">(current)</span>
 					</a></li>
 				</div>
 				<div >
@@ -60,7 +60,7 @@
 		<div class="navbar-nav mr-auto">
 				<div >
 					<li class="nav-item active"><a class="nav-link"
-						href="writeCode.php">Go to private quiz<span class="sr-only">(current)</span>
+						href="writeCode.php">Go to quiz using Code<span class="sr-only">(current)</span>
 					</a></li>
 				</div>
 			</div>

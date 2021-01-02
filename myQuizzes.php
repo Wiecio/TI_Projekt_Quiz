@@ -1,5 +1,6 @@
 <?php 
 session_start();
+
 if(!isset($_SESSION['log_in']))
 {
     header('Location: index.php');
@@ -44,6 +45,7 @@ catch(Exception $e)
 </head>
 <body>
 <?php include 'header.php';?>
+
 <div class="container mt-5" >
 		
 		<div class="card">
@@ -121,5 +123,3 @@ catch(Exception $e)
 		</form>	
 	</div>
 <?php $conn->close()?>
-</body>
-</html>
