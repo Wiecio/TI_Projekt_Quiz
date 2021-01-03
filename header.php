@@ -31,6 +31,11 @@
 						href="newQuiz.php">New Quiz<span class="sr-only">(current)</span>
 					</a></li>
 				</div>
+				<div >
+					<li class="nav-item active"><a class="nav-link"
+						href="writeCode.php">Go to quiz using Code<span class="sr-only">(current)</span>
+					</a></li>
+				</div>
 			</div>
 
 			<div class="navbar-nav ml-auto">
@@ -44,9 +49,16 @@
 					});
 				</script>
 			</div>
+			
 		<?php endif ;?>
 		<?php if(!isset($_SESSION['log_in'])) :?>			
-			
+		<div class="navbar-nav mr-auto">
+				<div >
+					<li class="nav-item active"><a class="nav-link"
+						href="writeCode.php">Go to quiz using Code<span class="sr-only">(current)</span>
+					</a></li>
+				</div>
+			</div>
 			
 			<div class="navbar-nav ml-lg-auto ml-sm-3">
 				<div class="row">
