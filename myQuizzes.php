@@ -46,6 +46,12 @@ catch(Exception $e)
 <body>
 <?php include 'header.php';?>
 
+<script>
+	function deleteQuizClicked(quiz_id){
+		document.getElementById("confirmDeleteBtn").name = "deleteQuiz" + quiz_id;	
+	}
+</script>
+
 <div class="container mt-5" >
 		
 		<div class="card">
@@ -75,7 +81,7 @@ catch(Exception $e)
 					Quiz connot be restored after deleting!
 					</div>
 					<div class="modal-footer">
-					<button type="submit" name="deleteQuiz" class="btn btn-danger">Delete this quiz</button>
+					<button id="confirmDeleteBtn" type="submit" name="deleteQuiz" class="btn btn-danger">Delete this quiz</button>
 					<button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
 					
 					</div>
@@ -90,7 +96,7 @@ catch(Exception $e)
 							<div class="col mb-4">
 								<div class="card text-white bg-secondary">
 									<div class="col-12">
-										<button type="button" id="<?=$w['id_quiz']?>" data-toggle="modal" data-target="#exampleModal" class="close col-1 mt-1 float-right text-right" aria-label="Close">
+										<button type="button" id="<?=$w['id_quiz']?>" onClick='deleteQuizClicked("<?=$w['id_quiz']?>")' data-toggle="modal" data-target="#exampleModal" class="close col-1 mt-1 float-right text-right" aria-label="Close">
 											<span class="text-danger" style="font-size:30px" aria-hidden="true">&times;</span>
 										</button>
 									</div>
