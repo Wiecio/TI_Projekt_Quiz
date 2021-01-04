@@ -133,44 +133,44 @@ function answerClicked (idSelected){
 
 	
 <div class="container mt-5">
-	
-	<div class="card">
-		<div class="row mt-5">
-			<div class="col-10 card-title text-center mx-auto mt-2 text-primary">
-				<h2 id="question"><?=$_SESSION['tab_q'][$_SESSION['I']][0]?></h2>		
-			</div>
-		</div>	
-		<form method="post">
-		<div class="card-body">
-			<div class="row row-cols-2 mt-3 mx-auto col-md-8">
-			<?php for($j=1; $j<count($ans_tab); $j++) :?>
-
-				<input type="radio" name="<?=$tab[$j]?>" value="<?=$tab[$j]?>" id="<?=$tab[$j]?>" style="display: none;">
-						<label for="<?=$tab[$j]?>">
-							<a class="btn btn-fix text-left" onClick="answerClicked('card<?=$tab[$j]?>')">	
-								<div id='card<?=$tab[$j]?>' class="card text-white bg-secondary mb-3 float-center"  >
+	<form method="post">
+		<div class="card">
+			<div class="row mt-5">
+				<div class="col-10 card-title text-center mx-auto mt-2 text-primary">
+					<h2 id="question"><?=$_SESSION['tab_q'][$_SESSION['I']][0]?></h2>		
+				</div>
+			</div>	
+			
+			<div class="card-body">
+				<div class="row row-cols-2">
+				
+				<?php for($j=1; $j<count($ans_tab); $j++) :?>
+					<div class="col mx-auto  my-auto">
+						<label class="col-12">
+							<input type="radio" name="<?=$tab[$j]?>" value="<?=$tab[$j]?>" id="<?=$tab[$j]?>" style="display: none;">
+							<a class="btn btn-block text-left" onClick="answerClicked('card<?=$tab[$j]?>')">	
+								<div id='card<?=$tab[$j]?>' class="card card-block text-white bg-secondary mb-3"  >
 									<div class="card-body">
 										<h5 class="card-title"><?=$tab[$j]?></h5>
 										<p class="card-text"><?=$ans_tab[$j]?></p>
+										
 									</div>
 								</div>
 							</a>
 						</label>
-			<?php endfor ;?>
-			<br>
-			
-			
+					</div>
+					
+				<?php endfor ;?>
 				
-				
-				
-				
-			</div>	
-		</div>	
-		
-		<button type="submit" id="nextButton" class="btn btn-lg btn-primary col-6 mx-auto mt-2 mb-3" disabled>
-						Next </button>
-		</form>
-	</div>
+				<br>					
+				</div>	
+			</div>		
+		</div>
+		<div class="row">
+			<button type="submit" id="nextButton" class="btn btn-lg btn-primary col-2 text-center mx-auto mt-2 mb-3 float-center" disabled>
+								Next </button>
+		</div>
+	</form>
 </div>
 
 	
