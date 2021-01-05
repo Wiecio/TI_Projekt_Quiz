@@ -4,6 +4,7 @@ require_once "db_connect.php";
 /* sprawdzamy czy jest ustawiony 'quiz'*/
 if( isset($_SESSION['quiz']) )
 {
+	//echo "jestem1";
 	$check = mb_substr($_SESSION['quiz'], 0, 1, 'UTF-8'); /* wyciagamy pierwsza literę zmiennej jeśli to 's' to znaczy, że zaczynamy quiz*/
 	if($check == "s")
 	{
@@ -16,12 +17,20 @@ if( isset($_SESSION['quiz']) )
 		$tab_name = $_SESSION['quiz'];
 	}
 }
-else {
+else if($_SERVER['REQUEST_METHOD'] == 'POST' && !isset($_SESSION['load']))
+{
+	$tab_name = key($_POST);
+	$_SESSION['tab_name'] = $tab_name;
+	//echo "jestem2";
+}
+else if(!isset($_SESSION['load']))
+{
 	header("Location: index.php");
 	exit();
 }
 if(!isset($_SESSION['load'])) /* jeśli nie ma load, to znaczy ze jest 1 pytanie */
 {
+	//echo "jestem3";
 	try
 	{
 			$_SESSION['userAns'][0] = " ";
@@ -48,6 +57,7 @@ if(!isset($_SESSION['load'])) /* jeśli nie ma load, to znaczy ze jest 1 pytanie
 				if( mb_substr($ans_tab[$i], mb_strlen($ans_tab[$i])-1, mb_strlen($ans_tab[$i]), 'UTF-8') == ":") // jesli na koncu jest ":" to jest odpowiedź poprawna
 				{
 					$_SESSION['corrAns'] = 'card'.$tab[$i]; // ustaw zmienna sesjną z dobrą odpowiedzią
+					//echo $_SESSION['corrAns'];
 
 					$ans_tab[$i] = mb_substr($ans_tab[$i], 0, mb_strlen($ans_tab[$i])-1, 'UTF-8'); // nadpisz odpowiedź bez ":"
 				}
@@ -65,12 +75,13 @@ if(!isset($_SESSION['load'])) /* jeśli nie ma load, to znaczy ze jest 1 pytanie
 }
 else
 {
+	//echo "jestem4";
 	// jeśli juz ktoś odpowie na 1 pytanie, to ściągamy dobrą odpowiedź i porównujemy czy przyszła taka w zmiennej POST
 	$corr_Ans = mb_substr($_SESSION['corrAns'], mb_strlen($_SESSION['corrAns'])-1, mb_strlen($_SESSION['corrAns']), 'UTF-8');
 	if(isset($_POST[$corr_Ans]))
 	{
 		$_SESSION['score']++;
-		//echo "<br>";
+	 	//echo "<br>";
 		//echo "Jestem".$_SESSION['score'];
 	}
 	$_SESSION['userAns'][$_SESSION['I']+1] = key($_POST);
@@ -83,7 +94,7 @@ else
 	if($_SESSION['I'] >= count($_SESSION['tab_q']))
 	{
 		header("Location: summary.php");
-		exit();
+		//exit();
 	}
 	// rozdzielamy odpowiedzi dla nastepnego pytania
 	$ans_tab = explode(",",$_SESSION['tab_q'][$_SESSION['I']][1]);
@@ -93,6 +104,7 @@ else
 				if( mb_substr($ans_tab[$l], mb_strlen($ans_tab[$l])-1, mb_strlen($ans_tab[$l]), 'UTF-8') == ":")
 				{
 					$_SESSION['corrAns'] = 'card'.$tab[$l];
+					//echo $_SESSION['corrAns'];
 					$ans_tab[$l] = mb_substr($ans_tab[$l], 0, mb_strlen($ans_tab[$l])-1, 'UTF-8');
 				}
 			}
@@ -172,7 +184,6 @@ function answerClicked (idSelected){
 		</div>
 	</form>
 </div>
-
 	
 </body>
 </html>
