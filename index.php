@@ -102,96 +102,97 @@ catch(Exception $e)
 				<h5 class="text-secondary">A great place to study</h5>
 			</div>
 			
-			
-			<div class="card mt-1 mb-5">
-				<div class="row mt-5">
-					<div class="col-10 text-center mx-auto text-dark">
-						<h2>Check one of our quizzes!</h2>		
-					</div>
-				</div>	
-			
-				<div class="card-body">
-					<div class="row row-cols-2 mt-4">
-						
-						<a style="height: 300px;" class="btn btn-fix text-left" onClick="">		
-							<div style="height: 100%;" class="card d-flex text-white bg-success mb-3 float-center">
-								<div class="card-body align-items-center d-flex justify-content-center">
-									<h2 class="card-title ">Quiz name</h2>
-								</div>
-							</div>
-						</a>
-							
-						<a style="height: 300px;" class="btn btn-fix text-left" onClick="">		
-							<div style="height: 100%;" class="card d-flex text-white bg-success mb-3 float-center">
-								<div class="card-body align-items-center d-flex justify-content-center">
-									<h2 class="card-title ">Quiz name</h2>
-								</div>
-							</div>
-						</a>
-					
-						
-						
-						<a style="height: 300px;" class="btn btn-fix text-left" onClick="">		
-							<div style="height: 100%;" class="card d-flex text-white bg-success mb-3 float-center">
-								<div class="card-body align-items-center d-flex justify-content-center">
-									<h2 class="card-title ">Quiz name</h2>
-								</div>
-							</div>
-						</a>
-						
-						<a style="height: 300px;" class="btn btn-fix text-left" onClick="">		
-							<div style="height: 100%;" class="card d-flex text-white bg-success mb-3 float-center">
-								<div class="card-body align-items-center d-flex justify-content-center">
-									<h2 class="card-title ">Quiz name</h2>
-								</div>
-							</div>
-						</a>
-						
-						<a style="height: 300px;" class="btn btn-fix text-left" onClick="">		
-							<div style="height: 100%;" class="card d-flex text-white bg-success mb-3 float-center">
-								<div class="card-body align-items-center d-flex justify-content-center">
-									<h2 class="card-title ">Quiz name</h2>
-								</div>
-							</div>
-						</a>
-							
-						<a style="height: 300px;" class="btn btn-fix text-left" onClick="">		
-							<div style="height: 100%;" class="card d-flex text-white bg-success mb-3 float-center">
-								<div class="card-body align-items-center d-flex justify-content-center">
-									<h2 class="card-title ">Quiz name</h2>
-								</div>
-							</div>
-						</a>
-					
-						
-						
-						<a style="height: 300px;" class="btn btn-fix text-left" onClick="">		
-							<div style="height: 100%;" class="card d-flex text-white bg-success mb-3 float-center">
-								<div class="card-body align-items-center d-flex justify-content-center">
-									<h2 class="card-title ">Quiz name</h2>
-								</div>
-							</div>
-						</a>
-						
-						<a style="height: 300px;" class="btn btn-fix text-left" onClick="">		
-							<div style="height: 100%;" class="card d-flex text-white bg-success mb-3 float-center">
-								<div class="card-body align-items-center d-flex justify-content-center">
-									<h2 class="card-title ">Quiz name</h2>
-								</div>
-							</div>
-						</a>
-					
-					
-						
+			<form action="" method="post">
+				<div class="card mt-1 mb-5">
+					<div class="row mt-5">
+						<div class="col-10 text-center mx-auto text-dark">
+							<h2>Check one of our quizzes!</h2>		
+						</div>
+					</div>	
 				
+					<div class="card-body">
+						<div class="row row-cols-2 mt-4">
+							
+							<button style="height: 300px;" class="btn btn-fix text-left" onClick="" type="submit">		
+								<div style="height: 100%;" class="card d-flex text-white bg-success mb-3 float-center">
+									<div class="card-body align-items-center d-flex justify-content-center">
+										<h2 class="card-title ">Quiz name</h2>
+									</div>
+								</div>
+							</button>
+								
+							<button style="height: 300px;" class="btn btn-fix text-left" onClick="" type="submit">		
+								<div style="height: 100%;" class="card d-flex text-white bg-success mb-3 float-center">
+									<div class="card-body align-items-center d-flex justify-content-center">
+										<h2 class="card-title ">Quiz name</h2>
+									</div>
+								</div>
+							</button>
 						
-				
+							
+							
+							<button style="height: 300px;" class="btn btn-fix text-left" onClick="" type="submit">		
+								<div style="height: 100%;" class="card d-flex text-white bg-success mb-3 float-center">
+									<div class="card-body align-items-center d-flex justify-content-center">
+										<h2 class="card-title ">Quiz name</h2>
+									</div>
+								</div>
+							</button>
+							
+							<button style="height: 300px;" class="btn btn-fix text-left" onClick="" type="submit">		
+								<div style="height: 100%;" class="card d-flex text-white bg-success mb-3 float-center">
+									<div class="card-body align-items-center d-flex justify-content-center">
+										<h2 class="card-title ">Quiz name</h2>
+									</div>
+								</div>
+							</button>
+							
+							<button style="height: 300px;" class="btn btn-fix text-left" onClick="" type="submit">		
+								<div style="height: 100%;" class="card d-flex text-white bg-success mb-3 float-center">
+									<div class="card-body align-items-center d-flex justify-content-center">
+										<h2 class="card-title ">Quiz name</h2>
+									</div>
+								</div>
+							</button>
+								
+							<button style="height: 300px;" class="btn btn-fix text-left" onClick="" type="submit">		
+								<div style="height: 100%;" class="card d-flex text-white bg-success mb-3 float-center">
+									<div class="card-body align-items-center d-flex justify-content-center">
+										<h2 class="card-title ">Quiz name</h2>
+									</div>
+								</div>
+							</button>
+						
+							
+							
+							<button style="height: 300px;" class="btn btn-fix text-left" onClick="" type="submit">		
+								<div style="height: 100%;" class="card d-flex text-white bg-success mb-3 float-center">
+									<div class="card-body align-items-center d-flex justify-content-center">
+										<h2 class="card-title ">Quiz name</h2>
+									</div>
+								</div>
+							</button>
+							
+							<button style="height: 300px;" class="btn btn-fix text-left" onClick="" type="submit">		
+								<div style="height: 100%;" class="card d-flex text-white bg-success mb-3 float-center">
+									<div class="card-body align-items-center d-flex justify-content-center">
+										<h2 class="card-title ">Quiz name</h2>
+									</div>
+								</div>
+							</button>
+						
+						
+							
+					
+							
 					
 						
-												
-					</div>							
-				</div>	
-			</div>			
+							
+													
+						</div>							
+					</div>	
+				</div>
+			</form>
 		</div>		
 	</div>
 </div>
