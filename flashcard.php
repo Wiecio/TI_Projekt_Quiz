@@ -66,19 +66,32 @@ function flipCard(){
 <div class="container mt-5" >
 	<div class="row">
 		<div class="mx-auto mt-5 col-12 col-md-8 col-lg-6">
-			<div class="card-body" >
-				 <div class="btn flip-card" onClick="flipCard()">
-					<div id="flashCard" class="flip-card-inner">
-						<div class="flip-card-front">
-						<p class="mt-5"><h1>Dzień dobry</h1></p>
-							
+			<form action="" method="form">
+				<div class="mt-5">
+					<div class="btn flip-card mt-5" onClick="flipCard()">
+						<div id="flashCard" class="flip-card-inner">
+							<div class="flip-card-front">
+							<p class="mt-5"><h1>Dzień dobry</h1></p>
+								
+							</div>
+							<div class="flip-card-back">
+								<p class="mt-5"><h1>Good morning</h1></p>	
+							</div>
 						</div>
-						<div class="flip-card-back">
-							<p class="mt-5"><h1>Good morning</h1></p>	
-						</div>
+					</div>				
+				</div>	
+				
+
+				<div class="row mt-4"> 
+					<div class="col-6">
+						<button type="submit" class="btn btn-lg btn-block btn-success float-left" name="Previous" >Previous</button>
 					</div>
-				</div>				
-			</div>	
+					<div class="col-6">
+						<button type="submit" class="btn btn-lg btn-block btn-success float-right" name="Next">Next</button>
+					</div>								
+				</div>
+
+			</form>
 		</div>		
 	</div>
 </div>

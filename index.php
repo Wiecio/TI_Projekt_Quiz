@@ -171,14 +171,6 @@ if(isset($_SESSION['quizInProgress']))
 									</div>
 								</div>
 							</button>
-						
-						
-							
-					
-							
-					
-						
-							
 													
 						</div>							
 					</div>	
