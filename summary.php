@@ -109,6 +109,7 @@ unset($_SESSION['load']);
 unset($_SESSION['I']);
 unset($_SESSION['corrAns']);
 unset($_SESSION['tab_q']);
+unset($_SESSION['score']);
 $conn->close();
  ?>
 </body>

@@ -129,3 +129,5 @@ catch(Exception $e)
 		</form>	
 	</div>
 <?php $conn->close()?>
+</body>
+</html>
