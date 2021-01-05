@@ -1,4 +1,10 @@
-
+<?php
+session_start();
+if(isset($_SESSION['tab_flash']))
+{
+	print_r($_SESSION['tab_flash']);
+}
+?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -48,7 +54,7 @@ function submitClicked(){
 	<div class="container">
 		<div class="card mt-3 mb-3">
 			<h1><p class="text-primary text-center card-title card-header">Add a new flashcard</p></h1>	
-			<form action="" method="post" onSubmit="return submitClicked()">
+			<form action="newFlashcard_php.php" method="post" onSubmit="return submitClicked()">
 				<div class="form-check">
 					<div class="card-body">
 						<div class="list-group list-group-flush">			
@@ -77,6 +83,14 @@ function submitClicked(){
 												<div class="col-9 ml-1 ml-sm-2 ml-md-0 mt-2">
 													<textarea name="back" class="form-control" id="back" rows="4"></textarea>
 												</div>	
+												<?php if(isset($_SESSION['empty_flash'])): ?>
+														<div class="alert alert-danger mt-3"><?=$_SESSION['empty_flash']?></div>
+														<?php unset($_SESSION['empty_flash']);?>
+												<?php endif; ?>
+												<?php if(isset($_SESSION['bad_name'])): ?>
+														<div class="alert alert-danger mt-3"><?=$_SESSION['empty_flash']?></div>
+														<?php unset($_SESSION['bad_name']);?>
+												<?php endif; ?>
 											</div>	
 										</div>
 									</div>	

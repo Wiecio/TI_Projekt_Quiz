@@ -36,6 +36,11 @@
 						href="writeCode.php">Go to quiz using Code<span class="sr-only">(current)</span>
 					</a></li>
 				</div>
+				<div >
+					<li class="nav-item active"><a class="nav-link"
+						href="newFlashcardSet.php">New flashcard<span class="sr-only">(current)</span>
+					</a></li>
+				</div>
 			</div>
 
 			<div class="navbar-nav ml-auto">

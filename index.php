@@ -1,5 +1,6 @@
 <?php 
 session_start();
+unset($_SESSION['loadf']);
 if(isset($_SESSION['load']))
 {
 unset($_SESSION['quiz']);
@@ -33,6 +34,12 @@ if(isset($_SESSION['quizInProgress']))
     {
         unset($_SESSION['quiz']);
 	}
+}
+if(isset($_SESSION['flash_progres']))
+{
+	unset($_SESSION['flash_name']);
+	unset($_SESSION['flash_count']);
+	unset($_SESSION['tab_flash']);
 }
 require_once "db_connect.php";
 try
