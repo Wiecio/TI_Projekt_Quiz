@@ -22,13 +22,22 @@ if(isset($_SESSION['quizInProgress']))
         unset($_SESSION['quiz']);
 	}
 }
+require_once "db_connect.php";
+try
+{
+		$conn  = new mysqli($host,$db_user,$db_password,$db_name);
+		if($conn->connect_errno!=0)
+		{
+			throw new Exception(mysqli_connect_errno());
+		}
+		$sql = "SELECT * FROM nquiz";
+		$r = $conn->query($sql);
 
+}
+catch(Exception $e)
+{
 
-
-
-
-
-
+}
 ?>
 <!DOCTYPE html>
 <html>
@@ -187,6 +196,6 @@ if(isset($_SESSION['quizInProgress']))
 	</div>
 </div>
 	
-	
+<?php $conn->close();?>
 </body>
 </html>
