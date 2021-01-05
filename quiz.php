@@ -94,7 +94,7 @@ else
 	if($_SESSION['I'] >= count($_SESSION['tab_q']))
 	{
 		header("Location: summary.php");
-		//exit();
+		exit();
 	}
 	// rozdzielamy odpowiedzi dla nastepnego pytania
 	$ans_tab = explode(",",$_SESSION['tab_q'][$_SESSION['I']][1]);
