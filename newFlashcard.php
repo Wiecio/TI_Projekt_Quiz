@@ -1,9 +1,9 @@
 <?php
 session_start();
-if(isset($_SESSION['tab_flash']))
+/*if(isset($_SESSION['tab_flash']))
 {
 	print_r($_SESSION['tab_flash']);
-}
+}*/
 ?>
 <!DOCTYPE html>
 <html>
