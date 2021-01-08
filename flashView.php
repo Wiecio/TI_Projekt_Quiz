@@ -66,7 +66,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST')
 			<div class="card">
 				<h1 class="text-primary">Quiz name quiz view</h1>	
 <div class="mb-3 custom-control custom-checkbox">
-<form action="saveStatQuiz.php" method="post">
+<form action="saveStatFlash.php" method="post">
 							<input type="checkbox" class="custom-control-input" id="is_public" name="is_public" checked>
 							<label class="custom-control-label" for="is_public">This flashcards are public</label>
 						</div>
