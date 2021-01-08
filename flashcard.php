@@ -1,7 +1,24 @@
 <?php
 session_start();
-
-$tab_name = "flash2_1";
+if(isset($_SESSION['flash']) && !isset($_SESSION['loadf']))
+{
+	$check = mb_substr($_SESSION['flash'], 0, 1, 'UTF-8'); /* wyciagamy pierwsza literę zmiennej jeśli to 's' to znaczy, że zaczynamy quiz*/
+	if($check == "s")
+	{
+		$id_flash = mb_substr($_SESSION['flash'], 10, mb_strlen($_SESSION['flash'],'UTF-8'), 'UTF-8'); /* wyciągamy id flasha */
+		$tab_name = "flash".$id_flash."_".$_SESSION['user_id']; /* towrzymy nazwe tabeli z flashem */
+		$_SESSION['id_flash'] = $id_flash; /* do zmiennej sesyjnej wkladamy id_flasha */
+	}
+	else if($check == "f")
+	{
+		$tab_name = $_SESSION['flash'];
+	}
+}
+else if(!isset($_SESSION['loadf']))
+{
+	header("Location: index.php");
+	exit();
+}
 require_once "db_connect.php";
 if(!isset($_SESSION['loadf']))
 {

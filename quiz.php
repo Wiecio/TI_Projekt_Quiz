@@ -2,7 +2,7 @@
 session_start();
 require_once "db_connect.php";
 /* sprawdzamy czy jest ustawiony 'quiz'*/
-if( isset($_SESSION['quiz']) )
+if( isset($_SESSION['quiz']) && !isset($_SESSION['load']) )
 {
 	//echo "jestem1";
 	$check = mb_substr($_SESSION['quiz'], 0, 1, 'UTF-8'); /* wyciagamy pierwsza literę zmiennej jeśli to 's' to znaczy, że zaczynamy quiz*/

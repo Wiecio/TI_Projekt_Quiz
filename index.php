@@ -14,6 +14,14 @@ unset($_SESSION['load']);
 unset($_SESSION['I']);
 unset($_SESSION['corrAns']);
 }
+if(isset($_SESSION['flash']))
+{
+    unset($_SESSION['flash']);
+    unset($_SESSION['loadf']);
+    unset($_SESSION['tab_falsh']);
+    unset($_SESSION['max']);
+    unset($_SESSION['countf']);
+}
 
 if(isset($_SESSION['quizInProgress']))
 {
