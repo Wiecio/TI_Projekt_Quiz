@@ -75,7 +75,7 @@ catch(Exception $e)
 <div class="container mt-5" >
 		
 		<div class="card">
-			<h1 class="text-primary card-title text-center">My Quizzes</h1>				
+			<h1 class="text-primary card-title text-center">My Sets</h1>				
 		</div>						
 		<?php if(isset($_SESSION['change_saved'])) :?>
 				<div class="alert alert-success mt-4"><?=$_SESSION['change_saved']?></div>

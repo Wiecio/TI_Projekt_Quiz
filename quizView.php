@@ -61,16 +61,15 @@ if($_SERVER['REQUEST_METHOD'] == 'POST')
 	
 	
 <div class="container mt-5" >
+<form action="saveStatQuiz.php" method="post">
 	<div class="row">
 		<div class="col-12 text-center">
 			<div class="card">
 				<h1 class="text-primary">Quiz name quiz view</h1>	
-<div class="mb-3 custom-control custom-checkbox">
-<form action="saveStatQuiz.php" method="post">
-							<input type="checkbox" class="custom-control-input" id="is_public" name="is_public" checked>
-							<label class="custom-control-label" for="is_public">This quiz is public</label>
-						</div>
-					
+				<div class="mb-3 custom-control custom-checkbox">
+					<input type="checkbox" class="custom-control-input" id="is_public" name="is_public" checked>
+					<label class="custom-control-label" for="is_public">This quiz is public</label>
+				</div>					
 			</div>						
 			<div class="card mt-2 mb-5 ">								
 				<div class="card-body ">
@@ -96,13 +95,8 @@ if($_SERVER['REQUEST_METHOD'] == 'POST')
 											<?php endfor ;?>
 										<?php endwhile ;?>
 								 
-								</ul>
-								
-								<div class="form-div row mt-5">
-									<button type="submit" class="btn btn-lg btn-primary col-12" name="save_stat">Save</button>
-								</div>
-								
-							</form>	
+								</ul>							
+							
 						</div>
 																																			
 					</div>							
@@ -110,6 +104,10 @@ if($_SERVER['REQUEST_METHOD'] == 'POST')
 			</div>			
 		</div>		
 	</div>
+	<div class="row mt-2 col-12 mb-5">
+		<button type="submit" class="btn btn-lg btn-primary col-3 mx-auto" name="save_stat">Save</button>
+	</div>
+</form>	
 </div>
 	
 	
