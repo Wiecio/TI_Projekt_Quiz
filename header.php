@@ -36,7 +36,23 @@
 						href="writeCode.php">Go to quiz using Code<span class="sr-only">(current)</span>
 					</a></li>
 				</div>
+				<div >
+					<li class="nav-item active"><a class="nav-link"
+						href="newFlashcardSet.php">New Flashcard<span class="sr-only">(current)</span>
+					</a></li>
+				</div>
+				<div>
+					<li class="nav-item active"><a class="nav-link"
+						href="myFlashcards.php">My Flashcards<span class="sr-only">(current)</span>
+					</a></li>
+				</div>
+				<div >
+					<li class="nav-item active"><a class="nav-link"
+						href="writeCodeF.php">Go to FlashCard using Code<span class="sr-only">(current)</span>
+					</a></li>
+				</div>
 			</div>
+			
 
 			<div class="navbar-nav ml-auto">
 				<button id="logoutBtn" 
@@ -56,6 +72,11 @@
 				<div >
 					<li class="nav-item active"><a class="nav-link"
 						href="writeCode.php">Go to quiz using Code<span class="sr-only">(current)</span>
+					</a></li>
+				</div>
+				<div >
+					<li class="nav-item active"><a class="nav-link"
+						href="writeCodeF.php">Go to FlashCard using Code<span class="sr-only">(current)</span>
 					</a></li>
 				</div>
 			</div>

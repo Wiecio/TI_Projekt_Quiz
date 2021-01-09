@@ -1,7 +1,28 @@
 <?php 
 session_start();
+unset($_SESSION['loadf']);
+if(isset($_SESSION['load']))
+{
+unset($_SESSION['quiz']);
 unset($_SESSION['load']);
 unset($_SESSION['I']);
+unset($_SESSION['corrAns']);
+unset($_SESSION['tab_q']);
+unset($_SESSION['score']);
+unset($_SESSION['tab_name']);
+unset($_SESSION['load']);
+unset($_SESSION['I']);
+unset($_SESSION['corrAns']);
+}
+if(isset($_SESSION['flash']))
+{
+    unset($_SESSION['flash']);
+    unset($_SESSION['loadf']);
+    unset($_SESSION['tab_falsh']);
+    unset($_SESSION['max']);
+    unset($_SESSION['countf']);
+}
+
 if(isset($_SESSION['quizInProgress']))
 {
 	unset($_SESSION['quizInProgress']);
@@ -22,13 +43,28 @@ if(isset($_SESSION['quizInProgress']))
         unset($_SESSION['quiz']);
 	}
 }
+if(isset($_SESSION['flash_progres']))
+{
+	unset($_SESSION['flash_name']);
+	unset($_SESSION['flash_count']);
+	unset($_SESSION['tab_flash']);
+}
+require_once "db_connect.php";
+try
+{
+		$conn  = new mysqli($host,$db_user,$db_password,$db_name);
+		if($conn->connect_errno!=0)
+		{
+			throw new Exception(mysqli_connect_errno());
+		}
+		$sql = "SELECT * FROM nquiz";
+		$r = $conn->query($sql);
 
+}
+catch(Exception $e)
+{
 
-
-
-
-
-
+}
 ?>
 <!DOCTYPE html>
 <html>
@@ -93,7 +129,7 @@ if(isset($_SESSION['quizInProgress']))
 				<h5 class="text-secondary">A great place to study</h5>
 			</div>
 			
-			<form action="" method="post">
+			<form action="quiz.php" method="post">
 				<div class="card mt-1 mb-5">
 					<div class="row mt-5">
 						<div class="col-10 text-center mx-auto text-dark">
@@ -103,75 +139,17 @@ if(isset($_SESSION['quizInProgress']))
 				
 					<div class="card-body">
 						<div class="row row-cols-2 mt-4">
-							
-							<button style="height: 300px;" class="btn btn-fix text-left" onClick="" type="submit">		
+						<?php while($w = $r->fetch_assoc()) :?>
+
+							<button style="height: 300px;" class="btn btn-fix text-left" onClick="" type="submit" name="q<?=$w['id_quiz']?>">		
 								<div style="height: 100%;" class="card d-flex text-white bg-success mb-3 float-center">
 									<div class="card-body align-items-center d-flex justify-content-center">
-										<h2 class="card-title ">Quiz name</h2>
+										<h2 class="card-title "><?=$w['name_quiz']?></h2>
 									</div>
 								</div>
 							</button>
-								
-							<button style="height: 300px;" class="btn btn-fix text-left" onClick="" type="submit">		
-								<div style="height: 100%;" class="card d-flex text-white bg-success mb-3 float-center">
-									<div class="card-body align-items-center d-flex justify-content-center">
-										<h2 class="card-title ">Quiz name</h2>
-									</div>
-								</div>
-							</button>
-						
-							
-							
-							<button style="height: 300px;" class="btn btn-fix text-left" onClick="" type="submit">		
-								<div style="height: 100%;" class="card d-flex text-white bg-success mb-3 float-center">
-									<div class="card-body align-items-center d-flex justify-content-center">
-										<h2 class="card-title ">Quiz name</h2>
-									</div>
-								</div>
-							</button>
-							
-							<button style="height: 300px;" class="btn btn-fix text-left" onClick="" type="submit">		
-								<div style="height: 100%;" class="card d-flex text-white bg-success mb-3 float-center">
-									<div class="card-body align-items-center d-flex justify-content-center">
-										<h2 class="card-title ">Quiz name</h2>
-									</div>
-								</div>
-							</button>
-							
-							<button style="height: 300px;" class="btn btn-fix text-left" onClick="" type="submit">		
-								<div style="height: 100%;" class="card d-flex text-white bg-success mb-3 float-center">
-									<div class="card-body align-items-center d-flex justify-content-center">
-										<h2 class="card-title ">Quiz name</h2>
-									</div>
-								</div>
-							</button>
-								
-							<button style="height: 300px;" class="btn btn-fix text-left" onClick="" type="submit">		
-								<div style="height: 100%;" class="card d-flex text-white bg-success mb-3 float-center">
-									<div class="card-body align-items-center d-flex justify-content-center">
-										<h2 class="card-title ">Quiz name</h2>
-									</div>
-								</div>
-							</button>
-						
-							
-							
-							<button style="height: 300px;" class="btn btn-fix text-left" onClick="" type="submit">		
-								<div style="height: 100%;" class="card d-flex text-white bg-success mb-3 float-center">
-									<div class="card-body align-items-center d-flex justify-content-center">
-										<h2 class="card-title ">Quiz name</h2>
-									</div>
-								</div>
-							</button>
-							
-							<button style="height: 300px;" class="btn btn-fix text-left" onClick="" type="submit">		
-								<div style="height: 100%;" class="card d-flex text-white bg-success mb-3 float-center">
-									<div class="card-body align-items-center d-flex justify-content-center">
-										<h2 class="card-title ">Quiz name</h2>
-									</div>
-								</div>
-							</button>
-													
+
+						<?php endwhile ;?>						
 						</div>							
 					</div>	
 				</div>
@@ -180,6 +158,6 @@ if(isset($_SESSION['quizInProgress']))
 	</div>
 </div>
 	
-	
+<?php $conn->close();?>
 </body>
 </html>

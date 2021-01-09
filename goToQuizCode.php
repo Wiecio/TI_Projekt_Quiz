@@ -1,5 +1,26 @@
 <?php
 session_start();
+if(isset($_SESSION['flash']))
+{
+    unset($_SESSION['flash']);
+    unset($_SESSION['loadf']);
+    unset($_SESSION['tab_falsh']);
+    unset($_SESSION['max']);
+    unset($_SESSION['countf']);
+}
+if(isset($_SESSION['load']))
+{
+unset($_SESSION['quiz']);
+unset($_SESSION['load']);
+unset($_SESSION['I']);
+unset($_SESSION['corrAns']);
+unset($_SESSION['tab_q']);
+unset($_SESSION['score']);
+unset($_SESSION['tab_name']);
+unset($_SESSION['load']);
+unset($_SESSION['I']);
+unset($_SESSION['corrAns']);
+}
 if(isset($_POST['quiz_code']))
 {
     $code = $_POST['quiz_code'];

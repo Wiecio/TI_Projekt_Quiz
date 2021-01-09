@@ -35,7 +35,7 @@ try
         throw new exception(mysqli_connect_errno());
     }
     $id_u = $_SESSION['user_id'];
-    $sql = "SELECT number_quiz FROM quiz_user WHERE id_user=?";
+    $sql = "SELECT number_flash FROM flashcards_user WHERE id_user=?";
     $st_num = $conn->prepare($sql);
     $st_num->bind_param("i",$id_u);
     if(!$st_num->execute())
@@ -45,10 +45,10 @@ try
     
     $r = $st_num->get_result();
     $w = $r->fetch_assoc();
-    $number_quiz = $w['number_quiz'];
+    $number_flash = $w['number_flash'];
     $st_num->close();
 
-    $tab_name = "namequiz_".$id_u;
+    $tab_name = "nameflash_".$id_u;
     $sql_name = "SELECT * FROM $tab_name";
     $r = $conn->query($sql_name);
 }
@@ -67,7 +67,7 @@ catch(Exception $e)
 <?php include 'header.php';?>
 
 <script>
-	function deleteQuizClicked(quiz_id){
+	function deleteFlashClicked(quiz_id){
 		document.getElementById("confirmDeleteBtn").name = "deleteQuiz" + quiz_id;	
 	}
 </script>
@@ -86,7 +86,7 @@ catch(Exception $e)
 				<?php unset($_SESSION['RAND'])?>
 		<?php endif;?>
 		
-		<form action="quizView.php"	method="POST">	
+		<form action="flashView.php" method="POST">	
 			<!-- Modal -->
 			<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
 				<div class="modal-dialog modal-dialog-centered">
@@ -116,26 +116,26 @@ catch(Exception $e)
 							<div class="col mb-4">
 								<div class="card text-white bg-secondary">
 									<div class="col-12">
-										<button type="button" id="<?=$w['id_quiz']?>" onClick='deleteQuizClicked("<?=$w['id_quiz']?>")' data-toggle="modal" data-target="#exampleModal" class="close col-1 mt-1 float-right text-right" aria-label="Close">
+										<button type="button" id="<?=$w['id_flash']?>" onClick='deleteFlashClicked("<?=$w['id_flash']?>")' data-toggle="modal" data-target="#exampleModal" class="close col-1 mt-1 float-right text-right" aria-label="Close">
 											<span class="text-danger" style="font-size:30px" aria-hidden="true">&times;</span>
 										</button>
 									</div>
 									<div class="card-body">
 										<div class="col-12 mb-3">
-											<h4 class="text-center"><?=$w['name_quiz']?></h4>
+											<h4 class="text-center"><?=$w['name_flash']?></h4>
 										</div>
 										<div class="row mb-1">	
-											<button type="submit" class="col-5 btn btn-fix btn-outline-light mx-auto" name="quiz<?=$w['id_quiz']?>">
-												Quiz View</button>
+											<button type="submit" class="col-5 btn btn-fix btn-outline-light mx-auto" name="flash<?=$w['id_flash']?>">
+												Flash View</button>
 																		
-											<button type="submit" class="col-5 btn btn-fix btn-outline-light mx-auto" name="startQuiz<?=$w['id_quiz']?>">
-												Start Quiz</button>	
+											<button type="submit" class="col-5 btn btn-fix btn-outline-light mx-auto" name="startFlash<?=$w['id_flash']?>">
+												Start Flashcard</button>	
 										</div>
 						
 									</div>
 									<p class="text-center"><small><?php if($w['is_public'] == true) : ?>public<?php else :?>private<?php endif ;?></small></p>
 									<div class="row mb-1">	
-											<button type="submit" class="col-5 btn btn-fix btn-outline-light mx-auto" name="ACode<?=$w['id_quiz']?>">
+											<button type="submit" class="col-5 btn btn-fix btn-outline-light mx-auto" name="ACode<?=$w['id_flash']?>">
 												Create Acces Code</button>
 										</div>
 									
