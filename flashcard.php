@@ -155,11 +155,11 @@ function flipCard(){
 					<div class="btn flip-card mt-5" onClick="flipCard()">
 						<div id="flashCard" class="flip-card-inner">
 							<div class="flip-card-front">
-							<p class="mt-5"><h1><?=$_SESSION['tab_flash'][$_SESSION['countf']][0]?></h1></p>
+								<h1 style="margin-top:65px;"><?=$_SESSION['tab_flash'][$_SESSION['countf']][0]?></h1>
 								
 							</div>
 							<div class="flip-card-back">
-								<p class="mt-5"><h1><?=$_SESSION['tab_flash'][$_SESSION['countf']][1]?></h1></p>	
+								<h1 style="margin-top:65px;"><?=$_SESSION['tab_flash'][$_SESSION['countf']][1]?></h1>	
 							</div>
 						</div>
 					</div>				
@@ -172,7 +172,9 @@ function flipCard(){
 						<div class="alert alert-danger mt-3"><?=$_SESSION['er_next']?></div>
 						<?php unset($_SESSION['er_next']);?>
 				<?php endif; ?>
+				<div class="col-12 text-left">
 				<?=$_SESSION['countf']+1?>/<?=$_SESSION['max']+1?>
+				</div>
 				<div class="row mt-4"> 
 					<div class="col-6">
 						<button type="submit" class="btn btn-lg btn-block btn-success float-left" name="Previous" >Previous</button>
