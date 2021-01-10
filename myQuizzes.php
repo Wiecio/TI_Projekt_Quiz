@@ -74,9 +74,9 @@ catch(Exception $e)
 
 <div class="container mt-5" >
 		
-		<div class="card">
-			<h1 class="text-primary card-title text-center">My Quizzes</h1>				
-		</div>						
+		
+		<h1 class="text-dark card-title text-center">My Quizzes</h1>				
+								
 		<?php if(isset($_SESSION['change_saved'])) :?>
 				<div class="alert alert-success mt-4"><?=$_SESSION['change_saved']?></div>
 				<?php unset($_SESSION['change_saved'])?>
@@ -108,8 +108,8 @@ catch(Exception $e)
 				</div>
 				</div>
 			</div>
-			<div class="card mt-2 mb-5 ">	
-				<div class="card-body ">
+			<div class="mt-5 mb-5 ">	
+				
 					<div class="row row-cols-2 row-cols-sm-2 row-cols-lg-3 row-cols-xl-4  mx-auto">	
 					<?php while($w = $r->fetch_assoc()) : ?>
 								
@@ -121,30 +121,34 @@ catch(Exception $e)
 										</button>
 									</div>
 									<div class="card-body">
-										<div class="col-12 mb-3">
+										<div class="col-12 mb-4">
 											<h4 class="text-center"><?=$w['name_quiz']?></h4>
 										</div>
-										<div class="row mb-1">	
-											<button type="submit" class="col-5 btn btn-fix btn-outline-light mx-auto" name="quiz<?=$w['id_quiz']?>">
+										<div class="row mb-2">	
+											<button type="submit" class="col-8 btn btn-fix btn-outline-light mx-auto" name="quiz<?=$w['id_quiz']?>">
 												Quiz View</button>
-																		
-											<button type="submit" class="col-5 btn btn-fix btn-outline-light mx-auto" name="startQuiz<?=$w['id_quiz']?>">
-												Start Quiz</button>	
 										</div>
-						
-									</div>
-									<p class="text-center"><small><?php if($w['is_public'] == true) : ?>public<?php else :?>private<?php endif ;?></small></p>
-									<div class="row mb-1">	
-											<button type="submit" class="col-5 btn btn-fix btn-outline-light mx-auto" name="ACode<?=$w['id_quiz']?>">
+										<div class="row mb-2">
+											<button type="submit" class="col-8 btn btn-fix btn-outline-light mx-auto" name="startQuiz<?=$w['id_quiz']?>">
+												Start Quiz</button>	
+										</div>		
+										<div class="row">	
+											<button type="submit" class="col-8 btn btn-fix btn-outline-light mx-auto" name="ACode<?=$w['id_quiz']?>">
 												Create Acces Code</button>
 										</div>
+									</div>
+						
+									
+									
+									<p class="card-footer text-center"><small><?php if($w['is_public'] == true) : ?>public<?php else :?>private<?php endif ;?></small></p>
+									
 									
 								</div>
 							</div>
 						<?php endwhile ; ?>
 						
 					</div>	
-				</div>
+				
 			</div>			
 		</form>	
 	</div>

@@ -61,43 +61,46 @@ if($_SERVER['REQUEST_METHOD'] == 'POST')
 	
 	
 <div class="container mt-5" >
+<form action="saveStatFlash.php" method="post">
 	<div class="row">
 		<div class="col-12 text-center">
-			<div class="card">
-				<h1 class="text-primary">Quiz name quiz view</h1>	
-<div class="mb-3 custom-control custom-checkbox">
-<form action="saveStatFlash.php" method="post">
-							<input type="checkbox" class="custom-control-input" id="is_public" name="is_public" checked>
-							<label class="custom-control-label" for="is_public">This flashcards are public</label>
-						</div>
-					
-			</div>						
-			<div class="card mt-2 mb-5 ">								
-				<div class="card-body ">
-					<div class="row col-12">		
-						<div class="mx-auto">
+			
+			<h1 class="text-dark">View your flashcards</h1>	
+			<div class="mb-3 mx-auto custom-control custom-checkbox">
+				<input type="checkbox" class="custom-control-input" id="is_public" name="is_public" checked>
+				<label class="custom-control-label" for="is_public">This flashcards are public</label>
+			</div>					
 								
+			<div class="mt-4 mb-1 col-xl-11 mx-auto ">								
 								
-								<ul class="list-group list-group-flush ">
-										<?php while($w = $r->fetch_assoc()) :?>
-											<?=$w['first_p']?>  <?=$w['second_p']?>
-                                            <br>
-										<?php endwhile ;?>
-								 
-								</ul>
-								
-								<div class="form-div row mt-5">
-									<button type="submit" class="btn btn-lg btn-primary col-12" name="save_stat">Save</button>
-								</div>
-								
-							</form>	
-						</div>
-																																			
-					</div>							
-				</div>	
-			</div>			
+				<table class="table table-bordered table-striped">
+					<thead class="thead-dark">
+						<tr>
+							<th scope="col">#</th>
+							<th scope="col">Front</th>
+							<th scope="col">Back</th>
+						</tr>
+					</thead>
+					<tbody>
+						<?php $counter = 0; ?>
+						<?php while($w = $r->fetch_assoc()) :?>									
+							<tr>
+								<th scope="row"><?=++$counter?></th>
+								<td><?=$w['first_p']?></td>
+								<td><?=$w['second_p']?></td>
+							</tr>			
+						<?php endwhile ;?>
+				 
+					</tbody>
+				</table>		
+			</div>
+			
 		</div>		
 	</div>
+	<div class="row mt-1 mb-5 mx-auto col-12">
+		<button type="submit" class="btn btn-lg btn-primary col-3 mx-auto" name="save_stat">Save</button>
+	</div>
+</form>
 </div>
 	
 	
