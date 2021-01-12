@@ -183,7 +183,9 @@ function flipCard(){
 						<button type="submit" class="btn btn-lg btn-block btn-success float-right" name="Next">Next</button>
 					</div>								
 				</div>
-
+			</form>
+			<form action="flashTest.php" method="POST">
+				<button type="submit" name="<?=$tab_name?>" class="">Check your knowledge</button>
 			</form>
 		</div>		
 	</div>
