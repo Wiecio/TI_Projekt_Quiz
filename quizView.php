@@ -35,6 +35,13 @@ if($_SERVER['REQUEST_METHOD'] == 'POST')
 			{
 				throw new exception(mysqli_connect_errno());
 			}
+			$id_quiz = substr($_SESSION['quiz'],-1);
+			$tab_name2 = "namequiz_".$_SESSION['user_id'];
+			$sql = "SELECT name_quiz FROM $tab_name2 WHERE id_quiz=$id_quiz";
+			$r = $conn->query($sql);
+			$w = $r->fetch_assoc();
+			$name = $w['name_quiz'];
+
 			$tab_name = $_SESSION['quiz']."_".$_SESSION['user_id'];
 			$sql = "SELECT * FROM $tab_name";
 			$r = $conn->query($sql);
@@ -62,9 +69,8 @@ if($_SERVER['REQUEST_METHOD'] == 'POST')
 	
 <div class="container mt-5" >
 <form action="saveStatQuiz.php" method="post">
-	
 	<div class="text-center">
-		<h1 class="text-dark ">View your quiz</h1>	
+		<h1 class="text-dark ">View your "<?=$name?>"</h1>	
 		<div class="mb-3 mx-auto custom-control custom-checkbox">
 			<input type="checkbox" class="custom-control-input" id="is_public" name="is_public" checked>
 			<label class="custom-control-label" for="is_public">This quiz is public</label>
@@ -80,6 +86,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST')
 							<h3 class="list-group-item text-dark mt-3"><?=++$counter?>. <?=$w['question']?></h3>
 							<?php 
 								$ans_tab = explode(",",$w['answers']);
+
 
 							?>
 							<?php for($i=1;$i<count($ans_tab);$i++) :?>
