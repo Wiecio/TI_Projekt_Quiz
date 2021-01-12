@@ -33,7 +33,7 @@
 				</div>
 				<div >
 					<li class="nav-item active"><a class="nav-link"
-						href="writeCode.php">Go to quiz using Code<span class="sr-only">(current)</span>
+						href="writeCode.php">Use Quiz Code<span class="sr-only">(current)</span>
 					</a></li>
 				</div>
 				<div >
@@ -48,7 +48,7 @@
 				</div>
 				<div >
 					<li class="nav-item active"><a class="nav-link"
-						href="writeCodeF.php">Go to FlashCard using Code<span class="sr-only">(current)</span>
+						href="writeCodeF.php">Use Flashcard Code<span class="sr-only">(current)</span>
 					</a></li>
 				</div>
 			</div>

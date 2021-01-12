@@ -167,11 +167,11 @@ if($_SERVER['REQUEST_METHOD'] == 'POST')
 						<?php endif; ?>	
 						<?php if($_SESSION['check'] == false): ?>
 							<div class="col-12">
-								<button disabled type="submit" class="btn btn-lg btn-block btn-success float-right mt-2" name="jump">Jump to the begining</button>
+								<button disabled type="submit" class="btn btn-lg btn-block btn-outline btn-outline-info float-right mt-2" name="jump">Jump to the begining</button>
 							</div>		
 						<?php else :?>
 							<div class="col-12">
-									<button type="submit" class="btn btn-lg btn-block btn-success float-right mt-2" name="jump">Jump to the begining</button>
+									<button type="submit" class="btn btn-lg btn-block btn-outline btn-outline-info float-right mt-2" name="jump">Jump to the begining</button>
 							</div>	
 						<?php endif; ?>			
 								
