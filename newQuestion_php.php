@@ -1,5 +1,6 @@
 <?php 
 session_start();
+require_once "functions_PHP.php";
 if(!isset($_SESSION['log_in']) || (!isset($_SESSION['quiz_name'])) || (!isset($_SESSION['quizInProgress'])))
 {
 	header("Location: index.php");
@@ -23,12 +24,18 @@ if(isset($_POST['Finish']) || isset($_POST['Next']))
 					}
 					if(!isset($_SESSION['quest_count']))
 					{
+						$a = $_POST['A'];
+						$b = $_POST['B'];
+						if(check_char($a) || check_char($b)) 
+						{
+							$_SESSION['bad_char'] = "You can't use this '|' character in anserws section!";
+							header("Location: newQuestion.php");
+							exit();	
+						}
 						$_SESSION['questions'] = array();
 						$_SESSION['answers'] = array();
 						$_SESSION['quest_count'] = 0;
 						$question = $_POST['question'];
-						$a = $_POST['A'];
-						$b = $_POST['B'];
 						switch($correct_Ans)
 						{
 							case "A":
@@ -65,6 +72,12 @@ if(isset($_POST['Finish']) || isset($_POST['Next']))
 								$question = $_POST['question'];
 								$a = $_POST['A'];
 								$b = $_POST['B'];
+								if(check_char($a) || check_char($b))
+								{
+									$_SESSION['bad_char'] = "You can't use this '|' character in anserws section!";
+									header("Location: newQuestion.php");
+									exit();	
+								}
 								switch($correct_Ans)
 								{
 									case "A":
@@ -111,6 +124,12 @@ if(isset($_POST['Finish']) || isset($_POST['Next']))
 						$a = $_POST['A'];
 						$b = $_POST['B'];
 						$c = $_POST['C'];
+						if(check_char($a) || check_char($b) || check_char($c) )
+						{
+							$_SESSION['bad_char'] = "You can't use this '|' character in anserws section!";
+							header("Location: newQuestion.php");
+							exit();	
+						}
 						switch($correct_Ans)
 						{
 							case "A":
@@ -157,6 +176,12 @@ if(isset($_POST['Finish']) || isset($_POST['Next']))
 									$a = $_POST['A'];
 									$b = $_POST['B'];
 									$c = $_POST['C'];
+									if(check_char($a) || check_char($b) || check_char($c) ) 
+									{
+										$_SESSION['bad_char'] = "You can't use this '|' character in anserws section!";
+										header("Location: newQuestion.php");
+										exit();	
+									}
 									switch($correct_Ans)
 									{
 										case "A":
@@ -205,6 +230,12 @@ if(isset($_POST['Finish']) || isset($_POST['Next']))
 										$b = $_POST['B'];
 										$c = $_POST['C'];
 										$d = $_POST['D'];
+										if(check_char($a) || check_char($b) || check_char($c) || check_char($d) ) 
+										{
+											$_SESSION['bad_char'] = "You can't use this '|' character in anserws section!";
+											header("Location: newQuestion.php");
+											exit();	
+										}
 										switch($correct_Ans)
 										{
 											case "A":
@@ -251,6 +282,12 @@ if(isset($_POST['Finish']) || isset($_POST['Next']))
 												$b = $_POST['B'];
 												$c = $_POST['C'];
 												$d = $_POST['D'];
+												if(check_char($a) || check_char($b) || check_char($c) || check_char($d) ) 
+												{
+													$_SESSION['bad_char'] = "You can't use this '|' character in anserws section!";
+													header("Location: newQuestion.php");
+													exit();	
+												}
 												switch($correct_Ans)
 												{
 													case "A":

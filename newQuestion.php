@@ -86,6 +86,10 @@ function submitClicked(){
 										<div class="alert alert-danger mt-3"><?=$_SESSION['zero_quest_err']?></div>
 										<?php unset($_SESSION['zero_quest_err']);?>
 								<?php endif; ?>
+								<?php if(isset($_SESSION['bad_char'])): ?>
+										<div class="alert alert-danger mt-3"><?=$_SESSION['bad_char']?></div>
+										<?php unset($_SESSION['bad_char']);?>
+								<?php endif; ?>
 								
 							</div>
 						

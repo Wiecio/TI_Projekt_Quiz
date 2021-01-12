@@ -89,6 +89,15 @@ function Check_name_quiz($str)
     }
     return true;
 }
+function check_char($str)
+{
+    $sprawdz = '/\|/';
+    if(preg_match($sprawdz,$str))
+    {
+        return true;
+    }
+    return false;
+}
 
 
 

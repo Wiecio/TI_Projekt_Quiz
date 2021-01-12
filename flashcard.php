@@ -8,10 +8,12 @@ if(isset($_SESSION['flash']) && !isset($_SESSION['loadf']))
 		$id_flash = mb_substr($_SESSION['flash'], 10, mb_strlen($_SESSION['flash'],'UTF-8'), 'UTF-8'); /* wyciągamy id flasha */
 		$tab_name = "flash".$id_flash."_".$_SESSION['user_id']; /* towrzymy nazwe tabeli z flashem */
 		$_SESSION['id_flash'] = $id_flash; /* do zmiennej sesyjnej wkladamy id_flasha */
+		$_SESSION['tab_namef'] = $tab_name;
 	}
 	else if($check == "f")
 	{
 		$tab_name = $_SESSION['flash'];
+		$_SESSION['tab_namef'] = $tab_name;
 	}
 }
 else if(!isset($_SESSION['loadf']))
@@ -185,7 +187,7 @@ function flipCard(){
 				</div>
 			</form>
 			<form action="flashTest.php" method="POST">
-				<button type="submit" name="<?=$tab_name?>" class="">Check your knowledge</button>
+				<button type="submit" name="<?=$_SESSION['tab_namef']?>" class="">Check your knowledge</button>
 			</form>
 		</div>		
 	</div>
