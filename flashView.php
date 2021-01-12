@@ -73,8 +73,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST')
 	<div class="row">
 		<div class="col-12 text-center">
 			
-			<!--<h1 class="text-dark">View your flashcards</h1>	-->
-			<!--<h1 class="text-dark">View your "<?=/*$name*/?>" flashcards</h1> -->
+			<h1 class="text-dark">View your "<?=$name?>" flashcards</h1>
 			<div class="mb-3 mx-auto custom-control custom-checkbox">
 				<input type="checkbox" class="custom-control-input" id="is_public" name="is_public" checked>
 				<label class="custom-control-label" for="is_public">This flashcards are public</label>
