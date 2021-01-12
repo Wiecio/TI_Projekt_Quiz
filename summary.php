@@ -73,13 +73,13 @@ else
 
 <div class="container" ><!--style="margin-top:1.5em;"-->
 	<div class="row mt-5">
-		<div class="col-12 text-center text-primary">
-			<h1>You completed "<?=$nameQuiz?>" quiz!</h1>		
+		<div class="col-12 text-center text-dark">
+			<h1>You completed <?=$nameQuiz?> quiz!</h1>		
 		</div>
 	</div>
 	
 	<div class="row">
-		<div class="col text-center text-success">
+		<div class="col text-center text-info">
 			<h5>You scored <?=$_SESSION['score']?>/<?=$_SESSION['I']?> correct answers!</h5>	
 		</div>	
 	</div>
@@ -89,8 +89,9 @@ else
 				<div class="row col-12 mx-auto">		
 					<div class="mx-auto">
 					<ul class="list-group list-group-flush ">
+										<?php $counter = 0; ?>
 										<?php while($w = $r->fetch_assoc()) :?>
-											<h2 class="list-group-item text-primary mt-3"><?=$w['question']?></h2>
+											<h3 class="list-group-item text-dark mt-3"><?=++$counter?>. <?=$w['question']?></h3>
 											<?php 
 												$ans_tab = explode(",",$w['answers']);
 												$j++;
@@ -100,12 +101,12 @@ else
 											
 													<?php if( mb_substr($ans_tab[$i], mb_strlen($ans_tab[$i])-1, mb_strlen($ans_tab[$i]), 'UTF-8') == ":") :?>
 													<?php $ans_tab[$i] = mb_substr($ans_tab[$i], 0, mb_strlen($ans_tab[$i])-1, 'UTF-8'); ?>
-														<h3 class='text-success mx-auto'><?=$tab[$i]?>. <?=$ans_tab[$i]?></h3>
+														<h4 class='text-success ml-5'><?=$tab[$i]?>. <?=$ans_tab[$i]?></h4>
 													<?php else :?>
 														<?php if($_SESSION['userAns'][$j] == $tab[$i]) : ?> 
-															<h3 class="text-danger mx-auto"><?=$tab[$i]?>. <?=$ans_tab[$i]?></h3>
+															<h4 class="text-danger ml-5"><?=$tab[$i]?>. <?=$ans_tab[$i]?></h4>
 														<?php else :?>
-															<h3 class="text-secondary mx-auto"><?=$tab[$i]?>. <?=$ans_tab[$i]?></h3>
+															<h4 class="text-secondary ml-5"><?=$tab[$i]?>. <?=$ans_tab[$i]?></h4>
 														<?php endif ;?>
 													<?php endif;?>
 											<?php endfor ;?>
