@@ -188,7 +188,7 @@ function flipCard(){
 				</div>
 			</form>
 			<form action="flashTest.php" method="POST">
-				<button type="submit" name="<?=$_SESSION['tab_namef']?>" class="btn btn-lg btn-block btn-outline btn-outline-info mt-3">Check your knowledge</button>
+				<button type="submit" name="<?=$_SESSION['tab_namef']?>" class="btn btn-lg btn-block btn-outline btn-outline-info mt-3 mb-4">Check your knowledge</button>
 			</form>
 			
 		</div>		
