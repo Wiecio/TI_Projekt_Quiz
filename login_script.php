@@ -60,6 +60,10 @@
                 $_SESSION['error_conn'] = "Sorry we have problems with servers, please check out website in another time :(";
             }
     }
+    else
+    {
+        header("Location: index.php");
+    }
 
 
 

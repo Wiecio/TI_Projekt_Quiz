@@ -1,5 +1,10 @@
 <?php
 session_start();
+if(!isset($_SESSION['log_in']))
+{
+	header("Location: index.php");
+	exit();
+}
 if(isset($_SESSION['flash']))
 {
     unset($_SESSION['flash']);

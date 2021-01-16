@@ -67,4 +67,8 @@ if(isset($_POST['save_stat']))
         }
     }
 }
+else
+{
+    header("Location: index.php");
+}
 ?>
