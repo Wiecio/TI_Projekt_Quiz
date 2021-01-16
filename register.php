@@ -116,12 +116,12 @@
 						$st_quiz_user->close();
 						throw new Exception("st_quiz_user");
 					}
-					$sql_quiz_user = "INSERT INTO flashcard_user VALUES(?,0)";
-					$st_quiz_user = $conn->prepare($sql_quiz_user);
-					$st_quiz_user->bind_param("i",$id_correct);
-					if(!$st_quiz_user->execute())
+					$sql_flash_user = "INSERT INTO flashcards_user VALUES(?,0)";
+					$st_flash_user = $conn->prepare($sql_flash_user);
+					$st_flash_user->bind_param("i",$id_correct);
+					if(!$st_flash_user->execute())
 					{
-						$st_quiz_user->close();
+						$st_flash_user->close();
 						throw new Exception("st_quiz_user");
 					}
 					/* send mail */
