@@ -93,7 +93,7 @@ else
 										<?php while($w = $r->fetch_assoc()) :?>
 											<h3 class="list-group-item text-dark mt-3"><?=++$counter?>. <?=$w['question']?></h3>
 											<?php 
-												$ans_tab = explode(",",$w['answers']);
+												$ans_tab = explode("|",$w['answers']);
 												$j++;
 
 											?>

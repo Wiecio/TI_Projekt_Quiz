@@ -35,7 +35,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST')
 			{
 				throw new exception(mysqli_connect_errno());
 			}
-			$id_flash = substr($_SESSION['flash'],-1);
+			$id_flash = substr($_SESSION['flash'],5,strlen($_SESSION['flash']));
 			$tab_name2 = "nameflash_".$_SESSION['user_id'];
 			$sql = "SELECT name_flash FROM $tab_name2 WHERE id_flash=$id_flash";
 			$r = $conn->query($sql);
