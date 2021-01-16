@@ -50,7 +50,7 @@ if(!isset($_SESSION['load'])) /* jeśli nie ma load, to znaczy ze jest 1 pytanie
 				$i++;
 			}
 			$_SESSION['load'] = true; // ustawiamy load
-			$ans_tab = explode(",",$_SESSION['tab_q'][0][1]); // oddzielamy odpowiedzi dla 1 pytania
+			$ans_tab = explode("|",$_SESSION['tab_q'][0][1]); // oddzielamy odpowiedzi dla 1 pytania
 			$tab = array(" ","A","B","C","D"); // look-up table z ABCD
 			for($i=1;$i<count($ans_tab);$i++) // od 1 do ilosc odp w tabeli
 			{	
@@ -97,7 +97,7 @@ else
 		exit();
 	}
 	// rozdzielamy odpowiedzi dla nastepnego pytania
-	$ans_tab = explode(",",$_SESSION['tab_q'][$_SESSION['I']][1]);
+	$ans_tab = explode("|",$_SESSION['tab_q'][$_SESSION['I']][1]);
 			$tab = array(" ","A","B","C","D");
 			for($l=1;$l<count($ans_tab);$l++)
 			{	

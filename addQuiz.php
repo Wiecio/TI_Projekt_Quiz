@@ -65,7 +65,7 @@ try
         $answers= "";
         for($j=0;$j<count($_SESSION['answers'][$i]);$j++)
         {
-            $answers = $answers.",".$_SESSION['answers'][$i][$j];
+            $answers = $answers."|".$_SESSION['answers'][$i][$j];
         }
         $sql_addq = "INSERT INTO $name_table VALUES(?,?,?)";
         $st_addq = $conn->prepare($sql_addq);

@@ -35,8 +35,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST')
 			{
 				throw new exception(mysqli_connect_errno());
 			}
-			
-			$id_quiz = substr($_SESSION['quiz'],-1);
+			$id_quiz = substr($_SESSION['quiz'],4,strlen($_SESSION['quiz']));
 			$tab_name2 = "namequiz_".$_SESSION['user_id'];
 			$sql = "SELECT name_quiz FROM $tab_name2 WHERE id_quiz=$id_quiz";
 			$r = $conn->query($sql);
@@ -87,7 +86,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST')
 						<?php while($w = $r->fetch_assoc()) :?>
 							<h3 class="list-group-item text-dark mt-3"><?=++$counter?>. <?=$w['question']?></h3>
 							<?php 
-								$ans_tab = explode(",",$w['answers']);
+								$ans_tab = explode("|",$w['answers']);
 
 							?>
 							<?php for($i=1;$i<count($ans_tab);$i++) :?>
