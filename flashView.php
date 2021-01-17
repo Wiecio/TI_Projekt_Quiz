@@ -70,43 +70,45 @@ if($_SERVER['REQUEST_METHOD'] == 'POST')
 	
 <div class="container mt-5" >
 <form action="saveStatFlash.php" method="post">
-	<div class="row">
-		<div class="col-12 text-center">
+
+		
 			
-			<h1 class="text-dark">View your "<?=$name?>" flashcards</h1>
-			<div class="mb-3 mx-auto custom-control custom-checkbox">
-				<input type="checkbox" class="custom-control-input" id="is_public" name="is_public" checked>
-				<label class="custom-control-label" for="is_public">This flashcards are public</label>
-			</div>					
-								
-			<div class="mt-4 mb-1 col-xl-11 mx-auto ">								
-								
-				<table class="table table-bordered table-striped">
-					<thead class="thead-dark">
+	<div class="text-center">
+		<h1 class="text-dark col ">View your "<?=$name?>" flashcards</h1>	
+		<div class="mb-3 mx-auto custom-control custom-checkbox">
+			<input type="checkbox" class="custom-control-input" id="is_public" name="is_public" checked>
+			<label class="custom-control-label" for="is_public">This flashcards are public</label>
+		</div>
+	</div>		
+							
+		<div class="mt-4 mb-1 col-xl-11 mx-auto ">								
+							
+			<table class="table table-bordered table-striped">
+				<thead class="thead-dark">
+					<tr>
+						<th scope="col">#</th>
+						<th scope="col">Front</th>
+						<th scope="col">Back</th>
+					</tr>
+				</thead>
+				<tbody>
+					<?php $counter = 0; ?>
+					<?php while($w = $r->fetch_assoc()) :?>									
 						<tr>
-							<th scope="col">#</th>
-							<th scope="col">Front</th>
-							<th scope="col">Back</th>
-						</tr>
-					</thead>
-					<tbody>
-						<?php $counter = 0; ?>
-						<?php while($w = $r->fetch_assoc()) :?>									
-							<tr>
-								<th scope="row"><?=++$counter?></th>
-								<td><?=$w['first_p']?></td>
-								<td><?=$w['second_p']?></td>
-							</tr>			
-						<?php endwhile ;?>
-				 
-					</tbody>
-				</table>		
-			</div>
+							<th scope="row"><?=++$counter?></th>
+							<td><?=$w['first_p']?></td>
+							<td><?=$w['second_p']?></td>
+						</tr>			
+					<?php endwhile ;?>
+			 
+				</tbody>
+			</table>		
+		</div>
 			
-		</div>		
-	</div>
-	<div class="row mt-1 mb-5 mx-auto col-12">
-		<button type="submit" class="btn btn-lg btn-primary col-3 mx-auto" name="save_stat">Save</button>
+				
+	
+	<div class="row mt-1 mb-5 mx-auto">
+		<button type="submit" class="btn btn-lg btn-primary col-6 col-sm-2 mx-auto" name="save_stat">Save</button>
 	</div>
 </form>
 </div>

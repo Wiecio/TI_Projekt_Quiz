@@ -101,12 +101,12 @@ else
 											
 													<?php if( mb_substr($ans_tab[$i], mb_strlen($ans_tab[$i])-1, mb_strlen($ans_tab[$i]), 'UTF-8') == ":") :?>
 													<?php $ans_tab[$i] = mb_substr($ans_tab[$i], 0, mb_strlen($ans_tab[$i])-1, 'UTF-8'); ?>
-														<h4 class='text-success ml-5'><?=$tab[$i]?>. <?=$ans_tab[$i]?></h4>
+														<h4 class='text-success ml-4'><?=$tab[$i]?>. <?=$ans_tab[$i]?></h4>
 													<?php else :?>
 														<?php if($_SESSION['userAns'][$j] == $tab[$i]) : ?> 
-															<h4 class="text-danger ml-5"><?=$tab[$i]?>. <?=$ans_tab[$i]?></h4>
+															<h4 class="text-danger ml-4"><?=$tab[$i]?>. <?=$ans_tab[$i]?></h4>
 														<?php else :?>
-															<h4 class="text-secondary ml-5"><?=$tab[$i]?>. <?=$ans_tab[$i]?></h4>
+															<h4 class="text-secondary ml-4"><?=$tab[$i]?>. <?=$ans_tab[$i]?></h4>
 														<?php endif ;?>
 													<?php endif;?>
 											<?php endfor ;?>

@@ -130,7 +130,7 @@ catch(Exception $e)
 			</div>
 			
 			<form action="quiz.php" method="post">
-				<div class="card mt-1 mb-5">
+				<div class="card mt-2 mb-5">
 					<div class="row mt-5">
 						<div class="col-10 text-center mx-auto text-dark">
 							<h2>Check one of our quizzes!</h2>		
@@ -138,7 +138,7 @@ catch(Exception $e)
 					</div>	
 				
 					<div class="card-body">
-						<div class="row row-cols-2 mt-4">
+						<div class="row row-cols-1 row-cols-sm-2 mt-4">
 						<?php while($w = $r->fetch_assoc()) :?>
 
 							<button style="height: 300px;" class="btn btn-fix text-left" onClick="" type="submit" name="q<?=$w['id_quiz']?>">		

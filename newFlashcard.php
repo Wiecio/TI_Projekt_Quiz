@@ -71,7 +71,7 @@ function submitClicked(){
 												<div class="col-1 mt-4 mr-3">
 													<label for="front" class="col-form-label"><h5><p class="text-secondary">Front</p></h5></label>
 												</div>
-												<div class="col-9 ml-1 ml-sm-2 ml-md-0 mt-2">
+												<div class="col-12 col-sm-9 ml-1 ml-sm-2 ml-md-0 mt-sm-2">
 													<textarea name="front" class="form-control" id="front" rows="4"></textarea>
 												</div>										
 											</div>
@@ -80,7 +80,7 @@ function submitClicked(){
 											   <div class="col-1 mt-4 mr-3">
 													<label for="back" class="col-form-label"><h5><p class="text-secondary">Back</p></h5></label>
 												</div>
-												<div class="col-9 ml-1 ml-sm-2 ml-md-0 mt-2">
+												<div class="col-12 col-sm-9 ml-1 ml-sm-2 ml-md-0 mt-sm-2">
 													<textarea name="back" class="form-control" id="back" rows="4"></textarea>
 												</div>	
 												<?php if(isset($_SESSION['empty_flash'])): ?>
@@ -98,11 +98,11 @@ function submitClicked(){
 							</div>	
 								
 							<div class="list-group-item">
-								<div class="row mt-4"> 
-									<div class="col-6">
+								<div class="row row-cols-1 row-cols-sm-2 mt-4"> 
+									<div class="col">
 										<button type="submit" class="btn btn-lg btn-block btn-success float-left" name="Finish" >Finish</button>
 									</div>
-									<div class="col-6">
+									<div class="col mt-2 mt-sm-0">
 										<button type="submit" class="btn btn-lg btn-block btn-primary float-right" name="Next">Next</button>
 									</div>								
 								</div>

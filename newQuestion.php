@@ -63,7 +63,7 @@ function submitClicked(){
 						<div class="list-group list-group-flush">
 							<div class="list-group-item">
 								<div class="row">
-									<label for="question" class="col-sm-2 col-form-label"><h4><p class="text-secondary">Question</p></h4></label>
+									<label for="question" class=" col-12 col-form-label"><h4 class="text-secondary">Question</h4></label>
 								</div>
 								<div class="row">
 									<div class="col-sm-8">
@@ -100,17 +100,17 @@ function submitClicked(){
 									</div>
 								</div>
 								<div class="row">
-									<div class="col-12">
+	
 										<div class="col-sm-10">
 											<div class="row mb-3">
 												<div class="col-1 mt-4">
 													<label for="A" class="col-sm-2 col-form-label"><h5><p class="text-secondary">A</p></h5></label>
 												</div>
-												<div class="col-9 ml-1 ml-sm-2 ml-md-0 mt-2">
+												<div class="col-12 col-sm-9 ml-1 ml-sm-2 ml-md-0 mt-sm-2">
 													<textarea name="A" class="form-control" id="A" rows="4"></textarea>
 												</div>
 												
-												<div class="col-1 form-check mt-4">
+												<div class="col-1 ml-3 ml-sm-0 form-check mt-4">
 													<input class="form-check-input" type="radio" name="correctAnswer" id="r1" value="A" checked>
 													<label class="form-check-label" for="r1">
 													  <p class="text-info">Correct answer</p>
@@ -119,14 +119,14 @@ function submitClicked(){
 											</div>
 											
 											<div class="row mb-3">
-											   <div class="col-1 mt-4">
+											   <div class="col-1 mt-1 mt-sm-4">
 													<label for="B" class="col-sm-2 col-form-label"><h5><p class="text-secondary">B</p></h5></label>
 												</div>
-												<div class="col-9 ml-1 ml-sm-2 ml-md-0 mt-2">
+												<div class="col-12 col-sm-9 ml-1 ml-sm-2 ml-md-0 mt-sm-2">
 													<textarea name="B" class="form-control" id="B" rows="4"></textarea>
 												</div>
 												
-												<div class="col-1 form-check mt-4">
+												<div class="col-1 ml-3 ml-sm-0 form-check mt-4">
 													<input class="form-check-input" type="radio" name="correctAnswer" id="r2" value="B">
 													<label class="form-check-label" for="r2">
 													  <p class="text-info">Correct answer</p>
@@ -136,14 +136,14 @@ function submitClicked(){
 											</div>
 											
 											<div class="row mb-3">
-											   <div class="col-1 mt-4">
+											   <div class="col-1 mt-1 mt-sm-4">
 													<label for="C" class="col-sm-2 col-form-label"><h5><p class="text-secondary">C</p></h5></label>
 												</div>
-												<div class="col-9 ml-1 ml-sm-2 ml-md-0 mt-2">
+												<div class="col-12 col-sm-9 ml-1 ml-sm-2 ml-md-0 mt-sm-2">
 													<textarea name="C" class="form-control" id="C" rows="4"></textarea>
 												</div>
 												
-												<div class="col-1 form-check mt-4">
+												<div class="col-1 ml-3 ml-sm-0 form-check mt-4">
 													<input class="form-check-input" type="radio" name="correctAnswer" id="r3" value="C">
 													<label class="form-check-label" for="r3">
 													  <p class="text-info">Correct answer</p>
@@ -154,14 +154,14 @@ function submitClicked(){
 											
 											
 											<div class="row mb-3">
-												<div class="col-1 mt-4">
+												<div class="col-1 mt-1 mt-sm-4">
 													<label for="D" class="col-sm-2 col-form-label"><h5><p class="text-secondary">D</p></h5></label>
 												</div>
-												<div class="col-9 ml-1 ml-sm-2 ml-md-0 mt-2">
+												<div class="col-12 col-sm-9 ml-1 ml-sm-2 ml-md-0 mt-sm-2">
 													<textarea name="D" class="form-control" id="D" rows="4"></textarea>
 												</div>
 												
-												<div class="col-1 form-check mt-4">
+												<div class="col-1 ml-3 ml-sm-0 form-check mt-4">
 													<input class="form-check-input" type="radio" name="correctAnswer" id="r4" value="D">
 													<label class="form-check-label" for="r4">
 													  <p class="text-info">Correct answer</p>
@@ -178,16 +178,16 @@ function submitClicked(){
 								<?php endif; ?>
 							</div>	
 								
-							<div class="list-group-item">
-								<div class="row mt-4"> 
-									<div class="col-6">
-										<button type="submit" class="btn btn-lg btn-block btn-success float-left" name="Finish" >Finish</button>
-									</div>
-									<div class="col-6">
-										<button type="submit" class="btn btn-lg btn-block btn-primary float-right" name="Next">Next</button>
-									</div>								
+							
+							<div class="row row-cols-1 row-cols-sm-2 mt-4"> 
+								<div class="col">
+									<button type="submit" class="btn btn-lg btn-block btn-success float-left" name="Finish" >Finish</button>
 								</div>
-							</div>				  
+								<div class="col">
+									<button type="submit" class="btn btn-lg btn-block btn-primary float-right mt-2 mt-sm-0" name="Next">Next</button>
+								</div>								
+							</div>
+											  
 						</div>
 					</div>
 				</div>

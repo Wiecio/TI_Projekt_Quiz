@@ -110,7 +110,7 @@ catch(Exception $e)
 			</div>
 			<div class="mt-5 mb-5 ">	
 				
-					<div class="row row-cols-2 row-cols-sm-2 row-cols-lg-3 row-cols-xl-4  mx-auto">	
+					<div class="row row-cols-1 row-cols-sm-2 row-cols-lg-3 row-cols-xl-4  mx-auto">	
 					<?php while($w = $r->fetch_assoc()) : ?>
 								
 							<div class="col mb-4">

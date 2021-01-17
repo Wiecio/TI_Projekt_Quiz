@@ -147,24 +147,24 @@ function answerClicked (idSelected){
 <div class="container mt-5">
 	<form method="post">
 		<div class="card">
-			<div class="row mt-5">
-				<div class="col-10 card-title text-center mx-auto mt-2 text-primary">
-					<h2 id="question"><?=$_SESSION['tab_q'][$_SESSION['I']][0]?></h2>		
-				</div>
-			</div>	
+			
+			<div class="card-title mt-5 text-center text-secondary">
+				<h2 id="question"><?=$_SESSION['tab_q'][$_SESSION['I']][0]?></h2>		
+			</div>
+			
 			
 			<div class="card-body">
-				<div class="row row-cols-2">
+				<div class="row row-cols-1 row-cols-sm-2">
 				
 				<?php for($j=1; $j<count($ans_tab); $j++) :?>
-					<div class="col mx-auto  my-auto">
+					<div class="col-12">
 						<label class="col-12">
 							<input type="radio" name="<?=$tab[$j]?>" value="<?=$tab[$j]?>" id="<?=$tab[$j]?>" style="display: none;">
 							<a class="btn btn-block text-left" onClick="answerClicked('card<?=$tab[$j]?>')">	
 								<div id='card<?=$tab[$j]?>' class="card card-block text-white bg-secondary mb-3"  >
 									<div class="card-body">
 										<h5 class="card-title"><?=$tab[$j]?></h5>
-										<p class="card-text"><?=$ans_tab[$j]?></p>
+										<p class="card-text col"><?=$ans_tab[$j]?></p>
 										
 									</div>
 								</div>
@@ -179,7 +179,7 @@ function answerClicked (idSelected){
 			</div>		
 		</div>
 		<div class="row">
-			<button type="submit" id="nextButton" class="btn btn-lg btn-primary col-2 text-center mx-auto mt-2 mb-3 float-center" disabled>
+			<button type="submit" id="nextButton" class="btn btn-lg btn-primary col-6 col-lg-3 text-center mx-auto mt-3 mb-3 float-center" disabled>
 								Next </button>
 		</div>
 	</form>

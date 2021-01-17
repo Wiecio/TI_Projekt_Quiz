@@ -49,8 +49,8 @@ if(isset($_SESSION['log_in']))
 					
 					
 					
-					<div class="form-div row col-6" style="margin-top: 1.5em;">
-						<button type="submit" class="btn btn-lg btn-primary col-6 align-self-center">Login</button>
+					<div class="form-div row col-12" style="margin-top: 1.5em;">
+						<button type="submit" class="btn btn-lg btn-primary align-self-center">Login</button>
 					</div>
 					
 				</form>	

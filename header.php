@@ -1,6 +1,6 @@
 <head>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
-
+<meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
 <body>
 
@@ -56,7 +56,7 @@
 
 			<div class="navbar-nav ml-auto">
 				<button id="logoutBtn" 
-					class=" btn btn-lg btn-danger float-right">Logout</button>
+					class=" btn btn-danger float-right">Logout</button>
 				<script type="text/javascript">
 					$(function() {
 						$("#logoutBtn").click(function() {
@@ -86,7 +86,7 @@
 				
 				<div class="col-lg-auto mt-2 mt-lg-0">
 					<button id="registerBtn" 
-						class=" btn btn-lg btn-primary btn-block">Register</button>
+						class=" btn btn-primary btn-block">Register</button>
 					<script type="text/javascript">
 						$(function() {
 							$("#registerBtn").click(function() {
@@ -98,7 +98,7 @@
 				
 				<div class="col-lg-auto mt-2 mt-lg-0 mr-lg-2">
 					<button id="loginBtn" 
-						class=" btn btn-lg btn-primary btn-block">Login</button>
+						class=" btn btn-primary btn-block">Login</button>
 					<script type="text/javascript">
 						$(function() {
 							$("#loginBtn").click(function() {
