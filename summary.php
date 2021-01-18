@@ -3,29 +3,60 @@ session_start();
 require_once "db_connect.php";
 if(isset($_SESSION['load']) && !isset($_SESSION['tab_name']))
 {
-	try
+	if(isset($_SESSION['log_in']))
 	{
-		$conn  = new mysqli($host,$db_user,$db_password,$db_name);
-		if($conn->connect_errno!=0)
+		try
 		{
-			throw new Exception(mysqli_connect_errno());
+			$conn  = new mysqli($host,$db_user,$db_password,$db_name);
+			if($conn->connect_errno!=0)
+			{
+				throw new Exception(mysqli_connect_errno());
+			}
+			$tab_name = "namequiz_".$_SESSION['user_id'];
+			$id_quiz = $_SESSION['id_quiz'];
+			$sql = "SELECT name_quiz FROM $tab_name WHERE id_quiz = $id_quiz";
+			$r = $conn->query($sql);
+			$w = $r->fetch_assoc();
+			$nameQuiz = $w['name_quiz'];
+			$tab_name = "quiz".$id_quiz."_".$_SESSION['user_id'];
+			$sql = "SELECT * FROM $tab_name";
+			$r = $conn->query($sql);
+			$tab = array(" ","A","B","C","D");
+			$j=0;
 		}
-		$tab_name = "namequiz_".$_SESSION['user_id'];
-		$id_quiz = $_SESSION['id_quiz'];
-		$sql = "SELECT name_quiz FROM $tab_name WHERE id_quiz = $id_quiz";
-		$r = $conn->query($sql);
-		$w = $r->fetch_assoc();
-		$nameQuiz = $w['name_quiz'];
-		$tab_name = "quiz".$id_quiz."_".$_SESSION['user_id'];
-		$sql = "SELECT * FROM $tab_name";
-		$r = $conn->query($sql);
-		$tab = array(" ","A","B","C","D");
-		$j=0;
-	}
-	catch(Exception $e)
-	{
+		catch(Exception $e)
+		{
 
+		}
 	}
+	else
+	{
+		try
+		{
+			$conn  = new mysqli($host,$db_user,$db_password,$db_name);
+			if($conn->connect_errno!=0)
+			{
+				throw new Exception(mysqli_connect_errno());
+			}
+			$ex_tab = explode("_",$_SESSION['quiz']);
+			$tab_name = "namequiz_".$ex_tab[1];
+			$id_quiz = $_SESSION['id_quiz'];
+			$sql = "SELECT name_quiz FROM $tab_name WHERE id_quiz = $id_quiz";
+			$r = $conn->query($sql);
+			$w = $r->fetch_assoc();
+			$nameQuiz = $w['name_quiz'];
+			$tab_name = $_SESSION['quiz'];
+			$sql = "SELECT * FROM $tab_name";
+			$r = $conn->query($sql);
+			$tab = array(" ","A","B","C","D");
+			$j=0;
+		}
+		catch(Exception $e)
+		{
+
+		}
+	}
+	
 }
 else if(isset($_SESSION['load']) && isset($_SESSION['tab_name']))
 {
@@ -37,7 +68,7 @@ else if(isset($_SESSION['load']) && isset($_SESSION['tab_name']))
 			throw new Exception(mysqli_connect_errno());
 		}
 		$tab_name = "nquiz";
-		$id_quiz = substr($_SESSION['tab_name'],strlen($_SESSION['tab_name'])-1,strlen($_SESSION['tab_name']));
+		$id_quiz = substr($_SESSION['tab_name'],1,strlen($_SESSION['tab_name']));
 		$sql = "SELECT name_quiz FROM $tab_name WHERE id_quiz = $id_quiz";
 		$r = $conn->query($sql);
 		$w = $r->fetch_assoc();

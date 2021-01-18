@@ -7,7 +7,7 @@ if(!isset($_SESSION['log_in']))
 }
 if(isset($_POST['save_stat']))
 {
-    $id_quiz = mb_substr($_SESSION['quiz'], mb_strlen($_SESSION['quiz'])-1, mb_strlen($_SESSION['quiz']), 'UTF-8');
+    $id_quiz = substr($_SESSION['quiz'],4,strlen($_SESSION['quiz']));
     if(isset($_POST['is_public']))
     {
         $state = true;
@@ -66,5 +66,9 @@ if(isset($_POST['save_stat']))
             
         }
     }
+}
+else
+{
+    header("Location: index.php");
 }
 ?>

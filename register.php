@@ -130,7 +130,7 @@
 						throw new Exception("NotSendEmail");
 					}
 					/* create table namequiz_id_user */
-					$name = "nameQuiz"."_".$id_correct;
+					$name = "namequiz"."_".$id_correct;
 					$sql_table = "CREATE TABLE $name (id_quiz INT NOT NULL PRIMARY KEY, name_quiz VARCHAR(15) NOT NULL, is_public BOOLEAN NOT NULL, code_q VARCHAR(150) NOT NULL)";
 					$r = $conn->query($sql_table);
 					if(!$r) throw new Exception($conn->error);

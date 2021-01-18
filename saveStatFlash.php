@@ -7,7 +7,7 @@ if(!isset($_SESSION['log_in']))
 }
 if(isset($_POST['save_stat']))
 {
-    $id_flash = mb_substr($_SESSION['flash'], mb_strlen($_SESSION['flash'])-1, mb_strlen($_SESSION['flash']), 'UTF-8');
+    $id_flash = substr($_SESSION['flash'],5,strlen($_SESSION['flash']));
     if(isset($_POST['is_public']))
     {
         $state = true;
@@ -66,5 +66,9 @@ if(isset($_POST['save_stat']))
             
         }
     }
+}
+else
+{
+    header("Location: index.php");
 }
 ?>

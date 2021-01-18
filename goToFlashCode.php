@@ -3,7 +3,7 @@ session_start();
 if(isset($_POST['flash_code']))
 {
     $code = $_POST['flash_code'];
-    $id_u = substr($code,-1);
+    $id_u = substr($code,5,strlen($code));
     $tab_name = "nameflash_".$id_u;
    // echo "Tabname: ".$tab_name;
    // echo "<br>";

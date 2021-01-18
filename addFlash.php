@@ -88,5 +88,9 @@ if(isset($_SESSION['flash_progres']))
         echo $e;
     }
 }
+else
+{
+    header("Location: index.php");
+}
 
 ?>

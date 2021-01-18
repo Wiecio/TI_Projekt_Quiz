@@ -1,5 +1,10 @@
 <?php
 session_start();
+if(!isset($_SESSION['flash_progres']))
+{
+	header("Location: index.php");
+	exit();
+}
 /*if(isset($_SESSION['tab_flash']))
 {
 	print_r($_SESSION['tab_flash']);

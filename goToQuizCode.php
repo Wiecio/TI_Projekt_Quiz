@@ -24,7 +24,7 @@ unset($_SESSION['corrAns']);
 if(isset($_POST['quiz_code']))
 {
     $code = $_POST['quiz_code'];
-    $id_u = substr($code,strlen($code)-1,strlen($code));
+    $id_u = substr($code,5,strlen($code));
     $tab_name = "namequiz_".$id_u;
     //echo "Tabname: ".$tab_name;
     //echo "<br>";
