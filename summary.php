@@ -145,7 +145,7 @@ else
 			<h5>You scored <?=$_SESSION['score']?>/<?=$_SESSION['I']?> correct answers!</h5>	
 		</div>	
 	</div>
-	<form>
+	<form action="quiz.php">
 		<div class="card mt-2 mb-5">								
 			<div class="card-body">
 				<div class="row col-12 mx-auto">		
@@ -193,10 +193,6 @@ else
 	</form>
 </div>
 <?php 
-if(isset($_SESSION['quiz']))
-{
-	unset($_SESSION['quiz']);
-}
 unset($_SESSION['load']);
 unset($_SESSION['I']);
 unset($_SESSION['corrAns']);
