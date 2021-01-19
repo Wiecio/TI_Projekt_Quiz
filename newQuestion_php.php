@@ -361,7 +361,7 @@ if(isset($_POST['Finish']) || isset($_POST['Next']))
 			else
 			{
 				$_SESSION['bad_quest'] = "You can't leave empty filed!";
-				if(isset($_POST['Finish'])  && count($_SESSION['questions']) >0)
+				if(isset($_POST['Finish'])  && count($_SESSION['questions']) >0 if(isset($_SESSION['questions'])))
 				{
                    /* echo "jestem22";
                     echo "<br>";
