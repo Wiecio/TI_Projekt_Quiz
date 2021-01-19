@@ -12,13 +12,14 @@ if(isset($_SESSION['load']) && !isset($_SESSION['tab_name']))
 			{
 				throw new Exception(mysqli_connect_errno());
 			}
-			$tab_name = "namequiz_".$_SESSION['user_id'];
+			$ex_tab = explode("_",$_SESSION['quiz']);
+			$tab_name = "namequiz_".$ex_tab[1];
 			$id_quiz = $_SESSION['id_quiz'];
 			$sql = "SELECT name_quiz FROM $tab_name WHERE id_quiz = $id_quiz";
 			$r = $conn->query($sql);
 			$w = $r->fetch_assoc();
 			$nameQuiz = $w['name_quiz'];
-			$tab_name = "quiz".$id_quiz."_".$_SESSION['user_id'];
+			$tab_name = $_SESSION['quiz'];
 			$sql = "SELECT * FROM $tab_name";
 			$r = $conn->query($sql);
 			$tab = array(" ","A","B","C","D");

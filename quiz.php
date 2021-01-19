@@ -28,7 +28,7 @@ else if(!isset($_SESSION['load']))
 	header("Location: index.php");
 	exit();
 }
-if(!isset($_SESSION['load'])) /* jeśli nie ma load, to znaczy ze jest 1 pytanie */
+if(!isset($_SESSION['load']) && isset($_SESSION['quiz'])) /* jeśli nie ma load, to znaczy ze jest 1 pytanie */
 {
 	//echo "jestem3";
 	try

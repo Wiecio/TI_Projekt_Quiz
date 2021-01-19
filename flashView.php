@@ -16,7 +16,8 @@ if($_SERVER['REQUEST_METHOD'] == 'POST')
 	}
 	else if($check == "d")
 	{
-		header("Location: deleteQuiz.php");
+		$_SESSION['id_delete'] = key($_POST);
+		header("Location: deleteFlash.php");
 		exit();
 	}
 	elseif($check =="A")

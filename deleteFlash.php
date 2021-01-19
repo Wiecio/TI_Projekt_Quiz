@@ -17,125 +17,125 @@ try
     }
     $id_delete = substr($_SESSION['id_delete'],10,strlen($_SESSION['id_delete']));
     $id_user = $_SESSION['user_id'];
-    $sql = "SELECT number_quiz FROM quiz_user WHERE id_user = $id_user";
+    $sql = "SELECT number_flash FROM flashcards_user WHERE id_user = $id_user";
     if(!$r = $conn->query($sql))
     {
         throw new Exception($conn->error);
     }
     $w = $r->fetch_assoc();
-    $number_quiz = $w['number_quiz'];
+    $number_flash = $w['number_flash'];
     if($id_delete == 1)
     {
-        $name_d = "quiz".$id_delete."_".$id_user;
+        $name_d = "flash".$id_delete."_".$id_user;
         $sql_d = "DROP TABLE $name_d";
         if(!$r = $conn->query($sql_d))
         {
             throw new Exception($conn->error);
         }
-        for($i=1;$i<=$number_quiz-1;$i++)
+        for($i=1;$i<=$number_flash-1;$i++)
         {
             $i2 = $i+1;
-            $name_t = "quiz".$i2."_".$id_user;
-            $name_t_new = "quiz".$i.'_'.$id_user;
+            $name_t = "flash".$i2."_".$id_user;
+            $name_t_new = "flash".$i.'_'.$id_user;
             $sql_t = "ALTER TABLE $name_t RENAME TO $name_t_new";
             if(!$r = $conn->query($sql_t))
             {
                 throw new Exception($conn->error);
             }
         }
-        $tab_name = "namequiz_".$id_user;
-        $sql_d = "DELETE FROM $tab_name WHERE id_quiz = $id_delete";
+        $tab_name = "nameflash_".$id_user;
+        $sql_d = "DELETE FROM $tab_name WHERE id_flash = $id_delete";
         if(!$r = $conn->query($sql_d))
         {
             throw new Exception($conn->error);
         }
-        for($i=1;$i<=$number_quiz-1;$i++)
+        for($i=1;$i<=$number_flash-1;$i++)
         {
-            $sql_up = "UPDATE $tab_name SET id_quiz = $i WHERE id_quiz = $i+1";
+            $sql_up = "UPDATE $tab_name SET id_flash = $i WHERE id_flash = $i+1";
             if(!$r = $conn->query($sql_up))
             {
                 throw new Exception($conn->error);
             }
 
         }
-        $sql_q = "UPDATE quiz_user SET number_quiz = $number_quiz-1 WHERE id_user = $id_user";
+        $sql_q = "UPDATE flashcards_user SET number_flash = $number_flash-1 WHERE id_user = $id_user";
         if(!$r = $conn->query($sql_q))
         {
             throw new Exception($conn->error);
         }
-        $_SESSION['GOOD_DELETE'] = "You deleted quiz succesful.";
+        $_SESSION['GOOD_DELETE'] = "You deleted flashcards succesful.";
         $conn->close();
-        header("Location: myQuizzes.php");
+        header("Location: myFlashcards.php");
         exit();
 
 
     }
-    else if( ($id_delete > 1) && ($id_delete < $number_quiz) ) 
+    else if( ($id_delete > 1) && ($id_delete < $number_flash) ) 
     {
-        $name_d = "quiz".$id_delete."_".$id_user;
+        $name_d = "flash".$id_delete."_".$id_user;
         $sql_d = "DROP TABLE $name_d";
         if(!$r = $conn->query($sql_d))
         {
             throw new Exception($conn->error);
         }
-        for($i=$id_delete;$i<=$number_quiz-1;$i++)
+        for($i=$id_delete;$i<=$number_flash-1;$i++)
         {
             $i2 = $i+1;
-            $name_t = "quiz".$i2."_".$id_user;
-            $name_t_new = "quiz".$i."_".$id_user;
+            $name_t = "flash".$i2."_".$id_user;
+            $name_t_new = "flash".$i."_".$id_user;
             $sql_t = "ALTER TABLE $name_t RENAME TO $name_t_new";
             if(!$r = $conn->query($sql_t))
             {
                 throw new Exception($conn->error);
             }
         }
-        $tab_name = "namequiz_".$id_user;
-        $sql_d = "DELETE FROM $tab_name WHERE id_quiz = $id_delete";
+        $tab_name = "nameflash_".$id_user;
+        $sql_d = "DELETE FROM $tab_name WHERE id_flash = $id_delete";
         if(!$r = $conn->query($sql_d))
         {
             throw new Exception($conn->error);
         }
-        for($i=$id_delete;$i<=$number_quiz-1;$i++)
+        for($i=$id_delete;$i<=$number_flash-1;$i++)
         {
-            $sql_up = "UPDATE $tab_name SET id_quiz = $i WHERE id_quiz = $i+1";
+            $sql_up = "UPDATE $tab_name SET id_flash = $i WHERE id_flash = $i+1";
             if(!$r = $conn->query($sql_up))
             {
                 throw new Exception($conn->error);
             }
 
         }
-        $sql_q = "UPDATE quiz_user SET number_quiz = $number_quiz-1 WHERE id_user = $id_user";
+        $sql_q = "UPDATE flashcards_user SET number_flash = $number_flash-1 WHERE id_user = $id_user";
         if(!$r = $conn->query($sql_q))
         {
             throw new Exception($conn->error);
         }
-        $_SESSION['GOOD_DELETE'] = "You deleted quiz succesful.";
+        $_SESSION['GOOD_DELETE'] = "You deleted flashcards succesful.";
         $conn->close();
-        header("Location: myQuizzes.php");
+        header("Location: myFlashcards.php");
         exit();
     }
-    else if($id_delete == $number_quiz)
+    else if($id_delete == $number_flash)
     {
-        $name_d = "quiz".$id_delete."_".$id_user;
+        $name_d = "flash".$id_delete."_".$id_user;
         $sql_d = "DROP TABLE $name_d";
         if(!$r = $conn->query($sql_d))
         {
             throw new Exception($conn->error);
         }
-        $sql_q = "UPDATE quiz_user SET number_quiz = $number_quiz-1 WHERE id_user = $id_user";
+        $sql_q = "UPDATE flashcards_user SET number_flash = $number_flash-1 WHERE id_user = $id_user";
         if(!$r = $conn->query($sql_q))
         {
             throw new Exception($conn->error);
         }
-        $tab_name = "namequiz_".$id_user;
-        $sql_d = "DELETE FROM $tab_name WHERE id_quiz = $id_delete";
+        $tab_name = "nameflash_".$id_user;
+        $sql_d = "DELETE FROM $tab_name WHERE id_flash = $id_delete";
         if(!$r = $conn->query($sql_d))
         {
             throw new Exception($conn->error);
         }
-        $_SESSION['GOOD_DELETE'] = "You deleted quiz succesful.";
+        $_SESSION['GOOD_DELETE'] = "You deleted falshcards succesful.";
         $conn->close();
-        header("Location: myQuizzes.php");
+        header("Location: myFlashcards.php");
         exit();
     }
     

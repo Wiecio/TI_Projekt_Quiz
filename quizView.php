@@ -16,6 +16,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST')
 	}
 	else if($check == "d")
 	{
+		$_SESSION['id_delete'] = key($_POST);
 		header("Location: deleteQuiz.php");
 		exit();
 	}

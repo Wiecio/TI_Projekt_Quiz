@@ -1,5 +1,7 @@
 <?php 
 session_start();
+if(isset($_SESSION['id_delete']))
+	unset($_SESSION['id_delete']);
 if(isset($_SESSION['flash']))
 {
     unset($_SESSION['flash']);
@@ -80,6 +82,10 @@ catch(Exception $e)
 		<?php if(isset($_SESSION['change_saved'])) :?>
 				<div class="alert alert-success mt-4"><?=$_SESSION['change_saved']?></div>
 				<?php unset($_SESSION['change_saved'])?>
+		<?php endif;?>
+		<?php if(isset($_SESSION['GOOD_DELETE'])) :?>
+				<div class="alert alert-success mt-4"><?=$_SESSION['GOOD_DELETE']?></div>
+				<?php unset($_SESSION['GOOD_DELETE'])?>
 		<?php endif;?>
 		<?php if(isset($_SESSION['RAND'])) :?>
 				<div class="alert alert-success mt-4">Your code is: <?=$_SESSION['RAND']?></div>
