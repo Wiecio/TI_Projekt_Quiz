@@ -38,10 +38,11 @@ if(isset($_SESSION['quizInProgress']))
         unset($_SESSION['bad_quest']);
 	}
 	unset($_SESSION['quiz_name']);
-	if(isset($_SESSION['quiz']))
-    {
-        unset($_SESSION['quiz']);
-	}
+	
+}
+if(isset($_SESSION['quiz']))
+{
+	unset($_SESSION['quiz']);
 }
 if(isset($_SESSION['flash_progres']))
 {
