@@ -1,4 +1,3 @@
-
 <?php
 session_start();
 if($_SERVER['REQUEST_METHOD'] == 'POST')
@@ -127,7 +126,6 @@ if($_SERVER['REQUEST_METHOD'] == 'POST')
 <div class="container mt-5" >
 	<div class="row">
 		<div class="mx-auto mt-5 col-12 col-md-8 col-lg-6">
-
 	<?php if($_SESSION['check']) : ?>
 		<?php if(isset($_SESSION['comm']) && $_SESSION['comm'] == "Good!" ) : ?>
 			<div class="alert alert-success mt-3"><?=$_SESSION['comm']?></div>
@@ -137,20 +135,16 @@ if($_SERVER['REQUEST_METHOD'] == 'POST')
 				<?php if(isset($_SESSION['comm'])) unset($_SESSION['comm']) ?>
 		<?php endif;?>
 	<?php endif ;?>
-
 			<form action="" method="POST">
 				<div class="mt-3">
 					<div class="flip-card mt-3">
 						<div id="flashCard" class="flip-card-inner">
 							<div class="flip-card-front">
-
 								<h1 style="margin-top:65px;"><?=$_SESSION['tab_flash'][$_SESSION['counter']][0]?></h1>		
-
 							</div>
 						
 						</div>
 					</div>	
-
 					<?=	$_SESSION['counter']+1?>/<?=$_SESSION['max']+1?>
 						<?php if($_SESSION['check'] == false): ?>
 								<div class="col-12 mt-2">
@@ -178,15 +172,14 @@ if($_SERVER['REQUEST_METHOD'] == 'POST')
 						<?php endif; ?>	
 						<?php if($_SESSION['check'] == false): ?>
 							<div class="col-12">
-								<button disabled type="submit" class="btn btn-lg btn-block btn-success float-right mt-2" name="jump">Jump to the begining</button>
+								<button disabled type="submit" class="btn btn-lg btn-block btn-outline btn-outline-info float-right mt-2" name="jump">Jump to the begining</button>
 							</div>		
 						<?php else :?>
 							<div class="col-12">
-									<button type="submit" class="btn btn-lg btn-block btn-success float-right mt-2" name="jump">Jump to the begining</button>
+									<button type="submit" class="btn btn-lg btn-block btn-outline btn-outline-info float-right mt-2" name="jump">Jump to the begining</button>
 							</div>	
 						<?php endif; ?>			
 								
-
 					</div>
 				</div>	
 			</form>

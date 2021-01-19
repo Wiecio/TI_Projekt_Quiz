@@ -152,9 +152,10 @@ function flipCard(){
 <div class="container mt-5" >
 	<div class="row">
 		<div class="mx-auto mt-5 col-12 col-md-8 col-lg-6">
+			
 			<form action="" method="POST">
-				<div class="mt-5">
-					<div class="btn flip-card mt-5" onClick="flipCard()">
+				
+					<div class="btn flip-card " onClick="flipCard()">
 						<div id="flashCard" class="flip-card-inner">
 							<div class="flip-card-front">
 								<h1 style="margin-top:65px;"><?=$_SESSION['tab_flash'][$_SESSION['countf']][0]?></h1>
@@ -165,7 +166,7 @@ function flipCard(){
 							</div>
 						</div>
 					</div>				
-				</div>	
+				
 				<?php if(isset($_SESSION['er_prev'])): ?>
 						<div class="alert alert-danger mt-3"><?=$_SESSION['er_prev']?></div>
 						<?php unset($_SESSION['er_prev']);?>
@@ -189,6 +190,7 @@ function flipCard(){
 			<form action="flashTest.php" method="POST">
 				<button type="submit" name="<?=$_SESSION['tab_namef']?>" class="btn btn-lg btn-block btn-outline btn-outline-info mt-3 mb-4">Check your knowledge</button>
 			</form>
+			
 		</div>		
 	</div>
 </div>
