@@ -199,8 +199,6 @@
 					<div class="col-12">
 						<button type="submit" class="btn btn-lg btn-primary" >Register</button>
 					</div>
-					
-
 				</form>
 				<?php if(isset($_SESSION['good_register'])): ?>
 						<div class="alert alert-success mt-4"><?=$_SESSION['good_register']?></div>
