@@ -46,12 +46,6 @@ if(isset($_POST['Finish']) || isset($_POST['Next']))
         
        
     }
-    /*if(!Check_name_quiz($front) || !Check_name_quiz($back))
-    {
-         $_SESSION['bad_name'] = "The given name contains illegal characters, the name may only contain letters and spaces";
-         header("Location: newFlashcard.php");
-         exit();
-    }*/
     $_SESSION['tab_flash'][$_SESSION['flash_count']][0] = $front;
     $_SESSION['tab_flash'][$_SESSION['flash_count']][1] = $back;
     $_SESSION['flash_count']++;
@@ -63,9 +57,5 @@ if(isset($_POST['Finish']) || isset($_POST['Next']))
     {
         header("Location: addFlash.php");
     }
-
-    
-
 }
-
 ?>
