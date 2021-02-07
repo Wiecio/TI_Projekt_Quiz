@@ -53,8 +53,8 @@ try
     }
 
     /*Create Table QuizX_Y*/
-    $name_table = "Quiz".$corr_id_quiz."_".$_SESSION['user_id'];
-    $sql_table = "CREATE TABLE $name_table (id_question INT(11) NOT NULL PRIMARY KEY, question varchar(255) NOT NULL, answers varchar(255) NOT NULL)";
+    $name_table = "quiz".$corr_id_quiz."_".$_SESSION['user_id'];
+    $sql_table = "CREATE TABLE $name_table (id_question INT(11) NOT NULL PRIMARY KEY, question text NOT NULL, answers text NOT NULL)";
     $r = $conn->query($sql_table);
     if(!$r) throw new Exception($conn->error);
 

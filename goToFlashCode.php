@@ -32,7 +32,7 @@ if(isset($_POST['flash_code']))
         $id_flash = $w['id_flash'];
         $_SESSION['flash'] = "flash".$id_flash."_".$id_u;
         $_SESSION['id_flash'] = $id_flash;
-        echo "quize: ". $_SESSION['flash'];
+        //echo "quize: ". $_SESSION['flash'];
         $conn->close();
         header("Location: flashcard.php");
     }

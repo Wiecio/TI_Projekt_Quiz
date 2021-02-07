@@ -144,9 +144,8 @@ catch(Exception $e)
 {
     $conn->rollback();
     $conn->close();
-    echo $e;
     $_SESSION['error_conn'] = "Sorry, we have problems with servers, please check out website in another time :(";
-    //header("Location: index.php");
+    header("Location: index.php");
 }
 
 ?>
